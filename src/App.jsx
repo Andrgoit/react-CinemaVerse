@@ -1,19 +1,28 @@
+import { Route, Routes } from "react-router-dom";
+import { lazy, Suspense } from "react";
+
+const HomePage = lazy(() => import("@/pages/HomePage/HomePage"));
+const ListPage = lazy(() => import("@/pages/ListPage/ListPage"));
+const DetailsPage = lazy(() => import("@/pages/DetailsPage/DetailsPage"));
+const NotFoundPage = lazy(() => import("@/pages/NotFoundPage/NotFoundPage"));
+const Layout = lazy(() => import("@/components/Layout/Layout"));
+import { Loader } from "@/components";
+
 import "./index.css";
-import github from "@/assets/github.svg";
 
 function App() {
   return (
-    <div className="flex h-screen w-full flex-col items-center justify-center gap-5 bg-gradient-to-br from-[#1CB5E0] to-[#000851]">
-      <h1
-        className="text-4xl font-bold text-white"
-        style={{ textShadow: "2px 2px 4px black" }}
-      >
-        Vite + React + Tailwind
-      </h1>
-      <a href="https://github.com/Andrgoit/react-template" target="_blank">
-        <img src={github} alt="github icon" />
-      </a>
-    </div>
+    <Suspense fallback={<Loader />}>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="/:category" element={<ListPage />} />
+          <Route path="/movie/:movie_id" element={<DetailsPage />} />
+          <Route path="/movie/:movie_id/similar" element={<ListPage />} />
+        </Route>
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </Suspense>
   );
 }
 

@@ -1,0 +1,97 @@
+:root {
+  /* Hero section */
+  --hero-overlay: rgba(11, 16, 32, 0.75);
+
+  /* Trailer button */
+  --play-button-bg: rgba(255, 255, 255, 0.15);
+  --play-button-hover: rgba(255, 255, 255, 0.25);
+
+  /* Skeleton loader */
+  --skeleton-base: #2d3748;
+  --skeleton-highlight: #4b5563;
+
+  /* Chips */
+  --genre-bg: rgba(124, 58, 237, 0.15);
+  --genre-text: #a78bfa;
+
+  /* Scrollbar */
+  --scrollbar-track: transparent;
+  --scrollbar-thumb: #4c1d95;
+
+  /* dark mode */
+
+  /* Brand */
+  --color-primary: #7c3aed;
+  --color-primary-hover: #6d28d9;
+  --color-primary-light: #a78bfa;
+
+  /* Accent */
+  --color-accent: #f59e0b;
+  --color-success: #10b981;
+  --color-error: #ef4444;
+
+  /* Backgrounds */
+  --color-bg: #0b1020;
+  --color-bg-secondary: #111827;
+  --color-surface: #1a1f2f;
+  --color-surface-hover: #252b3d;
+
+  /* Text */
+  --color-text: #f9fafb;
+  --color-text-secondary: #d1d5db;
+  --color-text-muted: #9ca3af;
+
+  /* Borders */
+  --color-border: #2d3748;
+
+  /* Cards */
+  --color-card: #161d2f;
+  --color-card-hover: #20283a;
+
+  /* Rating */
+  --color-rating: #fbbf24;
+
+  /* Shadows */
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.25);
+
+  --font-heading: "Poppins", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+/* light mode */
+
+.hhhhhhhhh {
+  /* Brand */
+  --color-primary: #7c3aed;
+  --color-primary-hover: #6d28d9;
+  --color-primary-light: #a78bfa;
+
+  /* Accent */
+  --color-accent: #f59e0b;
+  --color-success: #10b981;
+  --color-error: #ef4444;
+
+  /* Backgrounds */
+  --color-bg: #f8fafc;
+  --color-bg-secondary: #ffffff;
+  --color-surface: #f1f5f9;
+  --color-surface-hover: #e2e8f0;
+
+  /* Text */
+  --color-text: #111827;
+  --color-text-secondary: #374151;
+  --color-text-muted: #6b7280;
+
+  /* Borders */
+  --color-border: #cbd5e1;
+
+  /* Cards */
+  --color-card: #ffffff;
+  --color-card-hover: #f8fafc;
+
+  /* Rating */
+  --color-rating: #fbbf24;
+
+  /* Shadows */
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
