@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import { HeroBanner, Section } from "@/components";
+import {
+  HeroBanner,
+  Section,
+  SwiperComponent,
+  TopRateSwipeComponent,
+} from "@/components";
 
 import categories from "@/data/category";
 
@@ -56,23 +61,28 @@ export default function HomePage() {
       setGenres(data.genres);
     }
 
-    // fetchTrendingMovies();
-    // fetchTopRatedMovies();
+    fetchTrendingMovies();
+    fetchTopRatedMovies();
     // fetchNowPlayingMovies();
-    // fetchUpcomingMovies();
-    // fetchMovieGenres();
+    fetchUpcomingMovies();
+    fetchMovieGenres();
   }, []);
 
   return (
     <div>
       <HeroBanner />
-      <Section title="Trending Now" category={categories.trendMovies}></Section>
-      <Section title="Top Rated" category={categories.topRateMovies}></Section>
-      <Section title="Upcoming" category={categories.upcomingMovie}></Section>
-      <Section
-        title="Playing now"
-        category={categories.nowPlayingMovies}
-      ></Section>
+      <Section title="Trending Now" category={categories.trendMovies}>
+        <SwiperComponent movies={trendingMovies} genres={genres} />
+      </Section>
+      <Section title="Top Rated" category={categories.topRateMovies}>
+        <TopRateSwipeComponent movies={topRateMovies} />
+      </Section>
+      <Section title="Upcoming" category={categories.upcomingMovie}>
+        <SwiperComponent movies={upcomingMovies} genres={genres} />
+      </Section>
+      {/* <Section title="Playing now" category={categories.nowPlayingMovies}>
+        <SwiperComponent movies={playingNowMovies} genres={genres}/>
+      </Section> */}
     </div>
   );
 }

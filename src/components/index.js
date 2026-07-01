@@ -16,6 +16,8 @@ import Section from "./Section/Section";
 import MoviesList from "./MoviesList/MoviesList";
 import Pagination from "./Pagination/Pagination";
 import MovieDetails from "./MovieDetails/MovieDetails";
+import SwiperComponent from "./SwiperComponent/SwiperComponent";
+import TopRateSwipeComponent from "./TopRateSwipeComponent/TopRateSwipeComponent.jsx";
 
 export {
   Header,
@@ -36,4 +38,6 @@ export {
   MoviesList,
   Pagination,
   MovieDetails,
+  SwiperComponent,
+  TopRateSwipeComponent,
 };
