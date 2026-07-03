@@ -23,13 +23,13 @@
 
 .link {
   display: inline-block;
-  width: 92 px;
   color: var(--color-text);
 }
 .cardWrapper {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width: 92 px;
 }
 .cardImageWrapper {
   border-radius: 5px;

@@ -1,59 +1,74 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Modal, MovieDetails } from "@/components";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import styles from "./SwiperComponent.module.css";
-
 import noPoster from "@/assets/img/noPhoto.svg";
 import posterSizes from "@/data/posterSizes";
 
+import styles from "./SwiperComponent.module.css";
+
 export default function SwiperComponent({ movies = [], genres = [] }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const imageBaseURL = "https://image.tmdb.org/t/p/";
   const posterSize = posterSizes.w92;
 
-  const elements = movies.map(
-    ({ id, poster_path, title, release_date, genre_ids }) => {
-      // const normalizedGenres = genres.map((genre) => {
-      //   return genre_ids.filter((ids) => ids === genre.id);
-      // });
-      const normalizedGenres = genres
-        .map((genre) => (genre_ids.includes(genre.id) ? genre.name : null))
-        .filter(Boolean);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
-      const genreElement = normalizedGenres.map((name) => (
-        <span key={name} className={styles.genres}>
-          {name}
-        </span>
-      ));
+  const elements = movies.map((movie) => {
+    const { id, poster_path, title, release_date, genre_ids } = movie;
+    // ------------------------------------
+    // const normalizedGenres = genres
+    //   .map((genre) => (genre_ids.includes(genre.id) ? genre.name : null))
+    //   .filter(Boolean);
 
-      return (
-        <SwiperSlide key={id}>
-          <Link to={`/movie/${id}`} className={styles.link}>
-            <div className={styles.cardWrapper}>
-              <div className={styles.cardImageWrapper}>
-                <img
-                  src={
-                    poster_path
-                      ? `${imageBaseURL}${posterSize}${poster_path}`
-                      : noPoster
-                  }
-                  alt={`${title} poster image`}
-                  className={styles.cardImage}
-                />
-              </div>
-              <div className={styles.cardFooter}>
-                <h3 className={styles.cardTitle}>{title}</h3>
-                {/* <div className="styles.genresWrapper">{genreElement}</div> */}
-              </div>
-            </div>
-          </Link>
-        </SwiperSlide>
-      );
-    },
-  );
+    // const genreElement = normalizedGenres.map((name) => (
+    //   <span key={name} className={styles.genres}>
+    //     {name}
+    //   </span>
+    // ));
+    // ------------------------------------
+    return (
+      <SwiperSlide key={id}>
+        <div className={styles.cardWrapper} onClick={openModal}>
+          <div className={styles.cardImageWrapper}>
+            <img
+              src={
+                poster_path
+                  ? `${imageBaseURL}${posterSize}${poster_path}`
+                  : noPoster
+              }
+              alt={`${title} poster image`}
+              className={styles.cardImage}
+            />
+          </div>
+          <div className={styles.cardFooter}>
+            <h3 className={styles.cardTitle}>{title}</h3>
+            {/* <div className="styles.genresWrapper">{genreElement}</div> */}
+          </div>
+        </div>
+
+        {isModalOpen && (
+          <Modal>
+            <MovieDetails movieDitails={movie} genres={genres} />
+            <Link
+              to={`/movie/${id}`}
+              className={styles.link}
+              onClick={closeModal}
+            >
+              Show more
+            </Link>
+          </Modal>
+        )}
+      </SwiperSlide>
+    );
+  });
 
   return (
     <Swiper
@@ -61,7 +76,7 @@ export default function SwiperComponent({ movies = [], genres = [] }) {
       loop={true}
       autoplay={{
         delay: 2500,
-        // disableOnInteraction: false,
+        disableOnInteraction: false,
       }}
       spaceBetween={10}
       breakpoints={{

@@ -61,7 +61,7 @@ export default function DetailsPage() {
   return (
     <div>
       <Link to={`/movie/${movie_id}/similar`}>Similar movies</Link>
-      {movieDitails && <MovieDetails />}
+      {movieDitails && <MovieDetails movieDitails={movieDitails} />}
       {movieTrailers.length > 0 && <Section title="Trailers"></Section>}
       {movieReviews.length > 0 && <Section title="Overviews"></Section>}
       {movieCast.length > 0 && <Section title="Top Cast"></Section>}
