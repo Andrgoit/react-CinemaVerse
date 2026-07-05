@@ -10,7 +10,7 @@ import "swiper/css/pagination";
 
 import baseURL from "@/data/baseURLs";
 
-import styles from "./SwiperComponent.module.css";
+import styles from "./TrailersSwiperComponent.module.css";
 
 export default function TrailersSwiperComponent({ movieTrailers = [] }) {
   const [isModalOpen, setIsModalOpen] = useState(false);

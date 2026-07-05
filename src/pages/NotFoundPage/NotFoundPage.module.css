@@ -1,0 +1,14 @@
+.wrapper {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+.text {
+  color: white;
+}
+.link {
+  color: var(--color-text);
+}

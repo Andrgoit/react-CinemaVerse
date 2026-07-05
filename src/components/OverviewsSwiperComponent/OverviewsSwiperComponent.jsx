@@ -10,7 +10,7 @@ import "swiper/css/pagination";
 import noPoster from "@/assets/img/noPhoto.svg";
 import posterSizes from "@/data/imgSizes";
 
-import styles from "./SwiperComponent.module.css";
+import styles from "./OverviewsSwiperComponent.module.css";
 
 export default function OverviewsSwiperComponent({ overviews = [] }) {
   const [isModalOpen, setIsModalOpen] = useState(false);

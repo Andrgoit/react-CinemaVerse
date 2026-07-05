@@ -10,7 +10,7 @@ import "swiper/css/pagination";
 import noPoster from "@/assets/img/noPhoto.svg";
 import posterSizes from "@/data/imgSizes";
 
-import styles from "./SwiperComponent.module.css";
+import styles from "./CaseSwiperComponent.module.css";
 
 export default function CaseSwiperComponent({ movies = [], genres = [] }) {
   const [isModalOpen, setIsModalOpen] = useState(false);

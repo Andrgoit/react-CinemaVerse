@@ -19,8 +19,8 @@ function App() {
           <Route path="/:category" element={<ListPage />} />
           <Route path="/movie/:movie_id" element={<DetailsPage />} />
           <Route path="/movie/:movie_id/similar" element={<ListPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
-        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Suspense>
   );
