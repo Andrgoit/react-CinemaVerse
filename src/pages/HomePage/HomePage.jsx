@@ -71,16 +71,16 @@ export default function HomePage() {
   return (
     <div>
       <HeroBanner />
-      <Section title="Trending Now" category={categories.trendMovies}>
+      <Section title="Trending Now" link={categories.trendMovies}>
         <SwiperComponent movies={trendingMovies} genres={genres} />
       </Section>
-      <Section title="Top Rated" category={categories.topRateMovies}>
+      <Section title="Top Rated" link={categories.topRateMovies}>
         <TopRateSwipeComponent movies={topRateMovies} />
       </Section>
-      <Section title="Upcoming" category={categories.upcomingMovie}>
+      <Section title="Upcoming" link={categories.upcomingMovie}>
         <SwiperComponent movies={upcomingMovies} genres={genres} />
       </Section>
-      {/* <Section title="Playing now" category={categories.nowPlayingMovies}>
+      {/* <Section title="Playing now" link={categories.nowPlayingMovies}>
         <SwiperComponent movies={playingNowMovies} genres={genres}/>
       </Section> */}
     </div>

@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Modal, MovieDetails } from "@/components";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
@@ -9,16 +11,27 @@ import styles from "./TopRateSwipeComponent.module.css";
 
 import noPoster from "@/assets/img/noPhoto.svg";
 import star from "@/assets/icons/star.png";
-import posterSizes from "@/data/posterSizes";
+import imgSizes from "@/data/imgSizes";
+import contentBaseURL from "@/data/baseURLs";
 
-export default function TopRateSwipeComponent({ movies = [] }) {
-  const imageBaseURL = "https://image.tmdb.org/t/p/";
-  const posterSize = posterSizes.w92;
+export default function TopRateSwipeComponent({ movies = [], genres }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [chosenMovie, setChosenMovie] = useState(null);
 
-  const elements = movies.map(({ id, vote_average, poster_path, title }) => (
+  const imageBaseURL = contentBaseURL.posterImg;
+  const posterSize = imgSizes.posterSizes.w92;
+
+  const openModal = (movie) => {
+    setIsModalOpen(true);
+    setChosenMovie(movie);
+  };
+  const closeModal = () => setIsModalOpen(false);
+
+  const elements = movies.map((movie) => {
+    const { id, poster_path, title, vote_average } = movie;
     <SwiperSlide key={id}>
       <Link to={`/movie/${id}`} className={styles.link}>
-        <div className={styles.cardWrapper}>
+        <div className={styles.cardWrapper} onClick={openModal}>
           <div className={styles.imageWrapper}>
             <img
               src={
@@ -38,8 +51,8 @@ export default function TopRateSwipeComponent({ movies = [] }) {
           </div>
         </div>
       </Link>
-    </SwiperSlide>
-  ));
+    </SwiperSlide>;
+  });
 
   return (
     <Swiper
@@ -47,7 +60,7 @@ export default function TopRateSwipeComponent({ movies = [] }) {
       loop={true}
       autoplay={{
         delay: 2500,
-        // disableOnInteraction: false,
+        disableOnInteraction: false,
       }}
       spaceBetween={10}
       breakpoints={{
@@ -60,6 +73,18 @@ export default function TopRateSwipeComponent({ movies = [] }) {
       className={styles.swiper}
     >
       {elements}
+      {isModalOpen && (
+        <Modal>
+          <MovieDetails movieDitails={chosenMovie} genres={genres} />
+          <Link
+            to={`/movie/${chosenMovie.id}`}
+            className={styles.link}
+            onClick={closeModal}
+          >
+            Show more
+          </Link>
+        </Modal>
+      )}
     </Swiper>
   );
 }

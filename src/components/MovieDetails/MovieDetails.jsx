@@ -1,11 +1,13 @@
 import noPoster from "@/assets/img/noPhoto.svg";
-import posterSizes from "@/data/posterSizes";
+import posterSizes from "@/data/imgSizes";
 const imageBaseURL = "https://image.tmdb.org/t/p/";
 import star from "@/assets/icons/star.png";
 
 import styles from "./MovieDetails.module.css";
 
-export default function MovieDetails({ movieDitails, genres }) {
+const posterSize = posterSizes.w185;
+
+export default function MovieDetails({ movieDitails, genres = [] }) {
   const {
     poster_path,
     title,

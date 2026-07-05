@@ -8,18 +8,23 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 import noPoster from "@/assets/img/noPhoto.svg";
-import posterSizes from "@/data/posterSizes";
+import imgSizes from "@/data/imgSizes";
+import contentBaseURL from "@/data/baseURLs";
 
 import styles from "./SwiperComponent.module.css";
 
 export default function SwiperComponent({ movies = [], genres = [] }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [chosenMovie, setChosenMovie] = useState(null);
 
-  const imageBaseURL = "https://image.tmdb.org/t/p/";
-  const posterSize = posterSizes.w92;
+  const imageBaseURL = contentBaseURL.posterImg;
+  const posterSize = imgSizes.posterSizes.w92;
 
-  const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+  const openModal = (movie) => {
+    setIsModalOpen(true);
+    setChosenMovie(movie);
+  };
 
   const elements = movies.map((movie) => {
     const { id, poster_path, title, release_date, genre_ids } = movie;
@@ -36,7 +41,7 @@ export default function SwiperComponent({ movies = [], genres = [] }) {
     // ------------------------------------
     return (
       <SwiperSlide key={id}>
-        <div className={styles.cardWrapper} onClick={openModal}>
+        <div className={styles.cardWrapper} onClick={() => openModal(movie)}>
           <div className={styles.cardImageWrapper}>
             <img
               src={
@@ -53,19 +58,6 @@ export default function SwiperComponent({ movies = [], genres = [] }) {
             {/* <div className="styles.genresWrapper">{genreElement}</div> */}
           </div>
         </div>
-
-        {isModalOpen && (
-          <Modal>
-            <MovieDetails movieDitails={movie} genres={genres} />
-            <Link
-              to={`/movie/${id}`}
-              className={styles.link}
-              onClick={closeModal}
-            >
-              Show more
-            </Link>
-          </Modal>
-        )}
       </SwiperSlide>
     );
   });
@@ -89,6 +81,18 @@ export default function SwiperComponent({ movies = [], genres = [] }) {
       className={styles.swiper}
     >
       {elements}
+      {isModalOpen && (
+        <Modal close={closeModal}>
+          {/* <MovieDetails movieDitails={chosenMovie} genres={genres} /> */}
+          <Link
+            to={`/movie/${chosenMovie.id}`}
+            className={styles.link}
+            onClick={closeModal}
+          >
+            Show more
+          </Link>
+        </Modal>
+      )}
     </Swiper>
   );
 }

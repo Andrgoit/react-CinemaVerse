@@ -18,6 +18,10 @@ import Pagination from "./Pagination/Pagination";
 import MovieDetails from "./MovieDetails/MovieDetails";
 import SwiperComponent from "./SwiperComponent/SwiperComponent";
 import TopRateSwipeComponent from "./TopRateSwipeComponent/TopRateSwipeComponent.jsx";
+import TrailersSwiperComponent from "./TrailersSwiperComponent/TrailersSwiperComponent";
+import CaseSwiperComponent from "./CaseSwiperComponent/CaseSwiperComponent";
+import OverviewsSwiperComponent from "./OverviewsSwiperComponent/OverviewsSwiperComponent";
+import VideoPlayer from "./VideoPlayer/VideoPlayer";
 
 export {
   Header,
@@ -40,4 +44,8 @@ export {
   MovieDetails,
   SwiperComponent,
   TopRateSwipeComponent,
+  TrailersSwiperComponent,
+  CaseSwiperComponent,
+  OverviewsSwiperComponent,
+  VideoPlayer,
 };

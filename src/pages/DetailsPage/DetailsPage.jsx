@@ -7,7 +7,14 @@ import {
   getMovieTrailers,
   getSimilarMovies,
 } from "@/api";
-import { Section, MovieDetails } from "@/components";
+import {
+  Section,
+  MovieDetails,
+  SwiperComponent,
+  CaseSwiperComponent,
+  OverviewsSwiperComponent,
+  TrailersSwiperComponent,
+} from "@/components";
 
 export default function DetailsPage() {
   const [movieDitails, setMovieDitails] = useState(null);
@@ -62,11 +69,25 @@ export default function DetailsPage() {
     <div>
       <Link to={`/movie/${movie_id}/similar`}>Similar movies</Link>
       {movieDitails && <MovieDetails movieDitails={movieDitails} />}
-      {movieTrailers.length > 0 && <Section title="Trailers"></Section>}
-      {movieReviews.length > 0 && <Section title="Overviews"></Section>}
-      {movieCast.length > 0 && <Section title="Top Cast"></Section>}
+      {movieTrailers.length > 0 && (
+        <Section title="Trailers">
+          <TrailersSwiperComponent movieTrailers={movieTrailers} />
+        </Section>
+      )}
+      {movieReviews.length > 0 && (
+        <Section title="Overviews">
+          <OverviewsSwiperComponent movieReviews={movieReviews} />
+        </Section>
+      )}
+      {movieCast.length > 0 && (
+        <Section title="Top Cast">
+          <CaseSwiperComponent movieCast={movieCast} />
+        </Section>
+      )}
       {similarMovies.length > 0 && (
-        <Section title="You may also like"></Section>
+        <Section title="You may also like" link={`/movie/${movie_id}/similar`}>
+          <SwiperComponent movies={similarMovies} />
+        </Section>
       )}
     </div>
   );
