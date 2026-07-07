@@ -56,6 +56,45 @@
 
   --font-heading: "Poppins", sans-serif;
   --font-body: "Inter", sans-serif;
+
+   /* Breakpoints */
+  --bp-tablet: 768px;
+  --bp-desktop: 1280px;
+
+  /* Container */
+  --max-container-width: 1280px;
+
+  /* Font sizes */
+  --fs-h1:22px;
+  --fs-h1-tablet:22px;
+  --fs-h1-desktop:22px;
+
+  --fs-h2:24px;
+  --fs-h2-tablet:32px;
+  --fs-h2-desktop:32px;
+
+  --fs-text:16px;
+  --fs-text-tablet:16px;
+  --fs-text-desktop:16px;
+  
+  --fs-small-text:14px;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* Radius */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
 }
 
 /* light mode */

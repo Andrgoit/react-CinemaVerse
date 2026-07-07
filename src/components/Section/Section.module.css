@@ -1,5 +1,6 @@
 .wrapper {
-  padding: 20px 0;
+  padding: var(--space-5) 0;
+  margin-bottom: var(--space-8);
 }
 .header {
   display: flex;

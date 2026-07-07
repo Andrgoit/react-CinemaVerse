@@ -33,7 +33,9 @@ export default function MovieDetails({ movieDitails }) {
   ));
   // ------------------------------------
   return (
-    <div className={styles.detailsWrapper}>
+    <div className="container">
+    <div className=" flex flex-col gap-4">
+      <div className={styles.detailsWrapper}>
       <div className={styles.posterWrapper}>
         <img
           src={
@@ -73,11 +75,13 @@ export default function MovieDetails({ movieDitails }) {
             </div>
           </div>
           <span className={styles.voteCount}>{vote_count} votes</span>
-        </div>
-          <div className=" w-full">
+        </div>          
+      </div>      
+    </div>
+      <div className="  w-full">
             <p className={styles.overview}>{ overview}</p>
-          </div>
       </div>
+    </div>
     </div>
   );
 }

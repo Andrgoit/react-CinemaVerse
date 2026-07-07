@@ -12,23 +12,88 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-body);
-  padding: 0 15px;
+  padding: 0 var(--space-4);
 }
 
 .container {
+    width: 100%;
+    max-width: var(--max-container-width);
+    margin-inline: auto;
+    padding-inline: var(--space-4);
+
+    @media (min-width: 768px) {
+    & {
+        padding-inline: var(--space-5);
+    }
+}
+@media (min-width: 1280px) {
+    & {
+        padding-inline: var(--space-6);
+    }
+}
+}
+/* .container {
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-}
 
-@media (min-width: 768px) {
-  .container {
-    width: 750px;
+  @media (min-width: 768px) {
+    & {
+      width: 750px;
+    }
   }
-}
+  
+  @media (min-width: 992px) {
+    & {
+      width: 970px;
+    }
+  }
+} */
 
-@media (min-width: 992px) {
-  .container {
-    width: 970px;
-  }
-}
+
+
+/* 320px   телефон
+
+480px
+
+768px   планшет
+
+1024px  ноутбук
+
+1280px  компьютер
+
+1440px+ 
+
+H1
+40
+
+H2
+32
+
+H3
+24
+
+Title
+20
+
+Body
+16
+
+Small
+14
+
+Caption
+12
+*************************************
+H1
+32
+
+H2
+24
+
+H3
+20
+
+Body
+16
+*/

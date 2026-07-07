@@ -10,7 +10,7 @@ export default function Nav() {
   ));
   return (
     <nav>
-      <ul>{elements}</ul>
+      <ul className="flex items-center gap-1">{elements}</ul>
     </nav>
   );
 }

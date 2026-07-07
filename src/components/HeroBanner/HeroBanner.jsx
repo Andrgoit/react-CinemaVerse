@@ -1,3 +1,4 @@
+import styles from "./HeroBanner.module.css"
 export default function HeroBanner() {
-  return <div>HeroBanner</div>;
+  return <section className={styles.wrapper}></section>;
 }

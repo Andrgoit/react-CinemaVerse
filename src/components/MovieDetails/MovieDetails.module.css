@@ -2,27 +2,46 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  gap: var(--space-4);
   color: var(--color-text);
+
+  @media(min-width: 768px){
+    &{
+  flex-direction: row;
+  
+    }
+  }
 }
 .posterWrapper {
   width: 240px;
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   overflow: hidden;
 }
 .posterImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 .infoWrapper {
-  width: 100%;
+  width: 100%;  
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: var(--space-3);
+
+  @media(min-width: 768px){
+    &{max-width: 400px;
+    }
+  }
 }
 .title {
-  font-size: 20px;
+  font-size: var(--fs-h2);
   font-weight: bold;
   color: inherit;
+
+  @media(min-width:768px){
+    font-size: var(--fs-h2-tablet);
+  }
 
 }
 
@@ -42,33 +61,37 @@
   width: 100%;
   height: 100%;
   display: block;
+  margin: 0;
+  padding: 0;
 }
 .genresList {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--space-2);
 }
 .genres {
   display: block;
-  padding: 6px;
+  padding: var(--space-1);
   background-color: var(--genre-bg);
   color: var(--genre-text);
-  border-radius: 5px;
+  border-radius: var(--radius-xs);
+  font-size: var(--fs-small-text);
+  line-height: 1;
 }
 .voteWrapper {
   display: flex;
-  gap: 5px;
+  gap: var(--space-2);
   align-items: flex-end;
 }
 .voteSection {
   display: flex;
-  gap: 5px;
+  gap: var(--space-1);
   align-items: flex-end;
 }
 .voteAverageSection {
   display: flex;
   align-items: flex-end;
-  gap: 2px;
+  gap: var(--space-1);
 }
 .voteAverageCount {
   font-size: 22px;
