@@ -22,7 +22,7 @@ import TrailersSwiperComponent from "./TrailersSwiperComponent/TrailersSwiperCom
 import CaseSwiperComponent from "./CaseSwiperComponent/CaseSwiperComponent";
 import OverviewsSwiperComponent from "./OverviewsSwiperComponent/OverviewsSwiperComponent";
 import VideoPlayer from "./VideoPlayer/VideoPlayer";
-import FilmRuntime from "./FilmRuntime/FilmRuntime";
+import MovieRuntime from "./MovieRuntime/MovieRuntime";
 
 export {
   Header,
@@ -49,5 +49,5 @@ export {
   CaseSwiperComponent,
   OverviewsSwiperComponent,
   VideoPlayer,
-  FilmRuntime,
+  MovieRuntime,
 };

@@ -1,4 +1,4 @@
-import { FilmRuntime } from "@/components";
+import { MovieRuntime } from "@/components";
 import noPoster from "@/assets/img/noPhoto.svg";
 import imgSizes from "@/data/imgSizes";
 const imageBaseURL = "https://image.tmdb.org/t/p/";
@@ -16,7 +16,7 @@ export default function MovieDetails({ movieDitails }) {
     genres,
     vote_count,
     vote_average,
-    runtime,
+    runtime, overview,
   } = movieDitails;
 
   const normalizedDate = new Date(release_date).getFullYear();
@@ -46,12 +46,12 @@ export default function MovieDetails({ movieDitails }) {
         />
       </div>
       <div className={styles.infoWrapper}>
-        <div className={styles}>
+        <div className="flex flex-col gap-1">
           <h2 className={styles.title}>{title}</h2>
           <div className="flex items-center gap-1">
             <p className={styles}>{normalizedDate}</p>
             <span className={styles.separator}></span>
-            <FilmRuntime runtime={runtime} />
+            <MovieRuntime runtime={runtime} />
           </div>
 
           <div className={styles.genresList}>{genreElement}</div>
@@ -74,6 +74,9 @@ export default function MovieDetails({ movieDitails }) {
           </div>
           <span className={styles.voteCount}>{vote_count} votes</span>
         </div>
+          <div className=" w-full">
+            <p className={styles.overview}>{ overview}</p>
+          </div>
       </div>
     </div>
   );
