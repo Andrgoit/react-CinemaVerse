@@ -12,25 +12,25 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-body);
-  padding: 0 var(--space-4);
+  /* padding: 0 var(--space-4); */
 }
 
 .container {
-    width: 100%;
-    max-width: var(--max-container-width);
-    margin-inline: auto;
-    padding-inline: var(--space-4);
+  width: 100%;
+  max-width: var(--max-container-width);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
 
-    @media (min-width: 768px) {
+  @media (min-width: 768px) {
     & {
-        padding-inline: var(--space-5);
+      padding-inline: var(--space-5);
     }
-}
-@media (min-width: 1280px) {
+  }
+  @media (min-width: 1280px) {
     & {
-        padding-inline: var(--space-6);
+      padding-inline: var(--space-6);
     }
-}
+  }
 }
 /* .container {
   margin-left: auto;
@@ -49,8 +49,6 @@ body {
     }
   }
 } */
-
-
 
 /* 320px   телефон
 

@@ -24,13 +24,16 @@
 }
 
 .infoWrapper {
-  width: 100%;  
+   
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
 
   @media(min-width: 768px){
-    &{max-width: 400px;
+    &{
+      flex-grow: 1;
+      flex-direction: row;
+      justify-content: space-between;
     }
   }
 }
@@ -42,7 +45,9 @@
   @media(min-width:768px){
     font-size: var(--fs-h2-tablet);
   }
-
+}
+.date{
+  color: var(--color-text-secondary);
 }
 
 .separator {
@@ -50,7 +55,7 @@
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background-color: var(--color-text);
+  background-color: var(--color-text-secondary);
 }
 
 .starIconWrapper {
@@ -82,6 +87,19 @@
   display: flex;
   gap: var(--space-2);
   align-items: flex-end;
+
+  @media(min-width:768px){
+    &{
+      padding: var(--space-2);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      
+      background-color: var(--color-surface);
+    }
+  }
 }
 .voteSection {
   display: flex;
@@ -101,15 +119,15 @@
   color: inherit;
 }
 .voteAverageTotal {
-  font-size: 16px;
+  font-size: var(--fs-small-text);
   line-height: 1;
-  color: inherit;
+  color: var(--color-text-secondary);
 }
 .voteCount {
-  font-size: 16px;
+  font-size: var(--fs-small-text);
   line-height: 1;
-  color: inherit;
+  color: var(--color-text-secondary);
 }
 .overview{
-  /* text-align: justify; */
+  color: var(--color-text-secondary);
 }

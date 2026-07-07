@@ -22,7 +22,7 @@
 }
 
 .link {
-  display: inline-block;
+  display: block;
   color: var(--color-text);
 }
 .cardWrapper {

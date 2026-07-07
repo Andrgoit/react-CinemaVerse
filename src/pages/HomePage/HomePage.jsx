@@ -24,7 +24,7 @@ export default function HomePage() {
   const [genres, setGenres] = useState([]);
 
   // console.log("trendingMovies", trendingMovies);
-  // console.log("topRateMovies", topRateMovies);
+  console.log("topRateMovies", topRateMovies);
   // console.log("upcomingMovies", upcomingMovies);
   // console.log("playingNowMovies", playingNowMovies);
   // console.log("genres", genres);
@@ -63,7 +63,7 @@ export default function HomePage() {
 
     fetchTrendingMovies();
     fetchTopRatedMovies();
-    // fetchNowPlayingMovies();
+    fetchNowPlayingMovies();
     fetchUpcomingMovies();
     fetchMovieGenres();
   }, []);
@@ -80,9 +80,9 @@ export default function HomePage() {
       <Section title="Upcoming" link={categories.upcomingMovie}>
         <SwiperComponent movies={upcomingMovies} genres={genres} />
       </Section>
-      {/* <Section title="Playing now" link={categories.nowPlayingMovies}>
+      <Section title="Playing now" link={categories.nowPlayingMovies}>
         <SwiperComponent movies={playingNowMovies} genres={genres}/>
-      </Section> */}
+      </Section>
     </div>
   );
 }

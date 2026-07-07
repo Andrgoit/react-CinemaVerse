@@ -65,6 +65,14 @@
   --max-container-width: 1280px;
 
   /* Font sizes */
+  --fs-logo:24px;
+  --fs-logo-tablet:26px;
+  --fs-logo-desktop:28px;
+  
+  --fs-title-section:24px;
+  --fs-title-section-tablet:28px;
+  --fs-title-section-desktop:32px;
+
   --fs-h1:22px;
   --fs-h1-tablet:22px;
   --fs-h1-desktop:22px;
@@ -76,7 +84,7 @@
   --fs-text:16px;
   --fs-text-tablet:16px;
   --fs-text-desktop:16px;
-  
+
   --fs-small-text:14px;
 
   /* Spacing */

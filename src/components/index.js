@@ -23,6 +23,7 @@ import CaseSwiperComponent from "./CaseSwiperComponent/CaseSwiperComponent";
 import OverviewsSwiperComponent from "./OverviewsSwiperComponent/OverviewsSwiperComponent";
 import VideoPlayer from "./VideoPlayer/VideoPlayer";
 import MovieRuntime from "./MovieRuntime/MovieRuntime";
+import ButtonBlock from "./ButtonBlock/ButtonBlock";
 
 export {
   Header,
@@ -50,4 +51,5 @@ export {
   OverviewsSwiperComponent,
   VideoPlayer,
   MovieRuntime,
+  ButtonBlock
 };

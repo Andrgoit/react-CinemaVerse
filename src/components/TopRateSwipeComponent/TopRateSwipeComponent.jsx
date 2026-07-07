@@ -18,6 +18,7 @@ export default function TopRateSwipeComponent({ movies = [], genres }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [chosenMovie, setChosenMovie] = useState(null);
 
+  
   const imageBaseURL = contentBaseURL.posterImg;
   const posterSize = imgSizes.posterSizes.w92;
 
@@ -29,7 +30,7 @@ export default function TopRateSwipeComponent({ movies = [], genres }) {
 
   const elements = movies.map((movie) => {
     const { id, poster_path, title, vote_average } = movie;
-    <SwiperSlide key={id}>
+    return <SwiperSlide key={id}>
       <Link to={`/movie/${id}`} className={styles.link}>
         <div className={styles.cardWrapper} onClick={openModal}>
           <div className={styles.imageWrapper}>
@@ -66,13 +67,13 @@ export default function TopRateSwipeComponent({ movies = [], genres }) {
       breakpoints={{
         320: { slidesPerView: 4, spaceBetween: 10 },
         768: { slidesPerView: 8, spaceBetween: 20 },
-        1024: { slidesPerView: 9, spaceBetween: 10 },
-        1280: { slidesPerView: 16, spaceBetween: 10 },
+        1280: { slidesPerView: 10, spaceBetween: 40 },
       }}
       modules={[Pagination]}
       className={styles.swiper}
     >
       {elements}
+      {/* <SwiperSlide >dsdsd</SwiperSlide> */}
       {isModalOpen && (
         <Modal>
           <MovieDetails movieDitails={chosenMovie} genres={genres} />

@@ -74,8 +74,7 @@ export default function SwiperComponent({ movies = [], genres = [] }) {
       breakpoints={{
         320: { slidesPerView: 4, spaceBetween: 10 },
         768: { slidesPerView: 8, spaceBetween: 20 },
-        1024: { slidesPerView: 9, spaceBetween: 10 },
-        1280: { slidesPerView: 16, spaceBetween: 10 },
+        1280: { slidesPerView: 10, spaceBetween: 40 },
       }}
       modules={[Pagination]}
       className={styles.swiper}
