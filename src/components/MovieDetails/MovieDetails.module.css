@@ -1,0 +1,84 @@
+.detailsWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  color: var(--color-text);
+}
+.posterWrapper {
+  width: 240px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.posterImage {
+}
+
+.infoWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.title {
+}
+
+.separator {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--color-text);
+}
+
+.starIconWrapper {
+  width: 22px;
+  height: 22px;
+}
+.starIconImage {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.genresList {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.genres {
+  display: block;
+  padding: 6px;
+  background-color: var(--genre-bg);
+  color: var(--genre-text);
+  border-radius: 5px;
+}
+.voteWrapper {
+  display: flex;
+  gap: 5px;
+  align-items: flex-end;
+}
+.voteSection {
+  display: flex;
+  gap: 5px;
+  align-items: flex-end;
+}
+.voteAverageSection {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+}
+.voteAverageCount {
+  font-size: 22px;
+  line-height: 22px;
+  margin: 0;
+  padding: 0;
+  color: inherit;
+}
+.voteAverageTotal {
+  font-size: 16px;
+  line-height: 1;
+  color: inherit;
+}
+.voteCount {
+  font-size: 16px;
+  line-height: 1;
+  color: inherit;
+}

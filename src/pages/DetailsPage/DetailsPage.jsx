@@ -6,6 +6,7 @@ import {
   getMovieReviews,
   getMovieTrailers,
   getSimilarMovies,
+  getMovieGenres,
 } from "@/api";
 import {
   Section,
@@ -22,6 +23,7 @@ export default function DetailsPage() {
   const [movieTrailers, setMovieTrailers] = useState([]);
   const [movieReviews, setMovieReviews] = useState([]);
   const [similarMovies, setSimilarMovies] = useState([]);
+  const [genres, setGenres] = useState([]);
 
   const { movie_id } = useParams();
   const lang = "en-US";
@@ -58,18 +60,26 @@ export default function DetailsPage() {
       setSimilarMovies(data.results);
     }
 
+    async function fetchMovieGenres() {
+      const { data } = await getMovieGenres(lang);
+      console.log("Genres", data.genres);
+      setGenres(data.genres);
+    }
+
     fetchMovieDitails();
     fetchMovieCast();
     fetchMovieReviews();
     fetchMovieTrailers();
     fetchSimilarMovies();
+    fetchMovieGenres();
   }, [movie_id]);
 
   return (
     <div>
-      <Link to={`/movie/${movie_id}/similar`}>Similar movies</Link>
-      {movieDitails && <MovieDetails movieDitails={movieDitails} />}
-      {movieTrailers.length > 0 && (
+      {movieDitails && (
+        <MovieDetails movieDitails={movieDitails} genres={genres} />
+      )}
+      {/* {movieTrailers.length > 0 && (
         <Section title="Trailers">
           <TrailersSwiperComponent movieTrailers={movieTrailers} />
         </Section>
@@ -88,7 +98,7 @@ export default function DetailsPage() {
         <Section title="You may also like" link={`/movie/${movie_id}/similar`}>
           <SwiperComponent movies={similarMovies} />
         </Section>
-      )}
+      )} */}
     </div>
   );
 }

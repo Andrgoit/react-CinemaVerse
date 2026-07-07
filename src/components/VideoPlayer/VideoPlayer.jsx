@@ -11,7 +11,14 @@ export default function VideoPlayer({ video }) {
         src={video}
         width="100%"
         height="100%"
-        playIcon={<img src={playIcon} width={60} alt="play icon" />}
+        playIcon={
+          <img
+            src={playIcon}
+            width={60}
+            alt="play icon"
+            className={styles.icon}
+          />
+        }
         playing
         controls
       />

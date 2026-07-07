@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Modal, MovieDetails, VideoPlayer } from "@/components";
+import { Modal, VideoPlayer } from "@/components";
 import ReactPlayer from "react-player";
 
 import { Swiper, SwiperSlide } from "swiper/react";

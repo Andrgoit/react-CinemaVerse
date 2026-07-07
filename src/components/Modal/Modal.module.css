@@ -16,6 +16,11 @@
 .contentWrapper {
   padding: 15px;
   background-color: var(--color-bg);
+  width: 100%;
+
+  min-width: 300px;
+  min-height: 300px;
+
   max-width: 500px;
   position: relative;
 }
