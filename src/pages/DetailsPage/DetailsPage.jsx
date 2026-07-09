@@ -51,7 +51,7 @@ export default function DetailsPage() {
     async function fetchMovieTrailers() {
       const { data } = await getMovieTrailers(movie_id, lang);
       console.log("MovieTrailers", data);
-      setMovieTrailers(data.results);
+      setMovieTrailers(data.results.slice(0, 10));
     }
 
     async function fetchSimilarMovies() {
@@ -79,12 +79,12 @@ export default function DetailsPage() {
       {movieDitails && (
         <MovieDetails movieDitails={movieDitails} genres={genres} />
       )}
-      {/* {movieTrailers.length > 0 && (
+      {movieTrailers.length > 0 && (
         <Section title="Trailers">
           <TrailersSwiperComponent movieTrailers={movieTrailers} />
         </Section>
       )}
-      {movieReviews.length > 0 && (
+      {/* {movieReviews.length > 0 && (
         <Section title="Overviews">
           <OverviewsSwiperComponent movieReviews={movieReviews} />
         </Section>

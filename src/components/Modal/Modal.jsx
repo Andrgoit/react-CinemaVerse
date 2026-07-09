@@ -16,16 +16,25 @@ export default function Modal({ children, close }) {
     const EscapeModalClose = (e) => {
       if (e.code === "Escape") close();
     };
+
     window.addEventListener("keydown", EscapeModalClose);
     return () => window.removeEventListener("keydown", EscapeModalClose);
   }, [close]);
 
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => (document.body.style.overflow = "");
+  }, []);
+
   const modalRoot = document.getElementById("modal");
   return createPortal(
-    <div className={styles.backdropWrapper} onClick={(e) => closeModal(e)}>
-      <div className={styles.contentWrapper}>
-        <button onClick={close} className={styles.closeButton}>
-          <IoCloseCircleOutline />
+    <div className={styles.backdropWrapper} onClick={closeModal}>
+      <div
+        className={styles.contentWrapper}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button type="button" onClick={close} className={styles.closeButton}>
+          <IoCloseCircleOutline size={28} />
         </button>
         <div>{children}</div>
       </div>

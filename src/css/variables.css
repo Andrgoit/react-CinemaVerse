@@ -35,6 +35,8 @@
   --color-bg-secondary: #111827;
   --color-surface: #1a1f2f;
   --color-surface-hover: #252b3d;
+  --color-modal-backdrop: rgba(0, 0, 0, 0.6);
+  --color-modal-content-background: var(--color-bg);
 
   /* Text */
   --color-text: #f9fafb;
@@ -57,7 +59,7 @@
   --font-heading: "Poppins", sans-serif;
   --font-body: "Inter", sans-serif;
 
-   /* Breakpoints */
+  /* Breakpoints */
   --bp-tablet: 768px;
   --bp-desktop: 1280px;
 
@@ -65,27 +67,27 @@
   --max-container-width: 1280px;
 
   /* Font sizes */
-  --fs-logo:24px;
-  --fs-logo-tablet:26px;
-  --fs-logo-desktop:28px;
-  
-  --fs-title-section:24px;
-  --fs-title-section-tablet:28px;
-  --fs-title-section-desktop:32px;
+  --fs-logo: 24px;
+  --fs-logo-tablet: 26px;
+  --fs-logo-desktop: 28px;
 
-  --fs-h1:22px;
-  --fs-h1-tablet:22px;
-  --fs-h1-desktop:22px;
+  --fs-title-section: 24px;
+  --fs-title-section-tablet: 28px;
+  --fs-title-section-desktop: 32px;
 
-  --fs-h2:24px;
-  --fs-h2-tablet:32px;
-  --fs-h2-desktop:32px;
+  --fs-h1: 22px;
+  --fs-h1-tablet: 22px;
+  --fs-h1-desktop: 22px;
 
-  --fs-text:16px;
-  --fs-text-tablet:16px;
-  --fs-text-desktop:16px;
+  --fs-h2: 24px;
+  --fs-h2-tablet: 32px;
+  --fs-h2-desktop: 32px;
 
-  --fs-small-text:14px;
+  --fs-text: 16px;
+  --fs-text-tablet: 16px;
+  --fs-text-desktop: 16px;
+
+  --fs-small-text: 14px;
 
   /* Spacing */
   --space-1: 4px;

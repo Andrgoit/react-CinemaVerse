@@ -12,12 +12,7 @@ export default function VideoPlayer({ video }) {
         width="100%"
         height="100%"
         playIcon={
-          <img
-            src={playIcon}
-            width={60}
-            alt="play icon"
-            className={styles.icon}
-          />
+          <img src={playIcon} alt="play icon" className={styles.icon} />
         }
         playing
         controls

@@ -9,14 +9,16 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 import baseURL from "@/data/baseURLs";
-
 import styles from "./TrailersSwiperComponent.module.css";
+import playIcon from "@/assets/icons/playButton.png";
 
 export default function TrailersSwiperComponent({ movieTrailers = [] }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [chosenTrailer, setChosenTrailer] = useState(null);
+  console.log("movieTrailers", movieTrailers);
 
   const videoBaseURL = baseURL.youtubeVideo;
+  const previewImageBaseURL = baseURL.youtubePreviewImage;
 
   const closeModal = () => setIsModalOpen(false);
   const openModal = (src) => {
@@ -27,10 +29,17 @@ export default function TrailersSwiperComponent({ movieTrailers = [] }) {
   const elements = movieTrailers.map((trailer) => {
     const { id, key } = trailer;
     const src = `${videoBaseURL}${key}`;
+    const previewImage = `${previewImageBaseURL}${key}/hqdefault.jpg`;
+
+    // youtubePreviewHD_Image: `https://i.ytimg.com/vi/${key}/hqdefault.jpg`,
+    // youtubePreviewMAX_Image: `https://i.ytimg.com/vi/${key}/maxresdefault.jpg`,
     return (
       <SwiperSlide key={id}>
         <div className={styles.cardWrapper} onClick={() => openModal(src)}>
-          <ReactPlayer light src={src} width="100%" height="100%" />
+          <img src={previewImage} alt="preview image" />
+          <div className={styles.iconWrapper}>
+            <img src={playIcon} alt="play button" />
+          </div>
         </div>
       </SwiperSlide>
     );
@@ -46,10 +55,10 @@ export default function TrailersSwiperComponent({ movieTrailers = [] }) {
       }}
       spaceBetween={10}
       breakpoints={{
-        320: { slidesPerView: 4, spaceBetween: 10 },
-        768: { slidesPerView: 8, spaceBetween: 20 },
-        1024: { slidesPerView: 9, spaceBetween: 10 },
-        1280: { slidesPerView: 16, spaceBetween: 10 },
+        320: { slidesPerView: 1.3, spaceBetween: 10 },
+        768: { slidesPerView: 4, spaceBetween: 20 },
+        1024: { slidesPerView: 5, spaceBetween: 30 },
+        1280: { slidesPerView: 6, spaceBetween: 10 },
       }}
       modules={[Pagination]}
       className={styles.swiper}
