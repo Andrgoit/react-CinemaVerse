@@ -16,16 +16,13 @@
 .contentWrapper {
   padding: 50px 10px 10px 10px;
   background-color: var(--color-bg);
-  /* width: 100%; */
   border-radius: var(--radius-md);
   background-color: var(--color-modal-content-background);
+  border: 1px solid var(--color-border);
 
   min-width: 300px;
-
   max-width: 700px;
   position: relative;
-
-  border: 1px solid var(--color-border);
 }
 
 .closeButton {
@@ -33,7 +30,7 @@
   top: 10px;
   right: 10px;
   color: var(--color-primary);
-
+  cursor: pointer;
   transition: color 0.3s ease;
 }
 

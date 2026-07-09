@@ -1,7 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { Modal, VideoPlayer } from "@/components";
-import ReactPlayer from "react-player";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
@@ -9,6 +7,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 import baseURL from "@/data/baseURLs";
+import { swiperSettings } from "@/data/swiperSettings";
 import styles from "./TrailersSwiperComponent.module.css";
 import playIcon from "@/assets/icons/playButton.png";
 
@@ -31,8 +30,6 @@ export default function TrailersSwiperComponent({ movieTrailers = [] }) {
     const src = `${videoBaseURL}${key}`;
     const previewImage = `${previewImageBaseURL}${key}/hqdefault.jpg`;
 
-    // youtubePreviewHD_Image: `https://i.ytimg.com/vi/${key}/hqdefault.jpg`,
-    // youtubePreviewMAX_Image: `https://i.ytimg.com/vi/${key}/maxresdefault.jpg`,
     return (
       <SwiperSlide key={id}>
         <div className={styles.cardWrapper} onClick={() => openModal(src)}>
@@ -54,12 +51,7 @@ export default function TrailersSwiperComponent({ movieTrailers = [] }) {
         disableOnInteraction: false,
       }}
       spaceBetween={10}
-      breakpoints={{
-        320: { slidesPerView: 1.3, spaceBetween: 10 },
-        768: { slidesPerView: 4, spaceBetween: 20 },
-        1024: { slidesPerView: 5, spaceBetween: 30 },
-        1280: { slidesPerView: 6, spaceBetween: 10 },
-      }}
+      breakpoints={swiperSettings.breakpoints}
       modules={[Pagination]}
       className={styles.swiper}
     >

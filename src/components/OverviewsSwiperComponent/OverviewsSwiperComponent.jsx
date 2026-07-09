@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { Modal } from "@/components";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -7,16 +6,19 @@ import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import noPoster from "@/assets/img/noPhoto.svg";
-import posterSizes from "@/data/imgSizes";
+import noPhotoUser from "@/assets/img/noPhotoUser.png";
+import { swiperSettings } from "@/data/swiperSettings";
+import imageBaseUrl from "@/data/baseURLs";
+import imgSizes from "@/data/imgSizes";
 
 import styles from "./OverviewsSwiperComponent.module.css";
 
-export default function OverviewsSwiperComponent({ overviews = [] }) {
+export default function OverviewsSwiperComponent({ movieReviews = [] }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [chosenOverview, setChosenOverview] = useState(null);
-  const imageBaseURL = "https://image.tmdb.org/t/p/";
-  const posterSize = posterSizes.w92;
+
+  const imgUrl = imageBaseUrl.posterImg;
+  const imgSize = imgSizes.profile_size.w45;
 
   const closeModal = () => setIsModalOpen(false);
   const openModal = (overview) => {
@@ -24,25 +26,33 @@ export default function OverviewsSwiperComponent({ overviews = [] }) {
     setChosenOverview(overview);
   };
 
-  const elements = overviews.map((overview) => {
-    const { id, poster_path, title } = overview;
+  const elements = movieReviews.map((overview) => {
+    const {
+      id,
+      author_details: { avatar_path },
+      content,
+      author,
+    } = overview;
 
     return (
       <SwiperSlide key={id}>
         <div className={styles.cardWrapper} onClick={() => openModal(overview)}>
-          <div className={styles.cardImageWrapper}>
-            <img
-              src={
-                poster_path
-                  ? `${imageBaseURL}${posterSize}${poster_path}`
-                  : noPoster
-              }
-              alt={`${title} poster image`}
-              className={styles.cardImage}
-            />
+          <div className="flex items-center gap-2">
+            <div className={styles.cardImageWrapper}>
+              <img
+                src={
+                  avatar_path
+                    ? `${imgUrl}${imgSize}${avatar_path}`
+                    : noPhotoUser
+                }
+                alt={`${author} avatar`}
+                className={styles.cardImage}
+              />
+            </div>
+            <span>{author}</span>
           </div>
-          <div className={styles.cardFooter}>
-            <h3 className={styles.cardTitle}>{title}</h3>
+          <div className={styles.cardContentWrapper}>
+            <p className={styles.cardContentText}>{content}</p>
           </div>
         </div>
       </SwiperSlide>
@@ -58,19 +68,34 @@ export default function OverviewsSwiperComponent({ overviews = [] }) {
         disableOnInteraction: false,
       }}
       spaceBetween={10}
-      breakpoints={{
-        320: { slidesPerView: 4, spaceBetween: 10 },
-        768: { slidesPerView: 8, spaceBetween: 20 },
-        1024: { slidesPerView: 9, spaceBetween: 10 },
-        1280: { slidesPerView: 16, spaceBetween: 10 },
-      }}
+      breakpoints={swiperSettings.reviewsBreakpoints}
       modules={[Pagination]}
       className={styles.swiper}
     >
       {elements}
       {isModalOpen && (
         <Modal close={closeModal}>
-          {/* <MovieDetails movieDitails={chosenMovie} genres={genres} /> */}
+          <div className={styles.cardWrapperModal}>
+            <div className="flex items-center gap-2">
+              <div className={styles.cardImageWrapper}>
+                <img
+                  src={
+                    chosenOverview.author_details.avatar_path
+                      ? `${imgUrl}${imgSize}${chosenOverview.author_details.avatar_path}`
+                      : noPhotoUser
+                  }
+                  alt={`${chosenOverview.author} avatar`}
+                  className={styles.cardImage}
+                />
+              </div>
+              <span>{chosenOverview.author}</span>
+            </div>
+            <div className={styles.cardContentWrapperModal}>
+              <p className={styles.cardContentTextModal}>
+                {chosenOverview.content}
+              </p>
+            </div>
+          </div>
         </Modal>
       )}
     </Swiper>
