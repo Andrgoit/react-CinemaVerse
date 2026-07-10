@@ -57,8 +57,8 @@
   --shadow-card: 4px 4px 6px rgba(0, 0, 0, 0.5);
   --shadow-card-hover: 4px 4px 10px rgba(124, 58, 237, 0.582);
 
-  --font-heading: "Poppins", sans-serif;
-  --font-body: "Inter", sans-serif;
+  /* --font-body: "Inter", sans-serif; */
+  --font-body: "Onest", sans-serif;
 
   /* Breakpoints */
   --bp-tablet: 768px;

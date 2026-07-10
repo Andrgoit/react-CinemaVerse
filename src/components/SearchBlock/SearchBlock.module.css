@@ -1,0 +1,21 @@
+.wrapper {
+  outline: 1px solid red;
+  padding: var(--space-2) 0;
+  display: flex;
+  justify-content: center;
+  background-color: var(--color-bg);
+}
+
+.inputWrapper {
+  outline: 1px solid red;
+
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+}
+.input {
+  width: 100%;
+  outline: none;
+  background-color: transparent;
+}

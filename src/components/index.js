@@ -5,7 +5,7 @@ import Footer from "./Footer/Footer";
 import Layout from "./Layout/Layout";
 import Nav from "./Nav/Nav";
 import SearchIcon from "./SearchIcon/SearchIcon";
-import SearchInput from "./SearchInput/SearchInput";
+import SearchBlock from "./SearchBlock/SearchBlock";
 import BurgerButton from "./BurgerButton/BurgerButton";
 import BurgerMenu from "./BurgerMenu/BurgerMenu";
 import Modal from "./Modal/Modal";
@@ -34,7 +34,7 @@ export {
   Layout,
   Nav,
   SearchIcon,
-  SearchInput,
+  SearchBlock,
   BurgerButton,
   BurgerMenu,
   Modal,

@@ -4,6 +4,7 @@ import {
   Section,
   SwiperComponent,
   TopRateSwipeComponent,
+  SearchBlock,
 } from "@/components";
 
 import categories from "@/data/category";
@@ -17,6 +18,7 @@ import {
 } from "@/api";
 
 export default function HomePage() {
+  const [query, setQuery] = useState(null);
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [topRateMovies, setTopRateMovies] = useState([]);
   const [upcomingMovies, setUpconingMovies] = useState([]);
@@ -70,6 +72,7 @@ export default function HomePage() {
 
   return (
     <>
+      <SearchBlock />
       <HeroBanner />
       <Section title="Trending Now" link={categories.trendMovies}>
         <SwiperComponent movies={trendingMovies} genres={genres} />

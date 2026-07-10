@@ -5,7 +5,7 @@ import styles from "./SettingsBlock.module.css";
 
 export default function SettingsBlock() {
   const [theme, setTheme] = useState(
-    () => localStorage.getItem("theme") || "light",
+    () => localStorage.getItem("theme") || "dark",
   );
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
