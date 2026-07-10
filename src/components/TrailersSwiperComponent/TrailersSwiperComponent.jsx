@@ -14,7 +14,6 @@ import playIcon from "@/assets/icons/playButton.png";
 export default function TrailersSwiperComponent({ movieTrailers = [] }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [chosenTrailer, setChosenTrailer] = useState(null);
-  console.log("movieTrailers", movieTrailers);
 
   const videoBaseURL = baseURL.youtubeVideo;
   const previewImageBaseURL = baseURL.youtubePreviewImage;
@@ -51,7 +50,7 @@ export default function TrailersSwiperComponent({ movieTrailers = [] }) {
         disableOnInteraction: false,
       }}
       spaceBetween={10}
-      breakpoints={swiperSettings.breakpoints}
+      breakpoints={swiperSettings.breakpoints_trailers}
       modules={[Pagination]}
       className={styles.swiper}
     >

@@ -15,6 +15,7 @@
   width: 240px;
   border-radius: var(--radius-md);
   overflow: hidden;
+  box-shadow: var(--shadow-card);
 }
 .posterImage {
   width: 100%;

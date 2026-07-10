@@ -24,6 +24,7 @@ import OverviewsSwiperComponent from "./OverviewsSwiperComponent/OverviewsSwiper
 import VideoPlayer from "./VideoPlayer/VideoPlayer";
 import MovieRuntime from "./MovieRuntime/MovieRuntime";
 import ButtonBlock from "./ButtonBlock/ButtonBlock";
+import SettingsBlock from "./SettingsBlock/SettingsBlock";
 
 export {
   Header,
@@ -51,5 +52,6 @@ export {
   OverviewsSwiperComponent,
   VideoPlayer,
   MovieRuntime,
-  ButtonBlock
+  ButtonBlock,
+  SettingsBlock,
 };

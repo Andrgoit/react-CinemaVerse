@@ -54,7 +54,8 @@
   --color-rating: #fbbf24;
 
   /* Shadows */
-  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.25);
+  --shadow-card: 4px 4px 6px rgba(0, 0, 0, 0.5);
+  --shadow-card-hover: 4px 4px 10px rgba(124, 58, 237, 0.582);
 
   --font-heading: "Poppins", sans-serif;
   --font-body: "Inter", sans-serif;
@@ -83,6 +84,10 @@
   --fs-h2-tablet: 32px;
   --fs-h2-desktop: 32px;
 
+  --fs-card-title: 18px;
+  --fs-card-title-tablet: 20px;
+  --fs-card-title-desktop: 22px;
+
   --fs-text: 16px;
   --fs-text-tablet: 16px;
   --fs-text-desktop: 16px;
@@ -109,7 +114,7 @@
 
 /* light mode */
 
-.hhhhhhhhh {
+.light {
   /* Brand */
   --color-primary: #7c3aed;
   --color-primary-hover: #6d28d9;
@@ -142,5 +147,5 @@
   --color-rating: #fbbf24;
 
   /* Shadows */
-  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.08);
+  /* --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.08); */
 }

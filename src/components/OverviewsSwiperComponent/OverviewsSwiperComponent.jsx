@@ -68,7 +68,7 @@ export default function OverviewsSwiperComponent({ movieReviews = [] }) {
         disableOnInteraction: false,
       }}
       spaceBetween={10}
-      breakpoints={swiperSettings.reviewsBreakpoints}
+      breakpoints={swiperSettings.breakpoints_reviews}
       modules={[Pagination]}
       className={styles.swiper}
     >

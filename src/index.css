@@ -2,6 +2,13 @@
 @import "@/css/reset";
 @import "@/css/variables.css";
 
+html {
+  scrollbar-width: thin;
+  /* Делает скроллбар тоньше: auto или thin */
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  /* Цвет ползунка и цвет дорожки */
+}
+
 #root {
   display: flex;
   flex-direction: column;
@@ -12,6 +19,9 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-body);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 .container {
@@ -31,49 +41,3 @@ body {
     }
   }
 }
-
-/* 320px   телефон
-
-480px
-
-768px   планшет
-
-1024px  ноутбук
-
-1280px  компьютер
-
-1440px+ 
-
-H1
-40
-
-H2
-32
-
-H3
-24
-
-Title
-20
-
-Body
-16
-
-Small
-14
-
-Caption
-12
-*************************************
-H1
-32
-
-H2
-24
-
-H3
-20
-
-Body
-16
-*/

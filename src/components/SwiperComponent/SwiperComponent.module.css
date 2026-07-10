@@ -1,12 +1,13 @@
 .swiper {
   width: 100%;
   height: 100%;
+  padding: 10px 0;
 }
 
 .swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #444;
+  /* text-align: center; */
+  /* font-size: 18px; */
+  /* background: #444; */
 
   /* Center slide text vertically */
   display: flex;
@@ -26,33 +27,63 @@
   color: var(--color-text);
 }
 .cardWrapper {
+  box-shadow: var(--shadow-card);
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  width: 92 px;
+  gap: var(--space-2);
   cursor: pointer;
+  background-color: transparent;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease-in-out;
+  padding-bottom: var(--space-3);
 }
+.cardWrapper:hover img {
+  transform: scale(1.05);
+}
+
+.cardWrapper:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
 .cardImageWrapper {
-  border-radius: 5px;
   overflow: hidden;
 }
 .cardImage {
   object-fit: cover;
+  transition: all 0.3s ease;
 }
 .cardFooter {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 5px;
 }
 .cardTitle {
-  font-size: 12px;
+  font-size: var(--fs-card-title);
   text-align: center;
+
+  @media (min-width: 768px) {
+    font-size: var(--fs-card-title-tablet);
+  }
+
+  @media (min-width: 1280px) {
+    font-size: var(--fs-card-title-desktop);
+  }
 }
 .genresWrapper {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 5px;
 }
 .genres {
-  font-size: 12px;
+  /* font-size: 12px; */
+  display: block;
+  padding: var(--space-1);
+  background-color: var(--genre-bg);
+  color: var(--genre-text);
+  border-radius: var(--radius-xs);
+  font-size: var(--fs-small-text);
+  line-height: 1;
 }

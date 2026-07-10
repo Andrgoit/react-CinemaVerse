@@ -10,6 +10,7 @@ import "swiper/css/pagination";
 import noPoster from "@/assets/img/noPhoto.svg";
 import imgSizes from "@/data/imgSizes";
 import contentBaseURL from "@/data/baseURLs";
+import { swiperSettings } from "@/data/swiperSettings";
 
 import styles from "./SwiperComponent.module.css";
 
@@ -18,7 +19,7 @@ export default function SwiperComponent({ movies = [], genres = [] }) {
   const [chosenMovie, setChosenMovie] = useState(null);
 
   const imageBaseURL = contentBaseURL.posterImg;
-  const posterSize = imgSizes.posterSizes.w92;
+  const posterSize = imgSizes.posterSizes.w342;
 
   const closeModal = () => setIsModalOpen(false);
   const openModal = (movie) => {
@@ -29,15 +30,15 @@ export default function SwiperComponent({ movies = [], genres = [] }) {
   const elements = movies.map((movie) => {
     const { id, poster_path, title, release_date, genre_ids } = movie;
     // ------------------------------------
-    // const normalizedGenres = genres
-    //   .map((genre) => (genre_ids.includes(genre.id) ? genre.name : null))
-    //   .filter(Boolean);
+    const normalizedGenres = genres
+      .map((genre) => (genre_ids.includes(genre.id) ? genre.name : null))
+      .filter(Boolean);
 
-    // const genreElement = normalizedGenres.map((name) => (
-    //   <span key={name} className={styles.genres}>
-    //     {name}
-    //   </span>
-    // ));
+    const genreElement = normalizedGenres.map((name) => (
+      <span key={name} className={styles.genres}>
+        {name}
+      </span>
+    ));
     // ------------------------------------
     return (
       <SwiperSlide key={id}>
@@ -55,7 +56,7 @@ export default function SwiperComponent({ movies = [], genres = [] }) {
           </div>
           <div className={styles.cardFooter}>
             <h3 className={styles.cardTitle}>{title}</h3>
-            {/* <div className="styles.genresWrapper">{genreElement}</div> */}
+            <div className={styles.genresWrapper}>{genreElement}</div>
           </div>
         </div>
       </SwiperSlide>
@@ -71,18 +72,14 @@ export default function SwiperComponent({ movies = [], genres = [] }) {
         disableOnInteraction: false,
       }}
       spaceBetween={10}
-      breakpoints={{
-        320: { slidesPerView: 4, spaceBetween: 10 },
-        768: { slidesPerView: 8, spaceBetween: 20 },
-        1280: { slidesPerView: 10, spaceBetween: 40 },
-      }}
+      breakpoints={swiperSettings.breakpoints}
       modules={[Pagination]}
       className={styles.swiper}
     >
       {elements}
       {isModalOpen && (
         <Modal close={closeModal}>
-          {/* <MovieDetails movieDitails={chosenMovie} genres={genres} /> */}
+          <MovieDetails movieDitails={chosenMovie} genres={genres} />
           <Link
             to={`/movie/${chosenMovie.id}`}
             className={styles.link}

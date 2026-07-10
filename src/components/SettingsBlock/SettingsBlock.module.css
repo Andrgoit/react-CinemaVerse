@@ -1,16 +1,33 @@
-.burgerBtn {
+.themeButton,
+.languageButton {
   color: var(--color-text);
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   padding: var(--space-2);
   cursor: pointer;
+  box-shadow: var(--shadow-card);
+
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
 }
-
-.burgerBtn:hover {
+.themeButton:hover,
+.languageButton:hover {
   color: var(--color-surface-hover);
   background-color: var(--color-text);
+}
+
+.languageIconsList {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  bottom: -165px;
+  right: 0;
+}
+.languageIconsItem {
+  box-shadow: var(--shadow-card);
+
+  cursor: pointer;
 }

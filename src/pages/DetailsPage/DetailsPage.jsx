@@ -28,8 +28,6 @@ export default function DetailsPage() {
   const lang = "en-US";
   const page = 1;
 
-  console.log("movieReviews", movieReviews);
-
   useEffect(() => {
     async function fetchMovieDitails() {
       const { data } = await getMovieById(movie_id, lang);
@@ -44,7 +42,6 @@ export default function DetailsPage() {
 
     async function fetchMovieReviews() {
       const { data } = await getMovieReviews(movie_id, lang, page);
-      // console.log("MovieReviews", data.results);
       setMovieReviews(data.results);
     }
 
@@ -53,17 +50,17 @@ export default function DetailsPage() {
       setMovieTrailers(data.results.slice(0, 10));
     }
 
-    // async function fetchSimilarMovies() {
-    //   const { data } = await getSimilarMovies(movie_id, lang, page);
-    //   console.log("SimilarMovies", data);
-    //   setSimilarMovies(data.results);
-    // }
+    async function fetchSimilarMovies() {
+      const { data } = await getSimilarMovies(movie_id, lang, page);
+      console.log("SimilarMovies", data);
+      setSimilarMovies(data.results);
+    }
 
     fetchMovieDitails();
     // fetchMovieCast();
     fetchMovieReviews();
     fetchMovieTrailers();
-    // fetchSimilarMovies();
+    fetchSimilarMovies();
   }, [movie_id]);
 
   return (
@@ -84,12 +81,12 @@ export default function DetailsPage() {
         <Section title="Top Cast">
           <CaseSwiperComponent movieCast={movieCast} />
         </Section>
-      )}
+      )}*/}
       {similarMovies.length > 0 && (
         <Section title="You may also like" link={`/movie/${movie_id}/similar`}>
           <SwiperComponent movies={similarMovies} />
         </Section>
-      )} */}
+      )}
     </div>
   );
 }

@@ -8,7 +8,7 @@ import styles from "./MovieDetails.module.css";
 
 const posterSize = imgSizes.posterSizes.w342;
 
-export default function MovieDetails({ movieDitails }) {
+export default function MovieDetails({ movieDitails, genres: propsGenres }) {
   const {
     poster_path,
     title,
@@ -20,9 +20,11 @@ export default function MovieDetails({ movieDitails }) {
     overview,
   } = movieDitails;
 
+  const normalizedGenres = genres || propsGenres;
+
   const normalizedDate = new Date(release_date).getFullYear();
 
-  const genreElement = genres.map(({ name }) => (
+  const genreElement = normalizedGenres.map(({ name }) => (
     <span key={name} className={styles.genres}>
       {name}
     </span>
