@@ -3,7 +3,7 @@
   align-items: center;
   padding-top: var(--space-3);
   padding-bottom: var(--space-3);
-  margin-bottom: var(--space-6);;
+  /* margin-bottom: var(--space-6); */
 }
 .contentWrapper {
   display: flex;
