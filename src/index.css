@@ -3,10 +3,10 @@
 @import "@/css/variables.css";
 
 html {
-  scrollbar-width: thin;
   /* Делает скроллбар тоньше: auto или thin */
-  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scrollbar-width: thin;
   /* Цвет ползунка и цвет дорожки */
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }
 
 #root {

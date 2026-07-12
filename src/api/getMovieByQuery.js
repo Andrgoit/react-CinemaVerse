@@ -26,6 +26,7 @@ async function getMovieByQuery(query = "", page = "1", lang = "en-US") {
     throw new Error();
   } catch (error) {
     console.log("error", error);
+    throw error;
   }
 }
 

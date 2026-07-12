@@ -1,7 +1,11 @@
 .wrapper {
-}
-.list {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: var(--space-1);
+  margin-bottom: var(--space-6);
+}
+.link {
+  font-size: var(--fs-small-text);
+  color: var(--color-text-secondary);
+  cursor: pointer;
 }

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Navigate } from "react-router-dom";
 import {
   HeroBanner,
   Section,
@@ -18,7 +19,7 @@ import {
 } from "@/api";
 
 export default function HomePage() {
-  const [query, setQuery] = useState(null);
+  const [query, setQuery] = useState("");
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [topRateMovies, setTopRateMovies] = useState([]);
   const [upcomingMovies, setUpconingMovies] = useState([]);
@@ -33,9 +34,13 @@ export default function HomePage() {
 
   // ------------------------------------------
   const lang = "en-US";
-  const time_window = "day";
+  const time_window = "day"; //"week
   const page = 1;
   //---------------------------------------------
+
+  const inputHandler = (value) => {
+    setQuery(value);
+  };
 
   useEffect(() => {
     async function fetchTrendingMovies() {
@@ -70,9 +75,13 @@ export default function HomePage() {
     fetchMovieGenres();
   }, []);
 
+  if (query.length > 0) {
+    return <Navigate to={`/search?query=${query}`} />;
+  }
+
   return (
     <>
-      <SearchBlock />
+      <SearchBlock query={query} onchange={inputHandler} />
       <HeroBanner />
       <Section title="Trending Now" link={categories.trendMovies}>
         <SwiperComponent movies={trendingMovies} genres={genres} />
