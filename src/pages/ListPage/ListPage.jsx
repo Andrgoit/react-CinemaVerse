@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { MoviesList, Pagination } from "@/components";
+import { MoviesList, PaginationComponent } from "@/components";
 
 import {
   getTrendingMovies,
@@ -99,7 +99,9 @@ export default function ListPage() {
   return (
     <div>
       <MoviesList movies={movies} />
-      {totalPages && <Pagination page={page} totalPages={totalPages} />}
+      {totalPages && (
+        <PaginationComponent page={page} totalPages={totalPages} />
+      )}
     </div>
   );
 }
