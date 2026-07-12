@@ -1,4 +1,6 @@
-import Pagination from "rc-pagination";
+import Pagination from "@rc-component/pagination";
+import enUS from "@rc-component/pagination/locale/en_US";
+import "./index.css";
 
 export default function PaginationComponent({
   page,
@@ -6,8 +8,14 @@ export default function PaginationComponent({
   pageChanger,
 }) {
   return (
-    <div>
-      <Pagination current={page} total={total_pages} onChange={pageChanger} />
+    <div className="flex justify-center">
+      <Pagination
+        current={page}
+        total={total_pages}
+        onChange={pageChanger}
+        hideOnSinglePage
+        locale={enUS}
+      />
     </div>
   );
 }

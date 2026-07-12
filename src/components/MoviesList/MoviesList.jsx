@@ -1,38 +1,75 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Pagination, Modal, MovieDetails } from "@/components";
+import { PaginationComponent, Modal, MovieDetails } from "@/components";
 
+import noPoster from "@/assets/img/noPhoto.svg";
+import imgSizes from "@/data/imgSizes";
+import contentBaseURL from "@/data/baseURLs";
 import styles from "./MoviesList.module.css";
 
-export default function MoviesList({ movies, pageChanger }) {
+export default function MoviesList({ movies, pageChanger, genres }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [chosenMovie, setChosenMovie] = useState(null);
 
   if (!movies) return null;
 
   const { page, results = [], total_pages } = movies;
-  console.log("movies", movies);
+
+  const imageBaseURL = contentBaseURL.posterImg;
+  const posterSize = imgSizes.posterSizes.w342;
 
   const closeModal = () => setIsModalOpen(false);
+
   const openModal = (movie) => {
     setIsModalOpen(true);
     setChosenMovie(movie);
   };
 
-  const elements = results.map(({ id, title, vote_average, poster_path }) => (
-    <li key={id}>
-      <Link to={`/movie/${id}`}>
-        <p>{id}</p>
-        <p>{title}</p>
-        <p>{vote_average}</p>
-      </Link>
-    </li>
-  ));
-  return (
-    <div>
-      <ul>{elements}</ul>
+  const elements = results.map((movie) => {
+    const { id, poster_path, title, release_date, genre_ids } = movie;
 
-      {/* {isModalOpen && (
+    // ------------------------------------
+    const normalizedGenres = genres
+      .map((genre) => (genre_ids.includes(genre.id) ? genre.name : null))
+      .filter(Boolean);
+
+    const genreElement = normalizedGenres.map((name) => (
+      <span key={name} className={styles.genres}>
+        {name}
+      </span>
+    ));
+    // ------------------------------------
+
+    return (
+      <li
+        className={styles.cardWrapper}
+        onClick={() => openModal(movie)}
+        key={id}
+      >
+        <div className={styles.cardImageWrapper}>
+          <img
+            src={
+              poster_path
+                ? `${imageBaseURL}${posterSize}${poster_path}`
+                : noPoster
+            }
+            alt={`${title} poster image`}
+            className={styles.cardImage}
+          />
+        </div>
+        <div className={styles.cardFooter}>
+          <h3 className={styles.cardTitle}>{title}</h3>
+          <div className={styles.genresWrapper}>{genreElement}</div>
+        </div>
+      </li>
+    );
+  });
+
+  return (
+    <div className="flex flex-col gap-8">
+      <ul className={styles.cardList}>{elements}</ul>
+
+      {isModalOpen && (
         <Modal close={closeModal}>
           <MovieDetails movieDitails={chosenMovie} genres={genres} />
           <Link
@@ -43,9 +80,9 @@ export default function MoviesList({ movies, pageChanger }) {
             Show more
           </Link>
         </Modal>
-      )} */}
+      )}
 
-      <Pagination
+      <PaginationComponent
         page={page}
         total_pages={total_pages}
         pageChanger={pageChanger}

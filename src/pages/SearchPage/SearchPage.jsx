@@ -1,31 +1,37 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { BreadcrumbNavigation, MoviesList, SearchBlock } from "@/components";
-import styles from "./SearchPage.module.css";
+import { getMovieByQuery, getMovieGenres } from "@/api";
 
-import { getMovieByQuery } from "@/api";
+import styles from "./SearchPage.module.css";
 
 export default function SearchPage() {
   const [movies, setMovies] = useState({});
-  const [page, setPage] = useState(1);
+  const [genres, setGenres] = useState([]);
+
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("query");
-
-  console.log("query", query);
+  const page = searchParams.get("page");
 
   // ------------------------------------------
   const lang = "en-US";
-  //   const time_window = "day"; //"week
-  //   const page = 1;
   //---------------------------------------------
 
   const pageChanger = (page) => {
-    setPage(page);
+    setSearchParams({ query, page });
   };
 
   const inputHandler = (value) => {
-    setSearchParams({ query: value });
+    setSearchParams({ query: value, page: 1 });
   };
+
+  useEffect(() => {
+    async function fetchMovieGenres() {
+      const { data } = await getMovieGenres(lang);
+      setGenres(data.genres);
+    }
+    fetchMovieGenres();
+  }, []);
 
   useEffect(() => {
     if (query.length > 0) {
@@ -42,8 +48,7 @@ export default function SearchPage() {
       <div className="container">
         <SearchBlock query={query} onchange={inputHandler} />
         <BreadcrumbNavigation />
-        <MoviesList movies={movies} pageChanger={pageChanger} />
-        SearchPage
+        <MoviesList movies={movies} pageChanger={pageChanger} genres={genres} />
       </div>
     </section>
   );

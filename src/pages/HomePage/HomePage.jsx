@@ -76,7 +76,7 @@ export default function HomePage() {
   }, []);
 
   if (query.length > 0) {
-    return <Navigate to={`/search?query=${query}`} />;
+    return <Navigate to={`/search?query=${query}&page=1`} />;
   }
 
   return (

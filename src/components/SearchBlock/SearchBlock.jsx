@@ -21,7 +21,7 @@ export default function SearchBlock({ onchange }) {
         <span>
           <IoSearch size={22} color={`var(--color-text)`} />
         </span>
-        <form onSubmit={submitHandler}>
+        <form onSubmit={submitHandler} className="w-full">
           <input
             type="text"
             value={q}
