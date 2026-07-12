@@ -4,9 +4,13 @@ import axios from "axios";
 const ACCESS_TOKEN = import.meta.env.VITE_ACCESS_TOKEN;
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
-async function getTrendingMovies(time_window = "day", lang = "en-US") {
+async function getTrendingMovies(
+  time_window = "day",
+  lang = "en-US",
+  page = 1,
+) {
   const options = {
-    params: { language: `${lang}` },
+    params: { language: `${lang}`, page: page },
     headers: {
       accept: "application/json",
       Authorization: `${ACCESS_TOKEN}`,

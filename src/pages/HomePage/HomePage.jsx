@@ -18,6 +18,8 @@ import {
   getMovieGenres,
 } from "@/api";
 
+import timeWindowTrendingMovies from "@/data/timeWindowTrendingMovies";
+
 export default function HomePage() {
   const [query, setQuery] = useState("");
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -34,7 +36,7 @@ export default function HomePage() {
 
   // ------------------------------------------
   const lang = "en-US";
-  const time_window = "day"; //"week
+  const time_window = timeWindowTrendingMovies.day;
   const page = 1;
   //---------------------------------------------
 
@@ -73,7 +75,7 @@ export default function HomePage() {
     fetchNowPlayingMovies();
     fetchUpcomingMovies();
     fetchMovieGenres();
-  }, []);
+  }, [time_window]);
 
   if (query.length > 0) {
     return <Navigate to={`/search?query=${query}&page=1`} />;

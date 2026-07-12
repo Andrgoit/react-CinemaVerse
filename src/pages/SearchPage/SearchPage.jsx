@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { BreadcrumbNavigation, MoviesList, SearchBlock } from "@/components";
 import { getMovieByQuery, getMovieGenres } from "@/api";
 
-import styles from "./SearchPage.module.css";
+// import styles from "./SearchPage.module.css";
 
 export default function SearchPage() {
   const [movies, setMovies] = useState({});

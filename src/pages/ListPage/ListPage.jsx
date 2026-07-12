@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { MoviesList, PaginationComponent } from "@/components";
+import { useParams, useSearchParams } from "react-router-dom";
+import { BreadcrumbNavigation, MoviesList } from "@/components";
 
 import {
   getTrendingMovies,
@@ -8,32 +8,42 @@ import {
   getNowPlayingMovies,
   getUpcomingMovies,
   getSimilarMovies,
+  getMovieGenres,
 } from "@/api";
+import timeWindowTrendingMovies from "@/data/timeWindowTrendingMovies";
 
 export default function ListPage() {
   const [movies, setMovies] = useState([]);
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(null);
+  const [genres, setGenres] = useState([]);
+
   const { category, movie_id } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const page = searchParams.get("page");
 
   // ------------------------------------------
   const lang = "en-US";
-  const time_window = "day";
+  const time_window = timeWindowTrendingMovies.day;
   //---------------------------------------------
 
-  console.log("movies", movies);
+  const pageChanger = (page) => {
+    setSearchParams({ page });
+  };
+
+  useEffect(() => {
+    async function fetchMovieGenres() {
+      const { data } = await getMovieGenres(lang);
+      setGenres(data.genres);
+    }
+    fetchMovieGenres();
+  }, []);
 
   useEffect(() => {
     const getMovies = async () => {
       switch (category) {
         case "trending-movies":
           try {
-            const { data } = await getTrendingMovies(time_window, lang);
-            const { results } = data;
-            console.log("results", results);
-
-            setMovies(results);
-            // setTotalPages(total_pages);
+            const { data } = await getTrendingMovies(time_window, lang, page);
+            setMovies(data);
           } catch (error) {
             console.log("error", error);
           }
@@ -41,9 +51,7 @@ export default function ListPage() {
         case "top-rated-movies":
           try {
             const { data } = await getTopRatedMovies(page, lang);
-            const { total_pages, results } = data;
-            setMovies(results);
-            setTotalPages(total_pages);
+            setMovies(data);
           } catch (error) {
             console.log("error", error);
           }
@@ -52,9 +60,7 @@ export default function ListPage() {
         case "now-playing-movies":
           try {
             const { data } = await getNowPlayingMovies(page, lang);
-            const { total_pages, results } = data;
-            setMovies(results);
-            setTotalPages(total_pages);
+            setMovies(data);
           } catch (error) {
             console.log("error", error);
           }
@@ -63,9 +69,7 @@ export default function ListPage() {
         case "upcoming-movies":
           try {
             const { data } = await getUpcomingMovies(page, lang);
-            const { total_pages, results } = data;
-            setMovies(results);
-            setTotalPages(total_pages);
+            setMovies(data);
           } catch (error) {
             console.log("error", error);
           }
@@ -84,11 +88,7 @@ export default function ListPage() {
       }
       try {
         const { data } = await getSimilarMovies(movie_id, lang, page);
-        console.log("data", data);
-
-        const { total_pages, results } = data;
-        setMovies(results);
-        setTotalPages(total_pages);
+        setMovies(data);
       } catch (error) {
         console.log("error", error);
       }
@@ -97,11 +97,9 @@ export default function ListPage() {
   }, [movie_id, page]);
 
   return (
-    <div>
-      <MoviesList movies={movies} />
-      {totalPages && (
-        <PaginationComponent page={page} totalPages={totalPages} />
-      )}
+    <div className="container">
+      <BreadcrumbNavigation />
+      <MoviesList movies={movies} pageChanger={pageChanger} genres={genres} />
     </div>
   );
 }

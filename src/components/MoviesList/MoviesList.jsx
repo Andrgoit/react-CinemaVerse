@@ -26,6 +26,7 @@ export default function MoviesList({ movies, pageChanger, genres }) {
   };
 
   const elements = results.map((movie) => {
+    // eslint-disable-next-line no-unused-vars
     const { id, poster_path, title, release_date, genre_ids } = movie;
 
     // ------------------------------------
@@ -55,6 +56,7 @@ export default function MoviesList({ movies, pageChanger, genres }) {
             }
             alt={`${title} poster image`}
             className={styles.cardImage}
+            loading="lazy"
           />
         </div>
         <div className={styles.cardFooter}>
