@@ -4,7 +4,7 @@ import axios from "axios";
 const ACCESS_TOKEN = import.meta.env.VITE_ACCESS_TOKEN;
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
-async function getSimilarMovies(movie_id, lang = "en-US", page = "1") {
+async function getSimilarMovies(movie_id, lang = "en-US", page = 1) {
   const options = {
     params: { language: `${lang}`, page: `${page}` },
     headers: {

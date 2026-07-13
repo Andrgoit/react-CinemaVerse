@@ -83,7 +83,10 @@ export default function DetailsPage() {
         </Section>
       )}*/}
       {similarMovies.length > 0 && (
-        <Section title="You may also like" link={`/movie/${movie_id}/similar`}>
+        <Section
+          title="You may also like"
+          link={`/movie/${movie_id}/similar?page=1`}
+        >
           <SwiperComponent movies={similarMovies} />
         </Section>
       )}
