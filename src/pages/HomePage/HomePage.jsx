@@ -47,22 +47,22 @@ export default function HomePage() {
   useEffect(() => {
     async function fetchTrendingMovies() {
       const { data } = await getTrendingMovies(time_window, lang);
-      setTrendingMovies(data.results);
+      setTrendingMovies(data.results.slice(0, 10));
     }
 
     async function fetchTopRatedMovies() {
       const { data } = await getTopRatedMovies(page, lang);
-      setTopRateMovies(data.results);
+      setTopRateMovies(data.results.slice(0, 10));
     }
 
     async function fetchNowPlayingMovies() {
       const { data } = await getNowPlayingMovies(page, lang);
-      setPlayingNowMovies(data.results);
+      setPlayingNowMovies(data.results.slice(0, 10));
     }
 
     async function fetchUpcomingMovies() {
       const { data } = await getUpcomingMovies(page, lang);
-      setUpconingMovies(data.results);
+      setUpconingMovies(data.results.slice(0, 10));
     }
 
     async function fetchMovieGenres() {

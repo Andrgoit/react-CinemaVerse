@@ -1,6 +1,4 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Modal, MovieDetails } from "@/components";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
@@ -15,17 +13,8 @@ import { swiperSettings } from "@/data/swiperSettings";
 import styles from "./SwiperComponent.module.css";
 
 export default function SwiperComponent({ movies = [], genres = [] }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [chosenMovie, setChosenMovie] = useState(null);
-
   const imageBaseURL = contentBaseURL.posterImg;
   const posterSize = imgSizes.posterSizes.w342;
-
-  const closeModal = () => setIsModalOpen(false);
-  const openModal = (movie) => {
-    setIsModalOpen(true);
-    setChosenMovie(movie);
-  };
 
   const elements = movies.map((movie) => {
     const { id, poster_path, title, release_date, genre_ids } = movie;
@@ -42,23 +31,25 @@ export default function SwiperComponent({ movies = [], genres = [] }) {
     // ------------------------------------
     return (
       <SwiperSlide key={id}>
-        <div className={styles.cardWrapper} onClick={() => openModal(movie)}>
-          <div className={styles.cardImageWrapper}>
-            <img
-              src={
-                poster_path
-                  ? `${imageBaseURL}${posterSize}${poster_path}`
-                  : noPoster
-              }
-              alt={`${title} poster image`}
-              className={styles.cardImage}
-            />
+        <Link to={`/movie/${id}`} className={styles.link}>
+          <div className={styles.cardWrapper}>
+            <div className={styles.cardImageWrapper}>
+              <img
+                src={
+                  poster_path
+                    ? `${imageBaseURL}${posterSize}${poster_path}`
+                    : noPoster
+                }
+                alt={`${title} poster image`}
+                className={styles.cardImage}
+              />
+            </div>
+            <div className={styles.cardFooter}>
+              <h3 className={styles.cardTitle}>{title}</h3>
+              <div className={styles.genresWrapper}>{genreElement}</div>
+            </div>
           </div>
-          <div className={styles.cardFooter}>
-            <h3 className={styles.cardTitle}>{title}</h3>
-            <div className={styles.genresWrapper}>{genreElement}</div>
-          </div>
-        </div>
+        </Link>
       </SwiperSlide>
     );
   });
@@ -77,18 +68,6 @@ export default function SwiperComponent({ movies = [], genres = [] }) {
       className={styles.swiper}
     >
       {elements}
-      {isModalOpen && (
-        <Modal close={closeModal}>
-          <MovieDetails movieDitails={chosenMovie} genres={genres} />
-          <Link
-            to={`/movie/${chosenMovie.id}`}
-            className={styles.link}
-            onClick={closeModal}
-          >
-            Show more
-          </Link>
-        </Modal>
-      )}
     </Swiper>
   );
 }

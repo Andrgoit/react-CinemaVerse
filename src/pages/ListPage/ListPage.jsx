@@ -79,7 +79,7 @@ export default function ListPage() {
       }
     };
     getMovies();
-  }, [category, page]);
+  }, [category, page, time_window]);
 
   useEffect(() => {
     const getSameMovies = async () => {

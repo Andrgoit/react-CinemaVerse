@@ -1,6 +1,4 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Modal, MovieDetails } from "@/components";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
@@ -14,45 +12,37 @@ import star from "@/assets/icons/star.png";
 import imgSizes from "@/data/imgSizes";
 import contentBaseURL from "@/data/baseURLs";
 
-export default function TopRateSwipeComponent({ movies = [], genres }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [chosenMovie, setChosenMovie] = useState(null);
-
-  
+export default function TopRateSwipeComponent({ movies = [] }) {
   const imageBaseURL = contentBaseURL.posterImg;
   const posterSize = imgSizes.posterSizes.w92;
 
-  const openModal = (movie) => {
-    setIsModalOpen(true);
-    setChosenMovie(movie);
-  };
-  const closeModal = () => setIsModalOpen(false);
-
   const elements = movies.map((movie) => {
     const { id, poster_path, title, vote_average } = movie;
-    return <SwiperSlide key={id}>
-      <Link to={`/movie/${id}`} className={styles.link}>
-        <div className={styles.cardWrapper} onClick={openModal}>
-          <div className={styles.imageWrapper}>
-            <img
-              src={
-                poster_path
-                  ? `${imageBaseURL}${posterSize}${poster_path}`
-                  : noPoster
-              }
-              alt={`${title} poster image`}
-              className={styles.image}
-            />
-          </div>
-          <div className={styles.cardFooter}>
-            <div className={styles.iconWrapper}>
-              <img src={star} alt="star icon" className={styles.icon} />
+    return (
+      <SwiperSlide key={id}>
+        <Link to={`/movie/${id}`} className={styles.link}>
+          <div className={styles.cardWrapper}>
+            <div className={styles.imageWrapper}>
+              <img
+                src={
+                  poster_path
+                    ? `${imageBaseURL}${posterSize}${poster_path}`
+                    : noPoster
+                }
+                alt={`${title} poster image`}
+                className={styles.image}
+              />
             </div>
-            <span className={styles.vote}>{vote_average.toFixed(1)}</span>
+            <div className={styles.cardFooter}>
+              <div className={styles.iconWrapper}>
+                <img src={star} alt="star icon" className={styles.icon} />
+              </div>
+              <span className={styles.vote}>{vote_average.toFixed(1)}</span>
+            </div>
           </div>
-        </div>
-      </Link>
-    </SwiperSlide>;
+        </Link>
+      </SwiperSlide>
+    );
   });
 
   return (
@@ -73,19 +63,6 @@ export default function TopRateSwipeComponent({ movies = [], genres }) {
       className={styles.swiper}
     >
       {elements}
-      {/* <SwiperSlide >dsdsd</SwiperSlide> */}
-      {isModalOpen && (
-        <Modal>
-          <MovieDetails movieDitails={chosenMovie} genres={genres} />
-          <Link
-            to={`/movie/${chosenMovie.id}`}
-            className={styles.link}
-            onClick={closeModal}
-          >
-            Show more
-          </Link>
-        </Modal>
-      )}
     </Swiper>
   );
 }
