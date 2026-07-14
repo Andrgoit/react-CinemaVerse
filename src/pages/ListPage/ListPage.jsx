@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { BreadcrumbNavigation, MoviesList } from "@/components";
 
@@ -19,6 +19,7 @@ export default function ListPage() {
   const { category, movie_id } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
   const page = searchParams.get("page");
+  const listRef = useRef(null);
 
   // ------------------------------------------
   const lang = "en-US";
@@ -28,6 +29,13 @@ export default function ListPage() {
   const pageChanger = (page) => {
     setSearchParams({ page });
   };
+
+  useEffect(() => {
+    listRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }, [page]);
 
   useEffect(() => {
     async function fetchMovieGenres() {
@@ -97,7 +105,7 @@ export default function ListPage() {
   }, [movie_id, page]);
 
   return (
-    <div className="container">
+    <div className="container" ref={listRef}>
       <BreadcrumbNavigation />
       <MoviesList movies={movies} pageChanger={pageChanger} genres={genres} />
     </div>
