@@ -1,12 +1,13 @@
 .swiper {
   width: 100%;
   height: 100%;
+  padding: 10px 0;
 }
 
 .swiper-slide {
-  text-align: center;
+  /* text-align: center;
   font-size: 18px;
-  background: #444;
+  background: #444; */
 
   /* Center slide text vertically */
   display: flex;
@@ -28,10 +29,18 @@
 .cardWrapper {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  width: 92 px;
+  gap: var(--space-2);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
   cursor: pointer;
+  transition: box-shadow 0.3s ease-in-out;
 }
+
+.cardWrapper:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
 .imageWrapper {
   border-radius: 5px;
   overflow: hidden;
@@ -41,14 +50,37 @@
 }
 .cardFooter {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  /* align-items: center; */
   gap: 5px;
+}
+
+.cardTitle {
+  font-size: var(--fs-card-title);
+  text-align: center;
+
+  @media (min-width: 768px) {
+    font-size: var(--fs-card-title-tablet);
+  }
+
+  @media (min-width: 1280px) {
+    font-size: var(--fs-card-title-desktop);
+  }
+
+  line-height: 1.4;
+  min-height: calc(1.4em * 2);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 .iconWrapper {
   width: 16px;
   height: 16px;
 }
 .icon {
+  width: 100%;
+  height: 100%;
 }
 .vote {
   display: inline-block;

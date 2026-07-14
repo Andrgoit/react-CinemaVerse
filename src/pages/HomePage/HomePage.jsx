@@ -82,7 +82,7 @@ export default function HomePage() {
   }
 
   return (
-    <>
+    <div className="flex flex-col gap-8">
       <SearchBlock query={query} onchange={inputHandler} />
       <HeroBanner />
       <Section title="Trending Now" link={categories.trendMovies}>
@@ -97,6 +97,6 @@ export default function HomePage() {
       <Section title="Playing now" link={categories.nowPlayingMovies}>
         <SwiperComponent movies={playingNowMovies} genres={genres} />
       </Section>
-    </>
+    </div>
   );
 }

@@ -25,14 +25,15 @@ export default function BreadcrumbNavigation() {
 
   return (
     <div className={styles.wrapper}>
+      <span> &gt;</span>
       <Link to={"/"} className={styles.link}>
-        <span> &gt;</span> Home{" "}
+        Home
       </Link>
       {category && (
-        <>
+        <div className={styles.wrapper}>
           <span> &gt; </span>
-          {titleMaker(category)}
-        </>
+          <span>{titleMaker(category)}</span>
+        </div>
       )}
     </div>
   );

@@ -2,11 +2,19 @@
   display: flex;
   align-items: center;
   gap: var(--space-1);
-  margin-bottom: var(--space-6);
   font-size: var(--fs-small-text);
   color: var(--color-text-secondary);
 }
+.wrapper span {
+  font-size: inherit;
+}
+
 .link {
   cursor: pointer;
   color: inherit;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  color: var(--color-primary-hover);
 }

@@ -1,5 +1,5 @@
-.wrapper {  
-  margin-bottom: var(--space-6);
+.wrapper {
+  /* margin-bottom: var(--space-6); */
 }
 .header {
   display: flex;
@@ -7,16 +7,17 @@
   justify-content: space-between;
   margin-bottom: var(--space-3);
 }
-.title{
+.title {
   color: var(--color-text);
   font-size: var(--fs-title-section);
 
-  @media(min-width:768px){
+  @media (min-width: 768px) {
     font-size: var(--fs-title-section-tablet);
   }
 
-  @media(min-width:1280px){
-font-size: var(--fs-title-section-desktop);}
+  @media (min-width: 1280px) {
+    font-size: var(--fs-title-section-desktop);
+  }
 }
 .link {
   color: var(--color-primary);

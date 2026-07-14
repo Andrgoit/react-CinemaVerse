@@ -1,31 +1,38 @@
-.wrapper{
-margin-bottom: var(--space-6);
-background:linear-gradient(rgba(0,0,0, 0.2),rgba(0,0,0, 0.2)), url("@/assets/img/hero_bg_320.jpg");
-background-position: 50% 50%;
-background-repeat: no-repeat;
-background-size: cover;
-height: 200px;
-border-radius: var(--radius-lg);
-overflow: hidden;
+.wrapper {
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("@/assets/img/hero_bg_320.jpg");
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 200px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
 
-
-@media (min-width:425px){
-    &{
-        background:linear-gradient(rgba(0,0,0, 0.2),rgba(0,0,0, 0.2)), url("@/assets/img/hero_bg_320_2x.jpg");
-    background-position: 50% 50%;}
-    }    
-@media (min-width:768px){
-    &{
-        background:linear-gradient(rgba(0,0,0, 0.2),rgba(0,0,0, 0.2)), url("@/assets/img/hero_bg_768.jpg");
-    background-position: 50% 50%;}    
+  @media (min-width: 425px) {
+    & {
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+        url("@/assets/img/hero_bg_320_2x.jpg");
+      background-position: 50% 50%;
+    }
+  }
+  @media (min-width: 768px) {
+    & {
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+        url("@/assets/img/hero_bg_768.jpg");
+      background-position: 50% 50%;
+    }
+  }
+  @media (min-width: 1280px) {
+    & {
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+        url("@/assets/img/hero_bg_1280.jpg");
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
 }
-@media (min-width:1280px){
-    &{
-        background:linear-gradient(rgba(0,0,0, 0.2),rgba(0,0,0, 0.2)), url("@/assets/img/hero_bg_1280.jpg");
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    }    
-}
-}
-

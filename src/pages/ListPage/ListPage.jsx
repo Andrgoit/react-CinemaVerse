@@ -1,6 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
-import { BreadcrumbNavigation, MoviesList } from "@/components";
+import {
+  BreadcrumbNavigation,
+  MoviesList,
+  PaginationComponent,
+} from "@/components";
 
 import {
   getTrendingMovies,
@@ -10,6 +14,7 @@ import {
   getSimilarMovies,
   getMovieGenres,
 } from "@/api";
+
 import timeWindowTrendingMovies from "@/data/timeWindowTrendingMovies";
 
 export default function ListPage() {
@@ -20,6 +25,7 @@ export default function ListPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const page = searchParams.get("page");
   const listRef = useRef(null);
+  const { total_pages } = movies;
 
   // ------------------------------------------
   const lang = "en-US";
@@ -105,9 +111,14 @@ export default function ListPage() {
   }, [movie_id, page]);
 
   return (
-    <div className="container" ref={listRef}>
+    <div className="container flex flex-col gap-8" ref={listRef}>
       <BreadcrumbNavigation />
       <MoviesList movies={movies} pageChanger={pageChanger} genres={genres} />
+      <PaginationComponent
+        page={page}
+        total_pages={total_pages}
+        pageChanger={pageChanger}
+      />
     </div>
   );
 }

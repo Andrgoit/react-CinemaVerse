@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+
 import {
   getMovieById,
   getMovieCast,
   getMovieReviews,
   getMovieTrailers,
-  getSimilarMovies,
   getMovieGenres,
+  getSimilarMovies,
 } from "@/api";
+
 import {
   Section,
   MovieDetails,
@@ -15,6 +17,7 @@ import {
   CaseSwiperComponent,
   OverviewsSwiperComponent,
   TrailersSwiperComponent,
+  BreadcrumbNavigation,
 } from "@/components";
 
 export default function DetailsPage() {
@@ -23,6 +26,7 @@ export default function DetailsPage() {
   const [movieTrailers, setMovieTrailers] = useState([]);
   const [movieReviews, setMovieReviews] = useState([]);
   const [similarMovies, setSimilarMovies] = useState([]);
+  const [genres, setGenres] = useState([]);
 
   const { movie_id } = useParams();
   const lang = "en-US";
@@ -56,15 +60,22 @@ export default function DetailsPage() {
       setSimilarMovies(data.results);
     }
 
+    async function fetchMovieGenres() {
+      const { data } = await getMovieGenres(lang);
+      setGenres(data.genres);
+    }
+
     fetchMovieDitails();
     // fetchMovieCast();
     fetchMovieReviews();
     fetchMovieTrailers();
     fetchSimilarMovies();
+    fetchMovieGenres();
   }, [movie_id]);
 
   return (
-    <div>
+    <div className="container flex flex-col gap-8">
+      <BreadcrumbNavigation />
       {movieDitails && <MovieDetails movieDitails={movieDitails} />}
       {movieTrailers.length > 0 && (
         <Section title="Trailers">
@@ -87,7 +98,7 @@ export default function DetailsPage() {
           title="You may also like"
           link={`/movie/${movie_id}/similar?page=1`}
         >
-          <SwiperComponent movies={similarMovies} />
+          <SwiperComponent movies={similarMovies} genres={genres} />
         </Section>
       )}
     </div>

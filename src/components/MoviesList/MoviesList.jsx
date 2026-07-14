@@ -6,10 +6,10 @@ import imgSizes from "@/data/imgSizes";
 import contentBaseURL from "@/data/baseURLs";
 import styles from "./MoviesList.module.css";
 
-export default function MoviesList({ movies, pageChanger, genres }) {
+export default function MoviesList({ movies, genres }) {
   if (!movies) return null;
 
-  const { page, results = [], total_pages } = movies;
+  const { results = [] } = movies;
 
   const imageBaseURL = contentBaseURL.posterImg;
   const posterSize = imgSizes.posterSizes.w342;
@@ -54,16 +54,7 @@ export default function MoviesList({ movies, pageChanger, genres }) {
     );
   });
 
-  return (
-    <div className="flex flex-col gap-8">
-      <ul className={styles.cardList}>{elements}</ul>
-      <PaginationComponent
-        page={page}
-        total_pages={total_pages}
-        pageChanger={pageChanger}
-      />
-    </div>
-  );
+  return <ul className={styles.cardList}>{elements}</ul>;
 }
 
 // {

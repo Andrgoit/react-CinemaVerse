@@ -11,10 +11,11 @@ import noPoster from "@/assets/img/noPhoto.svg";
 import star from "@/assets/icons/star.png";
 import imgSizes from "@/data/imgSizes";
 import contentBaseURL from "@/data/baseURLs";
+import { swiperSettings } from "@/data/swiperSettings";
 
 export default function TopRateSwipeComponent({ movies = [] }) {
   const imageBaseURL = contentBaseURL.posterImg;
-  const posterSize = imgSizes.posterSizes.w92;
+  const posterSize = imgSizes.posterSizes.w185;
 
   const elements = movies.map((movie) => {
     const { id, poster_path, title, vote_average } = movie;
@@ -34,10 +35,13 @@ export default function TopRateSwipeComponent({ movies = [] }) {
               />
             </div>
             <div className={styles.cardFooter}>
-              <div className={styles.iconWrapper}>
-                <img src={star} alt="star icon" className={styles.icon} />
+              <h3 className={styles.cardTitle}>{title}</h3>
+              <div className="flex items-center justify-center gap-1">
+                <div className={styles.iconWrapper}>
+                  <img src={star} alt="star icon" className={styles.icon} />
+                </div>
+                <span className={styles.vote}>{vote_average.toFixed(1)}</span>
               </div>
-              <span className={styles.vote}>{vote_average.toFixed(1)}</span>
             </div>
           </div>
         </Link>
@@ -54,11 +58,7 @@ export default function TopRateSwipeComponent({ movies = [] }) {
         disableOnInteraction: false,
       }}
       spaceBetween={10}
-      breakpoints={{
-        320: { slidesPerView: 4, spaceBetween: 10 },
-        768: { slidesPerView: 8, spaceBetween: 20 },
-        1280: { slidesPerView: 10, spaceBetween: 40 },
-      }}
+      breakpoints={swiperSettings.breakpoints_topRateMovies}
       modules={[Pagination]}
       className={styles.swiper}
     >
@@ -66,18 +66,6 @@ export default function TopRateSwipeComponent({ movies = [] }) {
     </Swiper>
   );
 }
-
-// const imageRes = {
-//   images: {
-//     base_url: "http://image.tmdb.org/t/p/",
-//     secure_base_url: "https://image.tmdb.org/t/p/",
-//     backdrop_sizes: ["w300", "w780", "w1280", "original"],
-//     logo_sizes: ["w45", "w92", "w154", "w185", "w300", "w500", "original"],
-//     poster_sizes: ["w92", "w154", "w185", "w342", "w500", "w780", "original"],
-//     profile_sizes: ["w45", "w185", "h632", "original"],
-//     still_sizes: ["w92", "w185", "w300", "original"],
-//   },
-// };
 
 // {
 //       "adult": false,
