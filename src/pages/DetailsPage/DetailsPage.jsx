@@ -85,7 +85,7 @@ export default function DetailsPage() {
         </Section>
       )}
       {movieReviews.length > 0 && (
-        <Section title={t("section.title.overeviews")}>
+        <Section title={t("section.title.reviews")}>
           <OverviewsSwiperComponent movieReviews={movieReviews} />
         </Section>
       )}
@@ -98,7 +98,7 @@ export default function DetailsPage() {
       {similarMovies.length > 0 && (
         <Section
           title={t("section.title.similar")}
-          link={`/movie/${movie_id}/similar?page=1&lang=${lang}`}
+          link={`/movie/${movie_id}/similar?page=1`}
         >
           <SwiperComponent movies={similarMovies} genres={genres} />
         </Section>

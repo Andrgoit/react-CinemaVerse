@@ -3,8 +3,7 @@ import { useTranslation } from "react-i18next";
 import styles from "./Section.module.css";
 
 export default function Section({ title, link, children }) {
-  const { t, i18n } = useTranslation();
-  const lang = i18n.language;
+  const { t } = useTranslation();
 
   return (
     <div className="container">
@@ -12,7 +11,7 @@ export default function Section({ title, link, children }) {
         <div className={styles.header}>
           {title ? <h2 className={styles.title}>{title}</h2> : null}
           {link ? (
-            <Link to={`${link}&lang=${lang}`} className={styles.link}>
+            <Link to={link} className={styles.link}>
               {t("section.linkViewAll")}
             </Link>
           ) : null}

@@ -47,6 +47,7 @@ export default function MovieDetails({ movieDitails, genres: propsGenres }) {
               }
               alt={`${title} poster image`}
               className={styles.posterImage}
+              loading="lazy"
             />
           </div>
           <div className={styles.infoWrapper}>

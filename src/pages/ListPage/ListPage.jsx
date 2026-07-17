@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
+
 import {
   BreadcrumbNavigation,
   MoviesList,
@@ -23,17 +24,18 @@ export default function ListPage() {
 
   const { category, movie_id } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
-  const page = searchParams.get("page");
+  const page = Number(searchParams.get("page") || 1);
+  const lang = String(searchParams.get("lang") || "en");
   const listRef = useRef(null);
   const { total_pages } = movies;
-
-  // ------------------------------------------
-  const lang = "en-US";
   const time_window = timeWindowTrendingMovies.day;
-  //---------------------------------------------
 
   const pageChanger = (page) => {
-    setSearchParams({ page });
+    setSearchParams((prev) => {
+      const params = new URLSearchParams(prev);
+      params.set("page", page);
+      return params;
+    });
   };
 
   useEffect(() => {
@@ -49,7 +51,7 @@ export default function ListPage() {
       setGenres(data.genres);
     }
     fetchMovieGenres();
-  }, []);
+  }, [lang]);
 
   useEffect(() => {
     const getMovies = async () => {
@@ -93,7 +95,7 @@ export default function ListPage() {
       }
     };
     getMovies();
-  }, [category, page, time_window]);
+  }, [category, lang, page, time_window]);
 
   useEffect(() => {
     const getSameMovies = async () => {
@@ -108,12 +110,12 @@ export default function ListPage() {
       }
     };
     getSameMovies();
-  }, [movie_id, page]);
+  }, [lang, movie_id, page]);
 
   return (
     <div className="container flex flex-col gap-8" ref={listRef}>
       <BreadcrumbNavigation />
-      <MoviesList movies={movies} pageChanger={pageChanger} genres={genres} />
+      <MoviesList movies={movies} genres={genres} />
       <PaginationComponent
         page={page}
         total_pages={total_pages}

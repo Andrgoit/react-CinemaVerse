@@ -81,7 +81,7 @@ export default function HomePage() {
   }, [lang, time_window]);
 
   if (query.length > 0) {
-    return <Navigate to={`/search?query=${query}&page=1`} />;
+    return <Navigate to={`/search?query=${query}&page=1&lang=${lang}`} />;
   }
 
   return (

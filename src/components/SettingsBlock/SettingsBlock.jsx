@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
+
 import { useTranslation } from "react-i18next";
 import { IoLanguage, IoSunny, IoMoon } from "react-icons/io5";
 import langIcons from "@/data/langIcons";
@@ -9,7 +11,11 @@ export default function SettingsBlock() {
     () => localStorage.getItem("theme") || "dark",
   );
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchParamsLang = searchParams.get("lang");
+
   const { i18n } = useTranslation();
+  const lang = i18n.language;
 
   useEffect(() => {
     localStorage.setItem("theme", theme);
@@ -19,6 +25,16 @@ export default function SettingsBlock() {
     if (theme === "light") document.body.classList.add("light");
     else document.body.classList.remove("light");
   }, [theme]);
+
+  useEffect(() => {
+    if (!searchParamsLang) {
+      setSearchParams((prev) => {
+        const params = new URLSearchParams(prev);
+        params.set("lang", lang);
+        return params;
+      });
+    }
+  }, [lang, searchParamsLang, setSearchParams]);
 
   const themeChanger = () => {
     if (theme === "dark") {
@@ -31,6 +47,12 @@ export default function SettingsBlock() {
   const languageChanger = (lang) => {
     setIsMenuOpen(false);
     i18n.changeLanguage(lang);
+
+    setSearchParams((prev) => {
+      const params = new URLSearchParams(prev);
+      params.set("lang", lang);
+      return params;
+    });
   };
 
   const elements = langIcons.map(({ lang, icon }) => (
@@ -39,7 +61,7 @@ export default function SettingsBlock() {
       className={styles.languageIconsItem}
       onClick={() => languageChanger(lang)}
     >
-      <img src={icon} alt="language icon" />
+      <img src={icon} alt={`${lang} language icon`} />
     </li>
   ));
 

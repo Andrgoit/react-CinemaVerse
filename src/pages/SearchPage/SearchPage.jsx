@@ -1,9 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
-import { BreadcrumbNavigation, MoviesList, SearchBlock } from "@/components";
-import { getMovieByQuery, getMovieGenres } from "@/api";
 
-// import styles from "./SearchPage.module.css";
+import {
+  BreadcrumbNavigation,
+  MoviesList,
+  PaginationComponent,
+  SearchBlock,
+} from "@/components";
+
+import { getMovieByQuery, getMovieGenres } from "@/api";
 
 export default function SearchPage() {
   const [movies, setMovies] = useState({});
@@ -11,19 +16,29 @@ export default function SearchPage() {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("query");
-  const page = searchParams.get("page");
-
-  // ------------------------------------------
-  const lang = "en-US";
-  //---------------------------------------------
+  const page = Number(searchParams.get("page") || 1);
+  const lang = String(searchParams.get("lang") || "en");
+  const { total_pages } = movies;
+  const listRef = useRef(null);
 
   const pageChanger = (page) => {
-    setSearchParams({ query, page });
+    setSearchParams((prev) => {
+      const params = new URLSearchParams(prev);
+      params.set("page", page);
+      return params;
+    });
   };
 
   const inputHandler = (value) => {
-    setSearchParams({ query: value, page: 1 });
+    setSearchParams({ query: value, page: page, lang: lang });
   };
+
+  useEffect(() => {
+    listRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }, [page]);
 
   useEffect(() => {
     async function fetchMovieGenres() {
@@ -31,7 +46,7 @@ export default function SearchPage() {
       setGenres(data.genres);
     }
     fetchMovieGenres();
-  }, []);
+  }, [lang]);
 
   useEffect(() => {
     if (query.length > 0) {
@@ -41,14 +56,19 @@ export default function SearchPage() {
       }
       fetchMovieByQuery();
     }
-  }, [query, page]);
+  }, [query, page, lang]);
 
   return (
     <section>
-      <div className="container">
+      <div className="container flex flex-col gap-8" ref={listRef}>
         <SearchBlock query={query} onchange={inputHandler} />
         <BreadcrumbNavigation />
-        <MoviesList movies={movies} pageChanger={pageChanger} genres={genres} />
+        <MoviesList movies={movies} genres={genres} />
+        <PaginationComponent
+          page={page}
+          total_pages={total_pages}
+          pageChanger={pageChanger}
+        />
       </div>
     </section>
   );
