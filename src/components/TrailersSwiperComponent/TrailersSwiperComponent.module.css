@@ -1,5 +1,6 @@
 .swiper {
   width: 100%;
+  padding: 10px 0;
   height: 100%;
 }
 
@@ -28,11 +29,14 @@
   border-radius: var(--radius-md);
   overflow: hidden;
   max-width: 160px;
-  transition: box-shadow 0.3s ease-in-out;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
 }
 
 .cardWrapper:hover {
   box-shadow: var(--shadow-card-hover);
+  transform: translateY(-3px);
 }
 .iconWrapper {
   width: 40px;

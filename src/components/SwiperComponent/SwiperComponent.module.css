@@ -29,25 +29,25 @@
   height: 100%;
 }
 .cardWrapper {
-  box-shadow: var(--shadow-card);
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
   cursor: pointer;
-  background-color: transparent;
   border-radius: var(--radius-sm);
   overflow: hidden;
-  transition: box-shadow 0.3s ease-in-out;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
   padding-bottom: var(--space-3);
-
   height: 100%;
-}
-.cardWrapper:hover img {
-  transform: scale(1.05);
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
 }
 
 .cardWrapper:hover {
   box-shadow: var(--shadow-card-hover);
+  transform: translateY(-3px);
 }
 
 .cardImageWrapper {
@@ -57,7 +57,7 @@
   width: 100%;
   height: auto;
   object-fit: cover;
-  transition: all 0.3s ease;
+  /* transition: all 0.3s ease; */
 }
 .cardFooter {
   display: flex;
@@ -80,7 +80,7 @@
   }
 
   line-height: 1.4;
-  min-height: calc(1.4em * 2); /* место под 2 строки */
+  min-height: calc(1.4em * 2);
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;

@@ -14,6 +14,7 @@
   max-width: 500px;
   padding: 0 var(--space-2);
   box-shadow: var(--shadow-card);
+  background-color: var(--search-input-bg);
 }
 
 .input {
@@ -23,4 +24,8 @@
   background-color: transparent;
   font-size: var(--fs-text);
   color: var(--color-text);
+}
+.input :focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.12);
 }

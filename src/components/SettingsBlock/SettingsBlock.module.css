@@ -7,15 +7,17 @@
   padding: var(--space-2);
   cursor: pointer;
   box-shadow: var(--shadow-card);
-
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
+  transition: transform 0.3s ease;
 }
+
 .themeButton:hover,
 .languageButton:hover {
-  color: var(--color-surface-hover);
-  background-color: var(--color-text);
+  transform: translateY(-3px);
+}
+
+.themeButton:active,
+.languageButton:active {
+  transform: translateY(0px);
 }
 
 .languageIconsList {
@@ -26,8 +28,8 @@
   bottom: -165px;
   right: 0;
 }
-.languageIconsItem {
-  box-shadow: var(--shadow-card);
 
+.languageIconsItem {
+  filter: var(--lang-icon-shadow);
   cursor: pointer;
 }

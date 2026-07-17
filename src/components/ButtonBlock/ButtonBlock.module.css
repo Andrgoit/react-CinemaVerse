@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-2);
-  color: var(--color-text);
+  color: var(--color-white);
   background-color: var(--color-primary);
   padding: var(--space-2) var(--space-3);
   border-radius: var(--radius-sm);
@@ -10,12 +10,18 @@
 
   transition:
     background-color 0.3s ease,
-    box-shadow 0.3s ease;
+    color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
   cursor: pointer;
 }
 .addButton:hover {
   background-color: var(--color-primary-hover);
   box-shadow: var(--shadow-card-hover);
+  transform: translateY(-3px);
+}
+.addButton:active {
+  transform: translateY(0px);
 }
 
 .favoriteButton {
@@ -28,9 +34,15 @@
   box-shadow: var(--shadow-card);
   transition:
     background-color 0.3s ease,
-    box-shadow 0.3s ease;
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
 }
 .favoriteButton:hover {
   background-color: var(--color-surface-hover);
   box-shadow: var(--shadow-card-hover);
+  transform: translateY(-3px);
+}
+
+.favoriteButton:active {
+  transform: translateY(0px);
 }
