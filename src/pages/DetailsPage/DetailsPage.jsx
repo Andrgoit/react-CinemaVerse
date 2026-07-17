@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import {
   getMovieById,
-  getMovieCast,
+  // getMovieCast,
   getMovieReviews,
   getMovieTrailers,
   getMovieGenres,
@@ -14,7 +15,7 @@ import {
   Section,
   MovieDetails,
   SwiperComponent,
-  CaseSwiperComponent,
+  // CaseSwiperComponent,
   OverviewsSwiperComponent,
   TrailersSwiperComponent,
   BreadcrumbNavigation,
@@ -22,14 +23,15 @@ import {
 
 export default function DetailsPage() {
   const [movieDitails, setMovieDitails] = useState(null);
-  const [movieCast, setMovieCast] = useState([]);
+  // const [movieCast, setMovieCast] = useState([]);
   const [movieTrailers, setMovieTrailers] = useState([]);
   const [movieReviews, setMovieReviews] = useState([]);
   const [similarMovies, setSimilarMovies] = useState([]);
   const [genres, setGenres] = useState([]);
+  const { t, i18n } = useTranslation();
 
   const { movie_id } = useParams();
-  const lang = "en-US";
+  const lang = i18n.language;
   const page = 1;
 
   useEffect(() => {
@@ -71,19 +73,19 @@ export default function DetailsPage() {
     fetchMovieTrailers();
     fetchSimilarMovies();
     fetchMovieGenres();
-  }, [movie_id]);
+  }, [lang, movie_id]);
 
   return (
     <div className="container flex flex-col gap-8">
       <BreadcrumbNavigation />
       {movieDitails && <MovieDetails movieDitails={movieDitails} />}
       {movieTrailers.length > 0 && (
-        <Section title="Trailers">
+        <Section title={t("section.title.trailers")}>
           <TrailersSwiperComponent movieTrailers={movieTrailers} />
         </Section>
       )}
       {movieReviews.length > 0 && (
-        <Section title="Overviews">
+        <Section title={t("section.title.overeviews")}>
           <OverviewsSwiperComponent movieReviews={movieReviews} />
         </Section>
       )}
@@ -95,8 +97,8 @@ export default function DetailsPage() {
       )}*/}
       {similarMovies.length > 0 && (
         <Section
-          title="You may also like"
-          link={`/movie/${movie_id}/similar?page=1`}
+          title={t("section.title.similar")}
+          link={`/movie/${movie_id}/similar?page=1&lang=${lang}`}
         >
           <SwiperComponent movies={similarMovies} genres={genres} />
         </Section>

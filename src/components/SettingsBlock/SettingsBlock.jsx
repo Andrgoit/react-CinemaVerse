@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { IoLanguage, IoSunny, IoMoon } from "react-icons/io5";
 import langIcons from "@/data/langIcons";
 import styles from "./SettingsBlock.module.css";
@@ -8,6 +9,7 @@ export default function SettingsBlock() {
     () => localStorage.getItem("theme") || "dark",
   );
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { i18n } = useTranslation();
 
   useEffect(() => {
     localStorage.setItem("theme", theme);
@@ -26,15 +28,21 @@ export default function SettingsBlock() {
     }
   };
 
+  const languageChanger = (lang) => {
+    setIsMenuOpen(false);
+    i18n.changeLanguage(lang);
+  };
+
   const elements = langIcons.map(({ lang, icon }) => (
     <li
       key={lang}
       className={styles.languageIconsItem}
-      onClick={() => setIsMenuOpen(false)}
+      onClick={() => languageChanger(lang)}
     >
       <img src={icon} alt="language icon" />
     </li>
   ));
+
   return (
     <div className="relative flex items-center gap-3">
       <button
@@ -48,6 +56,7 @@ export default function SettingsBlock() {
           <IoSunny size={22} color={`var(--color-accent)`} />
         )}
       </button>
+
       <button
         type="button"
         className={styles.languageButton}

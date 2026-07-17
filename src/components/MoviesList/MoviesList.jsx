@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { PaginationComponent } from "@/components";
 
 import noPoster from "@/assets/img/noPhoto.svg";
 import imgSizes from "@/data/imgSizes";

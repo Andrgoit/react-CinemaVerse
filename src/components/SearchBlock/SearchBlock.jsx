@@ -1,9 +1,11 @@
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { IoSearch } from "react-icons/io5";
 import styles from "./SearchBlock.module.css";
-import { useState } from "react";
 
 export default function SearchBlock({ onchange }) {
   const [q, setQ] = useState("");
+  const { t } = useTranslation();
 
   const submitHandler = (e) => {
     if (q === "") {
@@ -26,7 +28,7 @@ export default function SearchBlock({ onchange }) {
             type="text"
             value={q}
             className={styles.input}
-            placeholder="Search movie..."
+            placeholder={t("searchPlaceholder")}
             onChange={(e) => setQ(e.target.value.trim())}
           />
         </form>

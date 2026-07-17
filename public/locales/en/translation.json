@@ -1,0 +1,39 @@
+{
+  "header": {
+    "nav": {
+      "home": "Home",
+      "movies": "Movies"
+    }
+  },
+  "searchPlaceholder": "Search movie ...",
+  "breadcrumbNavigation": {
+    "home": "Home",
+    "trendingMovies": "Trending now",
+    "topRatedMovies": "Top rated",
+    "upcomingMovies": "Upcoming",
+    "nowPlayingMovies": "Now playing"
+  },
+  "section": {
+    "title": {
+      "trending": "Trending now",
+      "topRated": "Top rated",
+      "upcoming": "Upcoming",
+      "nowPlaying": "Now playing",
+      "trailers": "Trailers",
+      "reviews": "Reviews",
+      "similar": "You may also like"
+    },
+    "linkViewAll": "View all"
+  },
+  "movieDetails": {
+    "votes": "votes",
+    "movieRuntime": {
+      "hours": "h",
+      "minutes": "m"
+    },
+    "buttonBlock": {
+      "addMovie": "Add to Watchlist",
+      "removeMovie": "Remove from Watchlist"
+    }
+  }
+}

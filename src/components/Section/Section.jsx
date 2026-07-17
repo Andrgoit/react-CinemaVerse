@@ -1,19 +1,24 @@
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import styles from "./Section.module.css";
 
-export default function Section({ title = null, link = null, children }) {
+export default function Section({ title, link, children }) {
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language;
+
   return (
     <div className="container">
-    <div className={styles.wrapper}>
-      <div className={styles.header}>
-        {title ? <h2 className={styles.title}>{title}</h2> : null}
-        {link ? (
-          <Link to={link} className={styles.link}>
-            View all
-          </Link>
-        ) : null}
+      <div className={styles.wrapper}>
+        <div className={styles.header}>
+          {title ? <h2 className={styles.title}>{title}</h2> : null}
+          {link ? (
+            <Link to={`${link}&lang=${lang}`} className={styles.link}>
+              {t("section.linkViewAll")}
+            </Link>
+          ) : null}
+        </div>
+        {children}
       </div>
-      {children}
-    </div></div>
+    </div>
   );
 }

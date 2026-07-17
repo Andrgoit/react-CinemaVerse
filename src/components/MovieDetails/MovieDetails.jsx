@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import { MovieRuntime, ButtonBlock } from "@/components";
 import noPoster from "@/assets/img/noPhoto.svg";
 import imgSizes from "@/data/imgSizes";
@@ -9,6 +11,8 @@ import styles from "./MovieDetails.module.css";
 const posterSize = imgSizes.posterSizes.w342;
 
 export default function MovieDetails({ movieDitails, genres: propsGenres }) {
+  const { t } = useTranslation();
+
   const {
     poster_path,
     title,
@@ -73,7 +77,9 @@ export default function MovieDetails({ movieDitails, genres: propsGenres }) {
                   <span className={styles.voteAverageTotal}>/10</span>
                 </div>
               </div>
-              <span className={styles.voteCount}>{vote_count} votes</span>
+              <span className={styles.voteCount}>
+                {vote_count} {t("movieDetails.votes")}
+              </span>
             </div>
           </div>
         </div>

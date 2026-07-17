@@ -1,0 +1,39 @@
+{
+  "header": {
+    "nav": {
+      "home": "Головна",
+      "movies": "Фільми"
+    }
+  },
+  "searchPlaceholder": "Пошук фільму...",
+  "breadcrumbNavigation": {
+    "home": "Головна",
+    "trendingMovies": "Популярні зараз",
+    "topRatedMovies": "З найвищим рейтингом",
+    "upcomingMovies": "Скоро вийдуть",
+    "nowPlayingMovies": "Зараз у кіно"
+  },
+  "section": {
+    "title": {
+      "trending": "Популярні зараз",
+      "topRated": "З найвищим рейтингом",
+      "upcoming": "Скоро вийдуть",
+      "nowPlaying": "Зараз у кіно",
+      "trailers": "Трейлери",
+      "reviews": "Відгуки",
+      "similar": "Вам також може сподобатися"
+    },
+    "linkViewAll": "Переглянути всі"
+  },
+  "movieDetails": {
+    "votes": "голосів",
+    "movieRuntime": {
+      "hours": "год",
+      "minutes": "хв"
+    },
+    "buttonBlock": {
+      "addMovie": "Додати до списку перегляду",
+      "removeMovie": "Видалити зі списку перегляду"
+    }
+  }
+}

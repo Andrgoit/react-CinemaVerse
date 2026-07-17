@@ -1,0 +1,39 @@
+{
+  "header": {
+    "nav": {
+      "home": "Главная",
+      "movies": "Фильмы"
+    }
+  },
+  "searchPlaceholder": "Поиск фильма...",
+  "breadcrumbNavigation": {
+    "home": "Главная",
+    "trendingMovies": "Популярные сейчас",
+    "topRatedMovies": "С высоким рейтингом",
+    "upcomingMovies": "Скоро выйдут",
+    "nowPlayingMovies": "Сейчас в кино"
+  },
+  "section": {
+    "title": {
+      "trending": "Популярные сейчас",
+      "topRated": "С высоким рейтингом",
+      "upcoming": "Скоро выйдут",
+      "nowPlaying": "Сейчас в кино",
+      "trailers": "Трейлеры",
+      "reviews": "Отзывы",
+      "similar": "Вам также может понравиться"
+    },
+    "linkViewAll": "Смотреть все"
+  },
+  "movieDetails": {
+    "votes": "голосов",
+    "movieRuntime": {
+      "hours": "ч",
+      "minutes": "мин"
+    },
+    "buttonBlock": {
+      "addMovie": "Добавить в список просмотра",
+      "removeMovie": "Удалить из списка просмотра"
+    }
+  }
+}

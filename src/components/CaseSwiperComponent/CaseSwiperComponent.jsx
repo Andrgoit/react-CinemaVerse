@@ -17,7 +17,7 @@ export default function CaseSwiperComponent({ movies = [], genres = [] }) {
   const [chosenMovie, setChosenMovie] = useState(null);
 
   const imageBaseURL = "https://image.tmdb.org/t/p/";
-  const posterSize = posterSizes.w92;
+  const posterSize = posterSizes.logo_sizes.w45;
 
   const closeModal = () => setIsModalOpen(false);
   const openModal = (movie) => {
