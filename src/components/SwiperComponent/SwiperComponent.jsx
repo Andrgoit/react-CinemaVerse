@@ -2,9 +2,9 @@
 import { Link } from "react-router-dom";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/pagination";
+import "./swiperNavigation.css";
 
 import noPoster from "@/assets/img/noPhoto.svg";
 import imgSizes from "@/data/imgSizes";
@@ -59,13 +59,14 @@ export default function SwiperComponent({ movies = [], genres = [] }) {
     <Swiper
       slidesPerView={1}
       loop={true}
-      autoplay={{
-        delay: 2500,
-        disableOnInteraction: false,
-      }}
+      navigation={true}
+      // autoplay={{
+      //   delay: 2500,
+      //   disableOnInteraction: false,
+      // }}
       spaceBetween={10}
       breakpoints={swiperSettings.breakpoints}
-      modules={[Pagination]}
+      modules={[Navigation]}
       className={styles.swiper}
     >
       {elements}

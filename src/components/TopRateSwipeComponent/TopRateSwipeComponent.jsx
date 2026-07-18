@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/pagination";
+import "swiper/css/effect-fade";
+import "./swiperNavigation.css";
 
 import styles from "./TopRateSwipeComponent.module.css";
 
@@ -58,8 +59,9 @@ export default function TopRateSwipeComponent({ movies = [] }) {
         disableOnInteraction: false,
       }}
       spaceBetween={10}
+      navigation={true}
       breakpoints={swiperSettings.breakpoints_topRateMovies}
-      modules={[Pagination]}
+      modules={[Autoplay, Navigation]}
       className={styles.swiper}
     >
       {elements}
