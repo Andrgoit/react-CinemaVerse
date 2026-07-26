@@ -6,13 +6,13 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import "./swiperNavigation.css";
 
-import styles from "./TopRateSwipeComponent.module.css";
-
 import noPoster from "@/assets/img/noPhoto.svg";
 import star from "@/assets/icons/star.png";
 import imgSizes from "@/data/imgSizes";
 import contentBaseURL from "@/data/baseURLs";
 import { swiperSettings } from "@/data/swiperSettings";
+
+import styles from "./TopRateSwipeComponent.module.css";
 
 export default function TopRateSwipeComponent({ movies = [] }) {
   const imageBaseURL = contentBaseURL.posterImg;

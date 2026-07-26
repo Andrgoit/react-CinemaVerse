@@ -57,6 +57,11 @@
   height: 100%;
   object-fit: cover;
 }
+.cardDate {
+  font-size: var(--fs-small-text);
+  color: var(--color-text-secondary);
+}
+
 .cardContentWrapper {
   flex-grow: 1;
 }

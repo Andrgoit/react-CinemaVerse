@@ -10,6 +10,7 @@ import noPhotoUser from "@/assets/img/noPhotoUser.png";
 import { swiperSettings } from "@/data/swiperSettings";
 import imageBaseUrl from "@/data/baseURLs";
 import imgSizes from "@/data/imgSizes";
+import formatDate from "@/utils/formatDate";
 
 import styles from "./OverviewsSwiperComponent.module.css";
 
@@ -32,24 +33,32 @@ export default function OverviewsSwiperComponent({ movieReviews = [] }) {
       author_details: { avatar_path },
       content,
       author,
+      created_at,
     } = overview;
+
+    const normalizedCreatedDate = formatDate(created_at);
 
     return (
       <SwiperSlide key={id}>
         <div className={styles.cardWrapper} onClick={() => openModal(overview)}>
-          <div className="flex items-center gap-2">
-            <div className={styles.cardImageWrapper}>
-              <img
-                src={
-                  avatar_path
-                    ? `${imgUrl}${imgSize}${avatar_path}`
-                    : noPhotoUser
-                }
-                alt={`${author} avatar`}
-                className={styles.cardImage}
-              />
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className={styles.cardImageWrapper}>
+                <img
+                  src={
+                    avatar_path
+                      ? `${imgUrl}${imgSize}${avatar_path}`
+                      : noPhotoUser
+                  }
+                  alt={`${author} avatar`}
+                  className={styles.cardImage}
+                />
+              </div>
+              <span>{author}</span>
             </div>
-            <span>{author}</span>
+            <div>
+              <span className={styles.cardDate}>{normalizedCreatedDate}</span>
+            </div>
           </div>
           <div className={styles.cardContentWrapper}>
             <p className={styles.cardContentText}>{content}</p>
