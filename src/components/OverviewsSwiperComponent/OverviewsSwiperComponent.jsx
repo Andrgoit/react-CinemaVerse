@@ -85,19 +85,26 @@ export default function OverviewsSwiperComponent({ movieReviews = [] }) {
       {isModalOpen && (
         <Modal close={closeModal}>
           <div className={styles.cardWrapperModal}>
-            <div className="flex items-center gap-2">
-              <div className={styles.cardImageWrapper}>
-                <img
-                  src={
-                    chosenOverview.author_details.avatar_path
-                      ? `${imgUrl}${imgSize}${chosenOverview.author_details.avatar_path}`
-                      : noPhotoUser
-                  }
-                  alt={`${chosenOverview.author} avatar`}
-                  className={styles.cardImage}
-                />
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <div className={styles.cardImageWrapper}>
+                  <img
+                    src={
+                      chosenOverview.author_details.avatar_path
+                        ? `${imgUrl}${imgSize}${chosenOverview.author_details.avatar_path}`
+                        : noPhotoUser
+                    }
+                    alt={`${chosenOverview.author} avatar`}
+                    className={styles.cardImage}
+                  />
+                </div>
+                <span>{chosenOverview.author}</span>
               </div>
-              <span>{chosenOverview.author}</span>
+              <div>
+                <span className={styles.cardDate}>
+                  {formatDate(chosenOverview.created_at)}
+                </span>
+              </div>
             </div>
             <div className={styles.cardContentWrapperModal}>
               <p className={styles.cardContentTextModal}>

@@ -10,6 +10,7 @@ import baseURL from "@/data/baseURLs";
 import { swiperSettings } from "@/data/swiperSettings";
 import styles from "./TrailersSwiperComponent.module.css";
 import playIcon from "@/assets/icons/playButton.png";
+import ytPreviewImageQuality from "@/data/ytPreviewImageQuality";
 
 export default function TrailersSwiperComponent({ movieTrailers = [] }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -17,6 +18,7 @@ export default function TrailersSwiperComponent({ movieTrailers = [] }) {
 
   const videoBaseURL = baseURL.youtubeVideo;
   const previewImageBaseURL = baseURL.youtubePreviewImage;
+  const imageQuality = ytPreviewImageQuality.hd;
 
   const closeModal = () => setIsModalOpen(false);
   const openModal = (src) => {
@@ -27,7 +29,7 @@ export default function TrailersSwiperComponent({ movieTrailers = [] }) {
   const elements = movieTrailers.map((trailer) => {
     const { id, key } = trailer;
     const src = `${videoBaseURL}${key}`;
-    const previewImage = `${previewImageBaseURL}${key}/hqdefault.jpg`;
+    const previewImage = `${previewImageBaseURL}${key}/${imageQuality}`;
 
     return (
       <SwiperSlide key={id}>

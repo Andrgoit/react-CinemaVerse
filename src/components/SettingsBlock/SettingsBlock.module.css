@@ -32,4 +32,5 @@
 .languageIconsItem {
   filter: var(--lang-icon-shadow);
   cursor: pointer;
+  z-index: 2;
 }

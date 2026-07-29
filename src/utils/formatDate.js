@@ -1,4 +1,6 @@
 const formatDate = (time) => {
+  if (!time) return null;
+
   const newDate = new Date(time);
 
   let dd = newDate.getDate();
