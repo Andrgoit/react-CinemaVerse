@@ -1,8 +1,9 @@
 // https://api.themoviedb.org/3/search/movie
 
 import axios from "axios";
+import baseURLs from "@/data/baseURLs";
+const BASE_URL = baseURLs.apiURL;
 const ACCESS_TOKEN = import.meta.env.VITE_ACCESS_TOKEN;
-const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 async function getMovieByQuery(query = "", page = "1", lang = "en-US") {
   const options = {

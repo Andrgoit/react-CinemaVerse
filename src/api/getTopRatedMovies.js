@@ -1,8 +1,9 @@
 // https://api.themoviedb.org/3/movie/top_rated
 
 import axios from "axios";
+import baseURLs from "@/data/baseURLs";
 const ACCESS_TOKEN = import.meta.env.VITE_ACCESS_TOKEN;
-const BASE_URL = import.meta.env.VITE_BASE_URL;
+const BASE_URL = baseURLs.apiURL;
 
 async function getTopRatedMovies(page = "1", lang = "en-US") {
   const options = {

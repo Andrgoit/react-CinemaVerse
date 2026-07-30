@@ -1,14 +1,14 @@
-English | [Русский](README.ru.md)
+Русский | [English](README.md)
 
 # CinemaVerse
 
-CinemaVerse is a responsive movie discovery application built with React. It allows users to browse trending, popular, top-rated and upcoming movies, search by title, and view detailed information including trailers, cast, reviews and similar movies. It uses an API <https://themoviedb.org/>
+CinemaVerse — это адаптивное приложение для поиска фильмов, созданное с использованием React. Оно позволяет пользователям просматривать популярные, высокорейтинговые и предстоящие фильмы, осуществлять поиск по названию и просматривать подробную информацию, включая трейлеры, актерский состав, отзывы и похожие фильмы. Используется API <https://themoviedb.org/>
 
 [LIVE DEMO](https://react-cinema-verse-alpha.vercel.app/)
 
 ![picture](/public/demo.JPG)
 
-## Features
+## Функции
 
 - Search movies
 - Trending movies
@@ -23,7 +23,7 @@ CinemaVerse is a responsive movie discovery application built with React. It all
 - Dark/Light theme
 - Localization (EN / RU / UK)
 
-## Tech Stack
+## Стек технологий
 
 - React
 - Vite
@@ -34,7 +34,7 @@ CinemaVerse is a responsive movie discovery application built with React. It all
 - Swiper
 - i18next
 
-## Getting Started
+## Установка
 
 ```bash
 git clone https://github.com/Andrgoit/react-CinemaVerse.git
@@ -48,7 +48,7 @@ cd react-CinemaVerse
 npm install
 ```
 
-## Run
+## Запуск
 
 ```bash
 npm run dev
@@ -59,10 +59,10 @@ npm run dev
 Create `.env`
 
 ```env
-VITE_ACCESS_TOKEN=your_access_token
+VITE_ACCESS_TOKEN=ваш_access_token
 ```
 
-## Structure
+## Структура
 
 ```text
 📦src
@@ -78,7 +78,7 @@ VITE_ACCESS_TOKEN=your_access_token
  ┗ 📜main.jsx
 ```
 
-## Author
+## Автор
 
 Andrey
 
