@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import {
-  HeroBanner,
   Section,
   SwiperComponent,
   TopRateSwipeComponent,
@@ -31,12 +30,6 @@ export default function HomePage() {
 
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
-
-  // console.log("trendingMovies", trendingMovies);
-  // console.log("topRateMovies", topRateMovies);
-  // console.log("upcomingMovies", upcomingMovies);
-  // console.log("playingNowMovies", playingNowMovies);
-  // console.log("genres", genres);
 
   // ------------------------------------------
   const time_window = timeWindowTrendingMovies.day;
@@ -87,7 +80,6 @@ export default function HomePage() {
   return (
     <div className="flex flex-col gap-8">
       <SearchBlock query={query} onchange={inputHandler} />
-      <HeroBanner />
       <Section
         title={t("section.title.trending")}
         link={categories.trendMovies}

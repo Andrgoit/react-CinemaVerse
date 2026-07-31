@@ -12,7 +12,7 @@ export const swiperSettings = {
     1280: { slidesPerView: 6, spaceBetween: 30 },
   },
   breakpoints_reviews: {
-    320: { slidesPerView: 1, spaceBetween: 10 },
+    320: { slidesPerView: 1.1, spaceBetween: 10 },
     768: { slidesPerView: 2, spaceBetween: 20 },
     1024: { slidesPerView: 2, spaceBetween: 30 },
     1280: { slidesPerView: 3, spaceBetween: 30 },
@@ -22,5 +22,11 @@ export const swiperSettings = {
     768: { slidesPerView: 5.3, spaceBetween: 20 },
     1024: { slidesPerView: 6.3, spaceBetween: 30 },
     1280: { slidesPerView: 7.3, spaceBetween: 20 },
+  },
+  breakpoints_cast: {
+    320: { slidesPerView: 1.1, spaceBetween: 10 },
+    768: { slidesPerView: 2.3, spaceBetween: 20 },
+    1024: { slidesPerView: 3.3, spaceBetween: 30 },
+    1280: { slidesPerView: 4.3, spaceBetween: 20 },
   },
 };

@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 import {
   getMovieById,
-  // getMovieCast,
+  getMovieCast,
   getMovieReviews,
   getMovieTrailers,
   getMovieGenres,
@@ -15,7 +15,7 @@ import {
   Section,
   MovieDetails,
   SwiperComponent,
-  // CaseSwiperComponent,
+  CaseSwiperComponent,
   OverviewsSwiperComponent,
   TrailersSwiperComponent,
   BreadcrumbNavigation,
@@ -23,7 +23,7 @@ import {
 
 export default function DetailsPage() {
   const [movieDitails, setMovieDitails] = useState(null);
-  // const [movieCast, setMovieCast] = useState([]);
+  const [movieCast, setMovieCast] = useState([]);
   const [movieTrailers, setMovieTrailers] = useState([]);
   const [movieReviews, setMovieReviews] = useState([]);
   const [similarMovies, setSimilarMovies] = useState([]);
@@ -40,11 +40,11 @@ export default function DetailsPage() {
       setMovieDitails(data);
     }
 
-    // async function fetchMovieCast() {
-    //   const { data } = await getMovieCast(movie_id, lang);
-    //   console.log("MovieCast", data);
-    //   setMovieCast(data.cast);
-    // }
+    async function fetchMovieCast() {
+      const { data } = await getMovieCast(movie_id, lang);
+      console.log("MovieCast", data);
+      setMovieCast(data.cast.slice(0, 10));
+    }
 
     async function fetchMovieReviews() {
       const { data } = await getMovieReviews(movie_id, lang, page);
@@ -68,7 +68,7 @@ export default function DetailsPage() {
     }
 
     fetchMovieDitails();
-    // fetchMovieCast();
+    fetchMovieCast();
     fetchMovieReviews();
     fetchMovieTrailers();
     fetchSimilarMovies();
@@ -89,12 +89,12 @@ export default function DetailsPage() {
           <OverviewsSwiperComponent movieReviews={movieReviews} />
         </Section>
       )}
-      {/*
+
       {movieCast.length > 0 && (
         <Section title="Top Cast">
           <CaseSwiperComponent movieCast={movieCast} />
         </Section>
-      )}*/}
+      )}
       {similarMovies.length > 0 && (
         <Section
           title={t("section.title.similar")}

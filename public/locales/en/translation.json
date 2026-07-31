@@ -35,5 +35,8 @@
       "addMovie": "Add to Watchlist",
       "removeMovie": "Remove from Watchlist"
     }
+  },
+  "cast": {
+    "as": "as"
   }
 }
