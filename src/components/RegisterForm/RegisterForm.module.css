@@ -1,0 +1,98 @@
+.title {
+  text-align: center;
+  font-size: var(--fs-h2);
+}
+.formWrapper {
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  width: 100%;
+}
+.inputWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+}
+.inputLabel {
+  position: absolute;
+  top: 50%;
+  left: var(--space-4);
+  color: var(--color-text);
+  transition: transform 0.3s ease;
+  transform: translateY(-50%);
+}
+
+.input {
+  border-radius: var(--radius-lg);
+  padding: 0 var(--space-2);
+  box-shadow: var(--shadow-card);
+  background-color: var(--search-input-bg);
+  padding: var(--space-2) var(--space-2);
+  width: 100%;
+  outline: none;
+  /* background-color: transparent; */
+  font-size: var(--fs-text);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+.input:focus {
+  border-color: var(--color-primary);
+}
+/* .input:focus ~ .inputLabel,
+.input:not(:placeholder-shown) ~ .inputLabel {
+  top: 0px;
+  font-size: 12px;
+  padding: 0 var(--space-1);
+  background-color: var(--color-modal-content-background);
+} */
+.inputErrorMessage {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 12px;
+  color: var(--color-error);
+}
+
+.button {
+  display: inline-block;
+  max-width: 100%;
+  width: 100%;
+  cursor: pointer;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-card);
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+.button:hover {
+  background-color: var(--color-primary-hover);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-3px);
+}
+.button:active {
+  transform: translateY(0px);
+}
+.questionWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-small-text);
+  color: var(--color-text);
+  margin-top: var(--space-4);
+}
+
+.questionButton {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  color: var(--color-text-link);
+}

@@ -5,6 +5,30 @@
       "movies": "Movies"
     }
   },
+  "loginForm": {
+    "title": "Log in",
+    "loginPlaceholder": "Login",
+    "passwordPlaceholder": "Password",
+    "errors": {
+      "emptyField": "This field cannot be empty",
+      "invalidEmail": "Invalid email address",
+      "passwordLength": "Must be 8 characters or more"
+    }
+  },
+  "registerForm": {
+    "title": "Register",
+    "loginPlaceholder": "Login",
+    "namePlaceholder": "Name",
+    "passwordPlaceholder": "Password",
+    "confirmPasswordPlaceholder": "Confirm Password",
+    "errors": {
+      "emptyField": "This field cannot be empty",
+      "invalidEmail": "Invalid email address",
+      "nameLength": "Must be 8 characters or more",
+      "passwordLength": "Must be 8 characters or more",
+      "wrongConfirmPassword": "Wrong confirm password"
+    }
+  },
   "searchPlaceholder": "Search movie ...",
   "breadcrumbNavigation": {
     "home": "Home",

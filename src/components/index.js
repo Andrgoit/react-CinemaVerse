@@ -25,6 +25,8 @@ import VideoPlayer from "./VideoPlayer/VideoPlayer";
 import MovieRuntime from "./MovieRuntime/MovieRuntime";
 import ButtonBlock from "./ButtonBlock/ButtonBlock";
 import SettingsBlock from "./SettingsBlock/SettingsBlock";
+import LoginForm from "./LoginForm/LoginForm";
+import RegisterForm from "./RegisterForm/RegisterForm";
 
 export {
   Header,
@@ -54,4 +56,6 @@ export {
   MovieRuntime,
   ButtonBlock,
   SettingsBlock,
+  LoginForm,
+  RegisterForm,
 };

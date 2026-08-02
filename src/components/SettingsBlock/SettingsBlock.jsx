@@ -2,14 +2,24 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { useTranslation } from "react-i18next";
-import { IoLanguage, IoSunny, IoMoon } from "react-icons/io5";
+import {
+  IoLanguage,
+  IoSunny,
+  IoMoon,
+  IoPersonOutline,
+  IoLogOutOutline,
+} from "react-icons/io5";
 import langIcons from "@/data/langIcons";
 import styles from "./SettingsBlock.module.css";
+import { Modal, LoginForm, RegisterForm } from "@/components";
 
 export default function SettingsBlock() {
   const [theme, setTheme] = useState(
     () => localStorage.getItem("theme") || "dark",
   );
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
+  const [user, setUser] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const searchParamsLang = searchParams.get("lang");
@@ -55,6 +65,27 @@ export default function SettingsBlock() {
     });
   };
 
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setIsLogin(true);
+  };
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const formChanger = () => {
+    setIsLogin(!isLogin);
+  };
+
+  const userLogination = (user) => {
+    setUser(user);
+    closeModal();
+  };
+
+  const userLogout = () => {
+    setUser(null);
+  };
+
   const elements = langIcons.map(({ lang, icon }) => (
     <li
       key={lang}
@@ -67,6 +98,13 @@ export default function SettingsBlock() {
 
   return (
     <div className="relative flex items-center gap-3">
+      <button type="button" className={styles.loginButton}>
+        {!user ? (
+          <IoPersonOutline size={22} onClick={openModal} />
+        ) : (
+          <IoLogOutOutline size={22} onClick={userLogout} />
+        )}
+      </button>
       <button
         type="button"
         onClick={themeChanger}
@@ -87,6 +125,18 @@ export default function SettingsBlock() {
         <IoLanguage size={22} />
       </button>
       {isMenuOpen && <ul className={styles.languageIconsList}>{elements}</ul>}
+      {isModalOpen && (
+        <Modal close={closeModal}>
+          {isLogin ? (
+            <LoginForm
+              formChanger={formChanger}
+              userLogination={userLogination}
+            />
+          ) : (
+            <RegisterForm formChanger={formChanger} />
+          )}
+        </Modal>
+      )}
     </div>
   );
 }
