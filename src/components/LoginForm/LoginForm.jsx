@@ -6,27 +6,27 @@ import { FaRegEyeSlash, FaRegEye } from "react-icons/fa6";
 import Filled_Warning from "@/assets/icons/error.svg?react";
 import styles from "./LoginForm.module.css";
 
-const validate = (values) => {
-  const errors = {};
-
-  if (!values.login) {
-    errors.login = "This field cannot be empty";
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.login)) {
-    errors.login = "Invalid email address";
-  }
-
-  if (!values.password) {
-    errors.password = "This field cannot be empty";
-  } else if (values.password.length < 8) {
-    errors.password = "Must be 8 characters or more";
-  }
-
-  return errors;
-};
-
 export default function LoginForm({ userLogination, formChanger }) {
   const [isShowPassword, setIsShowPassword] = useState(false);
   const { t } = useTranslation();
+
+  const validate = (values) => {
+    const errors = {};
+
+    if (!values.login) {
+      errors.login = t("loginForm.errors.emptyField");
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.login)) {
+      errors.login = t("loginForm.errors.invalidEmail");
+    }
+
+    if (!values.password) {
+      errors.password = t("loginForm.errors.emptyField");
+    } else if (values.password.length < 8) {
+      errors.password = t("loginForm.errors.passwordLength");
+    }
+
+    return errors;
+  };
 
   const formik = useFormik({
     initialValues: { login: "", password: "" },
@@ -51,7 +51,7 @@ export default function LoginForm({ userLogination, formChanger }) {
         onSubmit={formik.handleSubmit}
         className={styles.form}
       >
-        <h2 className={styles.title}>Log in</h2>
+        <h2 className={styles.title}>{t("loginForm.title")}</h2>
         <div className="w-full">
           <div className={styles.inputWrapper}>
             <input
@@ -65,9 +65,6 @@ export default function LoginForm({ userLogination, formChanger }) {
               className={styles.input}
               placeholder={t("loginForm.loginPlaceholder")}
             />
-            {/* <label htmlFor="login" className={styles.inputLabel}>
-              {t("loginForm.loginPlaceholder")}
-            </label> */}
           </div>
           {formik.touched.login && formik.errors.login ? (
             <div className={styles.inputErrorMessage}>
@@ -89,9 +86,7 @@ export default function LoginForm({ userLogination, formChanger }) {
               placeholder={t("loginForm.passwordPlaceholder")}
               className={styles.input}
             />
-            {/* <label htmlFor="password" className={styles.inputLabel}>
-              {t("loginForm.passwordPlaceholder")}
-            </label> */}
+
             <div
               className="absolute top-1/2 right-3 translate-y-[-50%]"
               onClick={() => setIsShowPassword(!isShowPassword)}
@@ -112,17 +107,17 @@ export default function LoginForm({ userLogination, formChanger }) {
         </div>
 
         <button type="submit" className={styles.button}>
-          Log in
+          {t("loginForm.title")}
         </button>
       </form>
       <div className={styles.questionWrapper}>
-        <p className={styles.questionText}>Don’t have an account? </p>
+        <p className={styles.questionText}>{t("loginForm.haveAnAccount")} </p>
         <button
           type="button"
           className={styles.questionButton}
           onClick={formChanger}
         >
-          Sign up
+          {t("loginForm.signUp")}
         </button>
       </div>
     </>

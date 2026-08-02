@@ -5,6 +5,34 @@
       "movies": "Фільми"
     }
   },
+  "loginForm": {
+    "title": "Авторизацiя",
+    "loginPlaceholder": "Логiн",
+    "passwordPlaceholder": "Пароль",
+    "haveAnAccount": "Не маєте акаунта?",
+    "signUp": "Зареєструватися",
+    "errors": {
+      "emptyField": "Це поле не може бути пустим",
+      "invalidEmail": "Некоректна адреса пошти",
+      "passwordLength": "Має бути не менше 8 символів"
+    }
+  },
+  "registerForm": {
+    "title": "Реєстрація",
+    "loginPlaceholder": "Логiн",
+    "namePlaceholder": "Им'я",
+    "passwordPlaceholder": "Пароль",
+    "confirmPasswordPlaceholder": "Підтвердіть пароль",
+    "haveAnAccount": "Вже маєте акаунт?",
+    "login": "Авторизуватися",
+    "errors": {
+      "emptyField": "Це поле не може бути пустим",
+      "invalidEmail": "Некоректна адреса пошти",
+      "nameLength": "Має бути не менше 3 символів",
+      "passwordLength": "Має бути не менше 8 символів",
+      "wrongConfirmPassword": "Неправильний підтверджуючий пароль"
+    }
+  },
   "searchPlaceholder": "Пошук фільму...",
   "breadcrumbNavigation": {
     "home": "Головна",

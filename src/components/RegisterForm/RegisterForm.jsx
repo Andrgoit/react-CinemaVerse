@@ -17,28 +17,28 @@ export default function RegisterForm({ userRegistration, formChanger }) {
     const errors = {};
 
     if (!values.login) {
-      errors.login = "This field cannot be empty";
+      errors.login = t("registerForm.errors.emptyField");
     }
     if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.login)) {
-      errors.login = "Invalid email address";
+      errors.login = t("registerForm.errors.invalidEmail");
     }
 
     if (!values.name) {
-      errors.name = "This field cannot be empty";
+      errors.name = t("registerForm.errors.emptyField");
     } else if (values.name.length < 3) {
-      errors.firstName = "Must be 3 characters or more";
+      errors.name = t("registerForm.errors.nameLength");
     }
 
     if (!values.password) {
-      errors.password = "This field cannot be empty";
+      errors.password = t("registerForm.errors.emptyField");
     } else if (values.password.length < 8) {
-      errors.password = "Must be 8 characters or more";
+      errors.password = t("registerForm.errors.passwordLength");
     }
 
     if (!values.confirmPassword) {
-      errors.confirmPassword = "This field cannot be empty";
+      errors.confirmPassword = t("registerForm.errors.emptyField");
     } else if (values.password !== values.confirmPassword) {
-      errors.confirmPassword = "Wrong confirm password";
+      errors.confirmPassword = t("registerForm.errors.wrongConfirmPassword");
     }
     setErrors(errors);
     return errors;
@@ -78,7 +78,7 @@ export default function RegisterForm({ userRegistration, formChanger }) {
         onSubmit={formik.handleSubmit}
         className={styles.form}
       >
-        <h2 className={styles.title}>Sign Up</h2>
+        <h2 className={styles.title}>{t("registerForm.title")}</h2>
         <div className="w-full">
           <div className={styles.inputWrapper}>
             <input
@@ -186,17 +186,17 @@ export default function RegisterForm({ userRegistration, formChanger }) {
         </div>
 
         <button type="submit" className={styles.button}>
-          Sign Up
+          {t("registerForm.title")}
         </button>
       </form>
       <div className={styles.questionWrapper}>
-        <p className={styles.questionText}>Already have an account? </p>
+        <p className={styles.questionText}>{t("registerForm.haveAnAccount")}</p>
         <button
           type="button"
           className={styles.questionButton}
           onClick={formChanger}
         >
-          Login
+          {t("registerForm.login")}
         </button>
       </div>
     </>

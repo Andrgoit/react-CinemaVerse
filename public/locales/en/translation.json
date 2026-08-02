@@ -9,6 +9,8 @@
     "title": "Log in",
     "loginPlaceholder": "Login",
     "passwordPlaceholder": "Password",
+    "haveAnAccount": "Don’t have an account?",
+    "signUp": "Sign Up",
     "errors": {
       "emptyField": "This field cannot be empty",
       "invalidEmail": "Invalid email address",
@@ -16,15 +18,17 @@
     }
   },
   "registerForm": {
-    "title": "Register",
+    "title": "Sign Up",
     "loginPlaceholder": "Login",
     "namePlaceholder": "Name",
     "passwordPlaceholder": "Password",
     "confirmPasswordPlaceholder": "Confirm Password",
+    "haveAnAccount": "Already have an account?",
+    "login": "Login",
     "errors": {
       "emptyField": "This field cannot be empty",
       "invalidEmail": "Invalid email address",
-      "nameLength": "Must be 8 characters or more",
+      "nameLength": "Must be 3 characters or more",
       "passwordLength": "Must be 8 characters or more",
       "wrongConfirmPassword": "Wrong confirm password"
     }
