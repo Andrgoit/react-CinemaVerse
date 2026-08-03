@@ -46,3 +46,14 @@
 .favoriteButton:active {
   transform: translateY(0px);
 }
+.addButton:disabled,
+.favoriteButton:disabled {
+  background-color: var(--color-text-muted);
+}
+.addButton:disabled:hover,
+.favoriteButton:disabled:hover {
+  background-color: var(--color-text-muted);
+  box-shadow: var(--shadow-card);
+  transform: translateY(0);
+  cursor: not-allowed;
+}

@@ -9,8 +9,6 @@ import styles from "./RegisterForm.module.css";
 export default function RegisterForm({ userRegistration, formChanger }) {
   const [isShowPassword, setIsShowPassword] = useState(false);
   const [isShowConfirmPassword, setIsShowConfirmPassword] = useState(false);
-  const [errors, setErrors] = useState(false);
-  const errorCounts = Object.keys(errors).length;
   const { t } = useTranslation();
 
   const validate = (values) => {
@@ -18,8 +16,7 @@ export default function RegisterForm({ userRegistration, formChanger }) {
 
     if (!values.login) {
       errors.login = t("registerForm.errors.emptyField");
-    }
-    if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.login)) {
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.login)) {
       errors.login = t("registerForm.errors.invalidEmail");
     }
 
@@ -40,7 +37,6 @@ export default function RegisterForm({ userRegistration, formChanger }) {
     } else if (values.password !== values.confirmPassword) {
       errors.confirmPassword = t("registerForm.errors.wrongConfirmPassword");
     }
-    setErrors(errors);
     return errors;
   };
 

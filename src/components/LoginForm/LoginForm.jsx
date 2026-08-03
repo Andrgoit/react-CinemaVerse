@@ -24,7 +24,6 @@ export default function LoginForm({ userLogination, formChanger }) {
     } else if (values.password.length < 8) {
       errors.password = t("loginForm.errors.passwordLength");
     }
-
     return errors;
   };
 
