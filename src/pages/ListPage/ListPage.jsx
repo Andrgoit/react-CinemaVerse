@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import {
   BreadcrumbNavigation,
@@ -25,10 +26,12 @@ export default function ListPage() {
   const { category, movie_id } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
   const page = Number(searchParams.get("page") || 1);
-  const lang = String(searchParams.get("lang") || "en");
   const listRef = useRef(null);
   const { total_pages } = movies;
   const time_window = timeWindowTrendingMovies.day;
+
+  const { i18n } = useTranslation();
+  const lang = i18n.language;
 
   const pageChanger = (page) => {
     setSearchParams((prev) => {

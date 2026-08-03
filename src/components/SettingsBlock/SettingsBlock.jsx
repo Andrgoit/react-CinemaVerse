@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-
 import { useTranslation } from "react-i18next";
+import { Modal, LoginForm, RegisterForm } from "@/components";
 import {
   IoLanguage,
   IoSunny,
@@ -11,7 +11,6 @@ import {
 } from "react-icons/io5";
 import langIcons from "@/data/langIcons";
 import styles from "./SettingsBlock.module.css";
-import { Modal, LoginForm, RegisterForm } from "@/components";
 
 export default function SettingsBlock() {
   const [theme, setTheme] = useState(
@@ -21,11 +20,7 @@ export default function SettingsBlock() {
   const [isLogin, setIsLogin] = useState(true);
   const [user, setUser] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [searchParams, setSearchParams] = useSearchParams();
-  const searchParamsLang = searchParams.get("lang");
-
   const { i18n } = useTranslation();
-  const lang = i18n.language;
 
   useEffect(() => {
     localStorage.setItem("theme", theme);
@@ -35,16 +30,6 @@ export default function SettingsBlock() {
     if (theme === "light") document.body.classList.add("light");
     else document.body.classList.remove("light");
   }, [theme]);
-
-  useEffect(() => {
-    if (!searchParamsLang) {
-      setSearchParams((prev) => {
-        const params = new URLSearchParams(prev);
-        params.set("lang", lang);
-        return params;
-      });
-    }
-  }, [lang, searchParamsLang, setSearchParams]);
 
   const themeChanger = () => {
     if (theme === "dark") {
@@ -57,12 +42,6 @@ export default function SettingsBlock() {
   const languageChanger = (lang) => {
     setIsMenuOpen(false);
     i18n.changeLanguage(lang);
-
-    setSearchParams((prev) => {
-      const params = new URLSearchParams(prev);
-      params.set("lang", lang);
-      return params;
-    });
   };
 
   const closeModal = () => {
