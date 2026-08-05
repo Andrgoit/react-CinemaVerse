@@ -22,6 +22,7 @@ CinemaVerse is a responsive movie discovery application built with React. It all
 - Responsive design
 - Dark/Light theme
 - Localization (EN / RU / UK)
+- Firebase Auth + Firebase Realtime Database
 
 ## Tech Stack
 
@@ -33,6 +34,7 @@ CinemaVerse is a responsive movie discovery application built with React. It all
 - TMDB API
 - Swiper
 - i18next
+- Firebase Auth + Firebase Realtime Database
 
 ## Getting Started
 
@@ -59,7 +61,16 @@ npm run dev
 Create `.env`
 
 ```env
-VITE_ACCESS_TOKEN=your_access_token
+VITE_TMDB_ACCESS_TOKEN=
+VITE_FB_API_KEY=
+VITE_FB_AUTH_DOMAIN=
+VITE_FB_DATABASE_URL=
+VITE_FB_PROJECT_ID=
+VITE_FB_STORAGE_BUCKET=
+VITE_FB_MESSAGING_SENDER_ID=
+VITE_FB_APP_ID=
+VITE_FB_MEASUREMENT_ID=
+
 ```
 
 ## Structure
