@@ -42,7 +42,6 @@ export default function DetailsPage() {
 
     async function fetchMovieCast() {
       const { data } = await getMovieCast(movie_id, lang);
-      console.log("MovieCast", data);
       setMovieCast(data.cast.slice(0, 10));
     }
 
@@ -58,7 +57,6 @@ export default function DetailsPage() {
 
     async function fetchSimilarMovies() {
       const { data } = await getSimilarMovies(movie_id, lang, page);
-      console.log("SimilarMovies", data);
       setSimilarMovies(data.results);
     }
 

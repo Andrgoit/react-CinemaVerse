@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useSelector, useDispatch } from "react-redux";
+import { logIn, logOut } from "@/redux/userSlice";
 import { Modal, LoginForm, RegisterForm } from "@/components";
 import {
   IoLanguage,
@@ -12,15 +13,19 @@ import {
 import langIcons from "@/data/langIcons";
 import styles from "./SettingsBlock.module.css";
 
+import { userSignUp, userLogIn, userLogOut, creatUser } from "@/api";
+
 export default function SettingsBlock() {
   const [theme, setTheme] = useState(
     () => localStorage.getItem("theme") || "dark",
   );
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
-  const [user, setUser] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { i18n } = useTranslation();
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.user.uid);
+  console.log("user", user);
 
   useEffect(() => {
     localStorage.setItem("theme", theme);
@@ -56,13 +61,44 @@ export default function SettingsBlock() {
     setIsLogin(!isLogin);
   };
 
-  const userLogination = (user) => {
-    setUser(user);
+  const userLogination = async (user) => {
+    const { login, password } = user;
     closeModal();
+    try {
+      const result = await userLogIn(login, password);
+      console.log("result", result);
+      const { email, accessToken, uid } = result;
+      dispatch(logIn({ email: email, token: accessToken, uid: uid }));
+    } catch (error) {
+      console.log("error", error.message);
+    }
   };
 
-  const userLogout = () => {
-    setUser(null);
+  const userSignUping = async (user) => {
+    const { email: userEmail, password, displayName } = user;
+    console.log("user", user);
+    closeModal();
+
+    try {
+      const result = await userSignUp(userEmail, password);
+      console.log("result", result);
+      const { email, accessToken, uid } = result;
+
+      const profile = { email, displayName };
+      const response = await creatUser(uid, profile, accessToken);
+      console.log("response", response);
+      if (response.status === "OK") {
+        const { uid, email, displayName } = response;
+        dispatch(logIn({ email, accessToken, uid, displayName }));
+      }
+    } catch (error) {
+      console.log("error", error.message);
+    }
+  };
+
+  const userLogout = async () => {
+    await userLogOut();
+    dispatch(logOut());
   };
 
   const elements = langIcons.map(({ lang, icon }) => (
@@ -112,7 +148,10 @@ export default function SettingsBlock() {
               userLogination={userLogination}
             />
           ) : (
-            <RegisterForm formChanger={formChanger} />
+            <RegisterForm
+              formChanger={formChanger}
+              userSignUping={userSignUping}
+            />
           )}
         </Modal>
       )}

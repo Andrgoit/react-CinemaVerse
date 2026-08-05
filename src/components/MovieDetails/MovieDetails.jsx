@@ -84,7 +84,7 @@ export default function MovieDetails({ movieDitails, genres: propsGenres }) {
             </div>
           </div>
         </div>
-        <ButtonBlock />
+        <ButtonBlock movieDitails={movieDitails} />
         <div className="w-full">
           <p className={styles.overview}>{overview}</p>
         </div>

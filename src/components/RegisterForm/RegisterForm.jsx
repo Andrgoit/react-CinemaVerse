@@ -6,7 +6,7 @@ import { FaRegEyeSlash, FaRegEye } from "react-icons/fa6";
 import Filled_Warning from "@/assets/icons/error.svg?react";
 import styles from "./RegisterForm.module.css";
 
-export default function RegisterForm({ userRegistration, formChanger }) {
+export default function RegisterForm({ userSignUping, formChanger }) {
   const [isShowPassword, setIsShowPassword] = useState(false);
   const [isShowConfirmPassword, setIsShowConfirmPassword] = useState(false);
   const { t } = useTranslation();
@@ -14,16 +14,16 @@ export default function RegisterForm({ userRegistration, formChanger }) {
   const validate = (values) => {
     const errors = {};
 
-    if (!values.login) {
-      errors.login = t("registerForm.errors.emptyField");
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.login)) {
-      errors.login = t("registerForm.errors.invalidEmail");
+    if (!values.email) {
+      errors.email = t("registerForm.errors.emptyField");
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+      errors.email = t("registerForm.errors.invalidEmail");
     }
 
-    if (!values.name) {
-      errors.name = t("registerForm.errors.emptyField");
-    } else if (values.name.length < 3) {
-      errors.name = t("registerForm.errors.nameLength");
+    if (!values.displayName) {
+      errors.displayName = t("registerForm.errors.emptyField");
+    } else if (values.displayName.length < 3) {
+      errors.displayName = t("registerForm.errors.nameLength");
     }
 
     if (!values.password) {
@@ -41,16 +41,22 @@ export default function RegisterForm({ userRegistration, formChanger }) {
   };
 
   const formik = useFormik({
-    initialValues: { login: "", name: "", password: "", confirmPassword: "" },
+    initialValues: {
+      email: "test@example.com",
+      displayName: "Andrey",
+      password: "1234567890",
+      confirmPassword: "1234567890",
+    },
     validate,
     onSubmit: (values) => {
-      userRegistration(values);
+      const { email, password, displayName } = values;
+      userSignUping({ email, password, displayName });
 
       formik.resetForm({
-        login: "",
-        name: "",
-        password: "",
-        confirmPassword: "",
+        email: "test@example.com",
+        displayName: "Andrey",
+        password: "1234567890",
+        confirmPassword: "1234567890",
       });
     },
   });
@@ -78,21 +84,21 @@ export default function RegisterForm({ userRegistration, formChanger }) {
         <div className="w-full">
           <div className={styles.inputWrapper}>
             <input
-              id="login"
-              name="login"
+              id="email"
+              name="email"
               type="email"
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
-              value={formik.values.login}
+              value={formik.values.email}
               autoComplete="off"
               className={styles.input}
               placeholder={t("registerForm.loginPlaceholder")}
             />
           </div>
-          {formik.touched.login && formik.errors.login ? (
+          {formik.touched.email && formik.errors.email ? (
             <div className={styles.inputErrorMessage}>
               <Filled_Warning />
-              {formik.errors.login}
+              {formik.errors.email}
             </div>
           ) : null}
         </div>
@@ -100,21 +106,21 @@ export default function RegisterForm({ userRegistration, formChanger }) {
         <div className="w-full">
           <div className={styles.inputWrapper}>
             <input
-              id="name"
-              name="name"
+              id="displayName"
+              name="displayName"
               type="text"
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
-              value={formik.values.name}
+              value={formik.values.displayName}
               autoComplete="off"
               className={styles.input}
               placeholder={t("registerForm.namePlaceholder")}
             />
           </div>
-          {formik.touched.name && formik.errors.name ? (
+          {formik.touched.displayName && formik.errors.displayName ? (
             <div className={styles.inputErrorMessage}>
               <Filled_Warning />
-              {formik.errors.name}
+              {formik.errors.displayName}
             </div>
           ) : null}
         </div>

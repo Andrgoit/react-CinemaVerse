@@ -27,6 +27,7 @@ import ButtonBlock from "./ButtonBlock/ButtonBlock";
 import SettingsBlock from "./SettingsBlock/SettingsBlock";
 import LoginForm from "./LoginForm/LoginForm";
 import RegisterForm from "./RegisterForm/RegisterForm";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 export {
   Header,
@@ -58,4 +59,5 @@ export {
   SettingsBlock,
   LoginForm,
   RegisterForm,
+  PrivateRoute,
 };

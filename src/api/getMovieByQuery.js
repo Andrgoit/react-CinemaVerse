@@ -3,7 +3,7 @@
 import axios from "axios";
 import baseURLs from "@/data/baseURLs";
 const BASE_URL = baseURLs.apiURL;
-const ACCESS_TOKEN = import.meta.env.VITE_ACCESS_TOKEN;
+const ACCESS_TOKEN = import.meta.env.VITE_TMDB_ACCESS_TOKEN;
 
 async function getMovieByQuery(query = "", page = "1", lang = "en-US") {
   const options = {

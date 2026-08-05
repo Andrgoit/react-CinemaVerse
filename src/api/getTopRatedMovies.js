@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import baseURLs from "@/data/baseURLs";
-const ACCESS_TOKEN = import.meta.env.VITE_ACCESS_TOKEN;
+const ACCESS_TOKEN = import.meta.env.VITE_TMDB_ACCESS_TOKEN;
 const BASE_URL = baseURLs.apiURL;
 
 async function getTopRatedMovies(page = "1", lang = "en-US") {
