@@ -1,6 +1,10 @@
 .themeButton,
 .languageButton,
-.loginButton {
+.loginButton,
+.link {
+  width: 40px;
+  height: 40px;
+  fill: var(--color-text);
   color: var(--color-text);
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -13,13 +17,15 @@
 
 .themeButton:hover,
 .languageButton:hover,
-.loginButton:hover {
+.loginButton:hover,
+.link:hover {
   transform: translateY(-3px);
 }
 
 .themeButton:active,
 .languageButton:active,
-.loginButton:active {
+.loginButton:active,
+.link:active {
   transform: translateY(0px);
 }
 
@@ -36,4 +42,10 @@
   filter: var(--lang-icon-shadow);
   cursor: pointer;
   z-index: 2;
+}
+.img {
+  width: 22px;
+  height: 22px;
+  /* fill: var(--color-text); */
+  color: var(--color-text);
 }

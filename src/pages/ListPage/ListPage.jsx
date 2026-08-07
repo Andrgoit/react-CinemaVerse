@@ -118,7 +118,7 @@ export default function ListPage() {
   return (
     <div className="container flex flex-col gap-8" ref={listRef}>
       <BreadcrumbNavigation />
-      <MoviesList movies={movies} genres={genres} />
+      <MoviesList movies={movies.results} genres={genres} />
       <PaginationComponent
         page={page}
         total_pages={total_pages}

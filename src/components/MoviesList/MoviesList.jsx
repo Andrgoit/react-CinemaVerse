@@ -5,7 +5,9 @@ import imgSizes from "@/data/imgSizes";
 import contentBaseURL from "@/data/baseURLs";
 import styles from "./MoviesList.module.css";
 
-export default function MoviesList({ movies, genres }) {
+export default function MoviesList({ movies = [], genres = [] }) {
+  console.log("movies", movies);
+
   if (!movies) return null;
 
   const { results = [] } = movies;
@@ -13,7 +15,7 @@ export default function MoviesList({ movies, genres }) {
   const imageBaseURL = contentBaseURL.posterImg;
   const posterSize = imgSizes.posterSizes.w342;
 
-  const elements = results.map((movie) => {
+  const elements = movies.map((movie) => {
     // eslint-disable-next-line no-unused-vars
     const { id, poster_path, title, release_date, genre_ids } = movie;
 

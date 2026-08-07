@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
+import { auth, onAuthStateChanged } from "@/firebaseConfig";
 import { logIn, logOut } from "@/redux/userSlice";
 import { clearWatchList, loadWatchList } from "@/redux/watchlistSlice";
 import { clearFavoriteList, loadFavoriteList } from "@/redux/favoriteSlice";
@@ -13,6 +14,7 @@ import {
   IoLogOutOutline,
 } from "react-icons/io5";
 import langIcons from "@/data/langIcons";
+import WatchlistIcon from "@/assets/icons/watchlist.svg?react";
 import styles from "./SettingsBlock.module.css";
 
 import {
@@ -24,6 +26,7 @@ import {
   getFavoriteListFromDB,
   getWatchListFromDB,
 } from "@/api";
+import { Link } from "react-router-dom";
 
 export default function SettingsBlock() {
   const [theme, setTheme] = useState(
@@ -82,6 +85,18 @@ export default function SettingsBlock() {
     }
   };
 
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const { email, accessToken, uid, displayName } = user;
+        getMoviesFromDB(uid);
+        dispatch(logIn({ email, accessToken, uid, displayName }));
+      } else {
+        dispatch(logOut());
+      }
+    });
+  }, [dispatch]);
+
   const userLogination = async (user) => {
     const { login, password } = user;
     closeModal();
@@ -89,7 +104,6 @@ export default function SettingsBlock() {
       const userLoginresult = await userLogIn(login, password);
       const { email, accessToken, uid, displayName } = userLoginresult;
       dispatch(logIn({ email, accessToken, uid, displayName }));
-
       getMoviesFromDB(uid);
     } catch (error) {
       console.log("error", error.message);
@@ -141,18 +155,26 @@ export default function SettingsBlock() {
 
   return (
     <div className="relative flex items-center gap-3">
-      {userName && <span>{userName}</span>}
+      {userName && (
+        <>
+          <span>{userName}</span>
+          <Link to={"/library"} className={styles.link} title="My Library">
+            <WatchlistIcon className={styles.img} />
+          </Link>
+        </>
+      )}
       <button type="button" className={styles.loginButton}>
         {!userName ? (
-          <IoPersonOutline size={22} onClick={openModal} />
+          <IoPersonOutline size={22} onClick={openModal} title="Log In" />
         ) : (
-          <IoLogOutOutline size={22} onClick={userLogout} />
+          <IoLogOutOutline size={22} onClick={userLogout} title="Log Out" />
         )}
       </button>
       <button
         type="button"
         onClick={themeChanger}
         className={styles.themeButton}
+        title="Chose theme"
       >
         {theme === "dark" ? (
           <IoMoon size={22} />

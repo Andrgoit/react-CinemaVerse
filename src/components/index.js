@@ -4,7 +4,6 @@ import Loader from "./Loader/Loader";
 import Footer from "./Footer/Footer";
 import Layout from "./Layout/Layout";
 import Nav from "./Nav/Nav";
-import SearchIcon from "./SearchIcon/SearchIcon";
 import SearchBlock from "./SearchBlock/SearchBlock";
 import BurgerButton from "./BurgerButton/BurgerButton";
 import BurgerMenu from "./BurgerMenu/BurgerMenu";
@@ -28,6 +27,8 @@ import SettingsBlock from "./SettingsBlock/SettingsBlock";
 import LoginForm from "./LoginForm/LoginForm";
 import RegisterForm from "./RegisterForm/RegisterForm";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import LibraryChoseButtonBlock from "./LibraryChoseButtonBlock/LibraryChoseButtonBlock";
+import LibraryMoviesList from "./LibraryMoviesList/LibraryMoviesList";
 
 export {
   Header,
@@ -36,7 +37,6 @@ export {
   Footer,
   Layout,
   Nav,
-  SearchIcon,
   SearchBlock,
   BurgerButton,
   BurgerMenu,
@@ -60,4 +60,6 @@ export {
   LoginForm,
   RegisterForm,
   PrivateRoute,
+  LibraryChoseButtonBlock,
+  LibraryMoviesList,
 };

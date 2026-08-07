@@ -6,14 +6,11 @@ const HomePage = lazy(() => import("@/pages/HomePage/HomePage"));
 const ListPage = lazy(() => import("@/pages/ListPage/ListPage"));
 const SearchPage = lazy(() => import("@/pages/SearchPage/SearchPage"));
 const DetailsPage = lazy(() => import("@/pages/DetailsPage/DetailsPage"));
-const FavoritePage = lazy(() => import("@/pages/FavoritePage/FavoritePage"));
-const WatchlistPage = lazy(() => import("@/pages/WatchlistPage/WatchlistPage"));
+const LibraryPage = lazy(() => import("@/pages/LibraryPage/LibraryPage"));
 const NotFoundPage = lazy(() => import("@/pages/NotFoundPage/NotFoundPage"));
 const Layout = lazy(() => import("@/components/Layout/Layout"));
 
-import { PrivateRoute } from "@/components";
-
-import { Loader } from "@/components";
+import { PrivateRoute, Loader } from "@/components";
 import "./index.css";
 
 function App() {
@@ -25,8 +22,7 @@ function App() {
           <Route path="/:category" element={<ListPage />} />
           <Route path="/search" element={<SearchPage />} />
           <Route element={<PrivateRoute />}>
-            <Route path="/watchlist" element={<WatchlistPage />} />
-            <Route path="/favorite" element={<FavoritePage />} />
+            <Route path="/library" element={<LibraryPage />} />
           </Route>
           <Route path="/movie/:movie_id" element={<DetailsPage />} />
           <Route path="/movie/:movie_id/similar" element={<ListPage />} />
