@@ -2,7 +2,7 @@ English | [Русский](README.ru.md)
 
 # CinemaVerse
 
-CinemaVerse is a responsive movie discovery application built with React. It allows users to browse trending, popular, top-rated and upcoming movies, search by title, and view detailed information including trailers, cast, reviews and similar movies. It uses an API <https://themoviedb.org/>
+CinemaVerse is a modern, responsive movie discovery application built with React. It helps users discover trending, popular, top-rated, and upcoming movies, search by title, and explore detailed information such as trailers, cast, reviews, and similar movies. The application features user authentication powered by Firebase Authentication and cloud data storage with Firebase Realtime Database, allowing registered users to manage personalized Watchlists and Favorites that are synchronized across devices. Movie information is powered by the TMDB API: <https://themoviedb.org/>.
 
 [LIVE DEMO](https://react-cinema-verse-alpha.vercel.app/)
 

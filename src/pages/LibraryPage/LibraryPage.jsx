@@ -22,7 +22,7 @@ export default function LibraryPage() {
   };
 
   return (
-    <div className="container flex-col gap-8">
+    <div className="container flex flex-col gap-8">
       <BreadcrumbNavigation />
       <LibraryChoseButtonBlock
         chosenList={chosenList}
