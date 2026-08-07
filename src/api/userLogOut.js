@@ -3,13 +3,14 @@ import { toast } from "react-toastify";
 
 const userLogOut = async () => {
   try {
-    const userCredential = await signOut(auth);
-    console.log("Пользователь разлогинен", userCredential);
+    await signOut(auth);
 
-    return userCredential;
+    return {
+      status: "OK",
+    };
   } catch (error) {
     toast.error("LogOut error");
-    console.log("Ошибка разлогина", error.message, error.code);
+    console.log("LogOut error", error.message, error.code);
   }
 };
 

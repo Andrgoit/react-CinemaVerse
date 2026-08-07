@@ -58,6 +58,5 @@
   cursor: not-allowed;
 }
 .favoriteButtonFull {
-  composes: favoriteButton;
   color: var(--color-primary);
 }

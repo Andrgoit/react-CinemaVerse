@@ -22,26 +22,14 @@ export default function ButtonBlock({ movieDitails }) {
   const { id, poster_path, title, release_date, genres } = movieDitails;
 
   const uid = useSelector((state) => state.user.user.uid);
-  const favoriteMovies = useSelector(
-    (state) => state.favoriteList.favoriteList,
-  );
+  const favoriteList = useSelector((state) => state.favoriteList.favoriteList);
   const watchList = useSelector((state) => state.watchList.watchList);
-
-  console.log("favoriteMovies", favoriteMovies);
-  console.log("watchList", watchList);
 
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
-  const moviesInFavoriteList = Object.keys(favoriteMovies);
-  const isMovieToFavoriteListAdded = moviesInFavoriteList.includes(
-    id.toString(),
-  );
-  console.log("isMovieToFavoriteListAdded", isMovieToFavoriteListAdded);
-
-  const moviesInWatchlist = Object.keys(watchList);
-  const isMovieToWatchListAdded = moviesInWatchlist.includes(id.toString());
-  console.log("isMovieToWatchListAdded", isMovieToWatchListAdded);
+  const isMovieToFavoriteListAdded = favoriteList[id];
+  const isMovieToWatchListAdded = watchList[id];
 
   const addWatchMovie = async () => {
     const movie = { id, poster_path, title, release_date, genres };
@@ -101,11 +89,11 @@ export default function ButtonBlock({ movieDitails }) {
         </button>
       ) : (
         <button
-          className={styles.favoriteButtonFull}
+          className={styles.favoriteButton}
           disabled={!uid}
           onClick={removeFavoriteMovie}
         >
-          <FaRegHeart />
+          <FaRegHeart className={styles.favoriteButtonFull} />
         </button>
       )}
     </div>

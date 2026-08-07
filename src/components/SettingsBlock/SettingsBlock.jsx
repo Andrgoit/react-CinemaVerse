@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 import { logIn, logOut } from "@/redux/userSlice";
+import { clearWatchList, loadWatchList } from "@/redux/watchlistSlice";
+import { clearFavoriteList, loadFavoriteList } from "@/redux/favoriteSlice";
 import { Modal, LoginForm, RegisterForm } from "@/components";
 import {
   IoLanguage,
@@ -13,7 +15,15 @@ import {
 import langIcons from "@/data/langIcons";
 import styles from "./SettingsBlock.module.css";
 
-import { userSignUp, userLogIn, userLogOut, creatUser } from "@/api";
+import {
+  userSignUp,
+  userLogIn,
+  userLogOut,
+  creatUser,
+  updateUserInfo,
+  getFavoriteListFromDB,
+  getWatchListFromDB,
+} from "@/api";
 
 export default function SettingsBlock() {
   const [theme, setTheme] = useState(
@@ -24,8 +34,7 @@ export default function SettingsBlock() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { i18n } = useTranslation();
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user.user.uid);
-  console.log("user", user);
+  const userName = useSelector((state) => state.user.user.displayName);
 
   useEffect(() => {
     localStorage.setItem("theme", theme);
@@ -61,14 +70,27 @@ export default function SettingsBlock() {
     setIsLogin(!isLogin);
   };
 
+  const getMoviesFromDB = async (uid) => {
+    const getFavoritListResult = await getFavoriteListFromDB(uid);
+    if (getFavoritListResult) {
+      dispatch(loadFavoriteList(getFavoritListResult));
+    }
+
+    const getWatchListResult = await getWatchListFromDB(uid);
+    if (getWatchListResult) {
+      dispatch(loadWatchList(getWatchListResult));
+    }
+  };
+
   const userLogination = async (user) => {
     const { login, password } = user;
     closeModal();
     try {
-      const result = await userLogIn(login, password);
-      console.log("result", result);
-      const { email, accessToken, uid } = result;
-      dispatch(logIn({ email: email, token: accessToken, uid: uid }));
+      const userLoginresult = await userLogIn(login, password);
+      const { email, accessToken, uid, displayName } = userLoginresult;
+      dispatch(logIn({ email, accessToken, uid, displayName }));
+
+      getMoviesFromDB(uid);
     } catch (error) {
       console.log("error", error.message);
     }
@@ -76,19 +98,21 @@ export default function SettingsBlock() {
 
   const userSignUping = async (user) => {
     const { email: userEmail, password, displayName } = user;
-    console.log("user", user);
     closeModal();
-
     try {
-      const result = await userSignUp(userEmail, password);
-      console.log("result", result);
-      const { email, accessToken, uid } = result;
+      const signUpresult = await userSignUp(userEmail, password);
+      if (!signUpresult) return;
+
+      const { email, uid, accessToken } = signUpresult;
+
+      const updateUserResult = await updateUserInfo(displayName);
+      if (updateUserResult.status !== "OK") return;
 
       const profile = { email, displayName };
-      const response = await creatUser(uid, profile, accessToken);
-      console.log("response", response);
-      if (response.status === "OK") {
-        const { uid, email, displayName } = response;
+
+      const createResponse = await creatUser(uid, profile, accessToken);
+      if (createResponse.status === "OK") {
+        const { uid, email, displayName } = createResponse;
         dispatch(logIn({ email, accessToken, uid, displayName }));
       }
     } catch (error) {
@@ -97,8 +121,12 @@ export default function SettingsBlock() {
   };
 
   const userLogout = async () => {
-    await userLogOut();
-    dispatch(logOut());
+    const res = await userLogOut();
+    if (res.status === "OK") {
+      dispatch(logOut());
+      dispatch(clearWatchList());
+      dispatch(clearFavoriteList());
+    }
   };
 
   const elements = langIcons.map(({ lang, icon }) => (
@@ -113,8 +141,9 @@ export default function SettingsBlock() {
 
   return (
     <div className="relative flex items-center gap-3">
+      {userName && <span>{userName}</span>}
       <button type="button" className={styles.loginButton}>
-        {!user ? (
+        {!userName ? (
           <IoPersonOutline size={22} onClick={openModal} />
         ) : (
           <IoLogOutOutline size={22} onClick={userLogout} />

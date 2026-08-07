@@ -9,12 +9,12 @@ const userLogIn = async (email, password) => {
       password,
     );
     const user = userCredential.user;
-    console.log("Пользователь залогинен", user);
 
     return user;
   } catch (error) {
     toast.error("Login or password incorrect");
     console.log("Ошибка логина", error.message, error.code);
+    throw new Error(error.message);
   }
 };
 

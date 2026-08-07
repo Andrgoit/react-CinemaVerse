@@ -21,13 +21,15 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-// export const db = getDatabase(app);
+const auth = getAuth();
+const currentUser = auth.currentUser;
 
 export {
+  app,
   auth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  currentUser,
 };

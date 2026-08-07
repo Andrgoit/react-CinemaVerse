@@ -5,7 +5,6 @@ const removeFromWatchlist = async (uid, id) => {
 
   try {
     await remove(ref(db, `cinemaverse/v1/users/${uid}/watchlist/${id}`));
-    alert("фильм удален");
     return {
       status: "OK",
       id,

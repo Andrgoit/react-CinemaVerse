@@ -17,6 +17,9 @@ import addToWatchlist from "@/api/addToWatchlist";
 import removeFromWatchlist from "@/api/removeFromWatchlist";
 import addToFavoriteList from "./addToFavoriteList";
 import removeFromFavoriteList from "./removeFromFavoriteList";
+import updateUserInfo from "./updateUserInfo";
+import getFavoriteListFromDB from "./getFavoriteListFromDB";
+import getWatchListFromDB from "./getWatchListFromDB";
 
 export {
   getTrendingMovies,
@@ -38,4 +41,7 @@ export {
   removeFromWatchlist,
   addToFavoriteList,
   removeFromFavoriteList,
+  updateUserInfo,
+  getFavoriteListFromDB,
+  getWatchListFromDB,
 };

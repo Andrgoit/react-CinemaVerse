@@ -5,7 +5,7 @@ const addToWatchlist = async (uid, movie) => {
 
   try {
     await set(
-      ref(db, `cinemaverse/v1/users/${uid}/watchlist/${movie.id}`),
+      ref(db, `cinemaverse/v1/users/${uid}/watchList/${movie.id}`),
       movie,
     );
 

@@ -9,7 +9,6 @@ const userSignUp = async (email, password) => {
       password,
     );
     const user = userCredential.user;
-    console.log("Пользователь зарегистирован", user);
     return user;
   } catch (error) {
     toast.error(error.message);
