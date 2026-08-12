@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { EmptyList } from "@/components";
 
 import noPoster from "@/assets/img/noPhoto.svg";
 import imgSizes from "@/data/imgSizes";
@@ -46,5 +47,9 @@ export default function LibraryMoviesList({ movies = [] }) {
     );
   });
 
-  return <ul className={styles.cardList}>{elements}</ul>;
+  return !movies.length > 0 ? (
+    <EmptyList />
+  ) : (
+    <ul className={styles.cardList}>{elements}</ul>
+  );
 }

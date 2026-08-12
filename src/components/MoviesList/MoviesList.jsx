@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { EmptyList } from "@/components";
 
 import noPoster from "@/assets/img/noPhoto.svg";
 import imgSizes from "@/data/imgSizes";
@@ -6,8 +7,6 @@ import contentBaseURL from "@/data/baseURLs";
 import styles from "./MoviesList.module.css";
 
 export default function MoviesList({ movies = [], genres = [] }) {
-  if (!movies) return null;
-
   const imageBaseURL = contentBaseURL.posterImg;
   const posterSize = imgSizes.posterSizes.w342;
 
@@ -50,7 +49,11 @@ export default function MoviesList({ movies = [], genres = [] }) {
     );
   });
 
-  return <ul className={styles.cardList}>{elements}</ul>;
+  return !movies.length > 0 ? (
+    <EmptyList />
+  ) : (
+    <ul className={styles.cardList}>{elements}</ul>
+  );
 }
 
 // {
