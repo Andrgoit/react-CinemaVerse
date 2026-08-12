@@ -1,8 +1,15 @@
 import { createPortal } from "react-dom";
 import { IoClose } from "react-icons/io5";
+import {
+  UserName,
+  LoginButton,
+  MyLibraryButton,
+  ThemeButton,
+  LanguageButton,
+} from "@/components";
 import styles from "./BurgerMenu.module.css";
 
-export default function BurgerMenu({ closeMenu }) {
+export default function BurgerMenu({ closeMenu, isMenuOpen }) {
   const root = document.getElementById("modal");
 
   const close = (event) => {
@@ -13,11 +20,22 @@ export default function BurgerMenu({ closeMenu }) {
   };
 
   return createPortal(
-    <div className={styles.backdrop} onClick={close}>
+    <div
+      className={`${styles.backdrop} ${isMenuOpen ? styles.isOpen : ""}`}
+      onClick={close}
+    >
       <div className={styles.contentWrapper}>
         <button className={styles.closeButton} onClick={closeMenu}>
           <IoClose size={22} />
         </button>
+        <div className="flex items-center gap-3">
+          <UserName /> <LoginButton />
+        </div>
+        <div className="flex flex-col items-center gap-5">
+          <MyLibraryButton />
+          <ThemeButton />
+          <LanguageButton />
+        </div>
       </div>
     </div>,
     root,

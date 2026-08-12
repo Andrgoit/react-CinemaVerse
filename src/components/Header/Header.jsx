@@ -44,7 +44,11 @@ export default function Header() {
             )}
           </div>
         </div>
-        {isMenuOpen && <BurgerMenu closeMenu={closeMenu} />}
+        <BurgerMenu closeMenu={closeMenu} isMenuOpen={isMenuOpen} />
+
+        {/* {isMenuOpen && (
+          <BurgerMenu closeMenu={closeMenu} isMenuOpen={isMenuOpen} />
+        )} */}
       </div>
     </header>
   );
