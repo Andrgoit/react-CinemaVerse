@@ -21,11 +21,6 @@ export default function Modal({ children, close }) {
     return () => window.removeEventListener("keydown", EscapeModalClose);
   }, [close]);
 
-  // useEffect(() => {
-  //   document.body.style.overflow = "hidden";
-  //   return () => (document.body.style.overflow = "");
-  // }, []);
-
   const modalRoot = document.getElementById("modal");
   return createPortal(
     <div className={styles.backdropWrapper} onClick={closeModal}>

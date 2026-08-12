@@ -26,7 +26,7 @@ export default function LanguageButton() {
   ));
 
   return (
-    <>
+    <div className="relative">
       <button
         type="button"
         className={styles.languageButton}
@@ -35,6 +35,6 @@ export default function LanguageButton() {
         <IoLanguage size={22} />
       </button>
       {isMenuOpen && <ul className={styles.languageIconsList}>{elements}</ul>}
-    </>
+    </div>
   );
 }

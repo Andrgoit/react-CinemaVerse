@@ -28,10 +28,10 @@ export default function BurgerMenu({ closeMenu, isMenuOpen }) {
         <button className={styles.closeButton} onClick={closeMenu}>
           <IoClose size={22} />
         </button>
-        <div className="flex items-center gap-3">
+        <div className="flex flex-col items-center gap-6">
           <UserName /> <LoginButton />
         </div>
-        <div className="flex flex-col items-center gap-5">
+        <div className="flex flex-col items-center gap-6">
           <MyLibraryButton />
           <ThemeButton />
           <LanguageButton />
