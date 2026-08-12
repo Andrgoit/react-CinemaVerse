@@ -1,7 +1,4 @@
-.themeButton,
-.languageButton,
-.loginButton,
-.link {
+.languageButton {
   width: 40px;
   height: 40px;
   fill: var(--color-text);
@@ -15,17 +12,11 @@
   transition: transform 0.3s ease;
 }
 
-.themeButton:hover,
-.languageButton:hover,
-.loginButton:hover,
-.link:hover {
+.languageButton:hover {
   transform: translateY(-3px);
 }
 
-.themeButton:active,
-.languageButton:active,
-.loginButton:active,
-.link:active {
+.languageButton:active {
   transform: translateY(0px);
 }
 
@@ -46,6 +37,5 @@
 .img {
   width: 22px;
   height: 22px;
-  /* fill: var(--color-text); */
   color: var(--color-text);
 }

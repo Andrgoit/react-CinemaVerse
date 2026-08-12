@@ -6,18 +6,13 @@ import contentBaseURL from "@/data/baseURLs";
 import styles from "./MoviesList.module.css";
 
 export default function MoviesList({ movies = [], genres = [] }) {
-  console.log("movies", movies);
-
   if (!movies) return null;
-
-  const { results = [] } = movies;
 
   const imageBaseURL = contentBaseURL.posterImg;
   const posterSize = imgSizes.posterSizes.w342;
 
   const elements = movies.map((movie) => {
-    // eslint-disable-next-line no-unused-vars
-    const { id, poster_path, title, release_date, genre_ids } = movie;
+    const { id, poster_path, title, genre_ids } = movie;
 
     // ------------------------------------
     const normalizedGenres = genres

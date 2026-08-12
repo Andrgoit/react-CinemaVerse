@@ -1,0 +1,21 @@
+.loginButton {
+  width: 40px;
+  height: 40px;
+  fill: var(--color-text);
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2);
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.3s ease;
+}
+
+.loginButton:hover {
+  transform: translateY(-3px);
+}
+
+.loginButton:active {
+  transform: translateY(0px);
+}

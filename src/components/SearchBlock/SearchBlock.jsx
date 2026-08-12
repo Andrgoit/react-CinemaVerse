@@ -19,19 +19,21 @@ export default function SearchBlock({ onchange }) {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.inputWrapper}>
-        <span>
-          <IoSearch size={22} color={`var(--color-text)`} />
-        </span>
-        <form onSubmit={submitHandler} className="w-full">
-          <input
-            type="text"
-            value={q}
-            className={styles.input}
-            placeholder={t("searchPlaceholder")}
-            onChange={(e) => setQ(e.target.value.trim())}
-          />
-        </form>
+      <div className="container flex justify-center">
+        <div className={styles.inputWrapper}>
+          <span>
+            <IoSearch size={22} color={`var(--color-text)`} />
+          </span>
+          <form onSubmit={submitHandler} className="w-full">
+            <input
+              type="text"
+              value={q}
+              className={styles.input}
+              placeholder={t("searchPlaceholder")}
+              onChange={(e) => setQ(e.target.value.trim())}
+            />
+          </form>
+        </div>
       </div>
     </div>
   );

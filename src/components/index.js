@@ -9,7 +9,6 @@ import BurgerButton from "./BurgerButton/BurgerButton";
 import BurgerMenu from "./BurgerMenu/BurgerMenu";
 import Modal from "./Modal/Modal";
 import ProfileIcon from "./ProfileIcon/ProfileIcon";
-import HeroBanner from "./HeroBanner/HeroBanner";
 import BreadcrumbNavigation from "./BreadcrumbNavigation/BreadcrumbNavigation";
 import Section from "./Section/Section";
 import MoviesList from "./MoviesList/MoviesList";
@@ -23,12 +22,16 @@ import OverviewsSwiperComponent from "./OverviewsSwiperComponent/OverviewsSwiper
 import VideoPlayer from "./VideoPlayer/VideoPlayer";
 import MovieRuntime from "./MovieRuntime/MovieRuntime";
 import ButtonBlock from "./ButtonBlock/ButtonBlock";
-import SettingsBlock from "./SettingsBlock/SettingsBlock";
 import LoginForm from "./LoginForm/LoginForm";
 import RegisterForm from "./RegisterForm/RegisterForm";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import LibraryChoseButtonBlock from "./LibraryChoseButtonBlock/LibraryChoseButtonBlock";
 import LibraryMoviesList from "./LibraryMoviesList/LibraryMoviesList";
+import UserName from "./UserName/UserName";
+import MyLibraryButton from "./MyLibraryButton/MyLibraryButton";
+import LanguageButton from "./LanguageButton/LanguageButton";
+import ThemeButton from "./ThemeButton/ThemeButton";
+import LoginButton from "./LoginButton/LoginButton";
 
 export {
   Header,
@@ -42,7 +45,6 @@ export {
   BurgerMenu,
   Modal,
   ProfileIcon,
-  HeroBanner,
   BreadcrumbNavigation,
   Section,
   MoviesList,
@@ -56,10 +58,14 @@ export {
   VideoPlayer,
   MovieRuntime,
   ButtonBlock,
-  SettingsBlock,
   LoginForm,
   RegisterForm,
   PrivateRoute,
   LibraryChoseButtonBlock,
   LibraryMoviesList,
+  UserName,
+  MyLibraryButton,
+  LanguageButton,
+  ThemeButton,
+  LoginButton,
 };
