@@ -10,7 +10,7 @@ export default function Header() {
         <div className={styles.contentWrapper}>
           <Logo />
           {/* <Nav /> */}
-          <SettingsBlock />
+          {/* <SettingsBlock /> */}
           {/* {!isMobile ? (
             <BurgerButton />
           ) : (
