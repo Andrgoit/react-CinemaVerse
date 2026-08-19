@@ -58,13 +58,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease;
 }
 
 .threeDotsWrapper:hover {
-  color: red;
-  background-color: var(--color-surface-hover);
-}
-.threeDotsIcon {
+  color: var(--color-primary-hover);
+  background-color: white;
 }
 
 .cardImage {

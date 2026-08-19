@@ -25,7 +25,7 @@ export default function LibraryMoviesList({ movies = [] }) {
   };
 
   const elements = movies.map((movie) => {
-    const { id, poster_path, title, genres } = movie;
+    const { id, poster_path, title, genres, release_date } = movie;
 
     const genreElement = genres.map(({ name }) => (
       <span key={name} className={styles.genres}>
@@ -58,11 +58,13 @@ export default function LibraryMoviesList({ movies = [] }) {
           className={styles.threeDotsWrapper}
           onClick={(e) => openMenu(e, id)}
         >
-          <BsThreeDotsVertical size={26} className={styles.threeDotsIcon} />
+          <BsThreeDotsVertical size={26} />
         </button>
         {openMenuId === id && (
           <div className={styles.menuWrapper}>
-            <ButtonBlock movieDitails={{ id, poster_path, title, genres }} />
+            <ButtonBlock
+              movieDitails={{ id, poster_path, title, release_date, genres }}
+            />
           </div>
         )}
       </li>
