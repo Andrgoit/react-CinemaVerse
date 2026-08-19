@@ -1,7 +1,7 @@
 .link {
   cursor: pointer;
-  display: flex;
-  justify-content: center;
+  /* display: flex; */
+  /* justify-content: center; */
   color: var(--color-text);
 }
 
@@ -13,6 +13,8 @@
 }
 
 .cardWrapper {
+  position: relative;
+  overflow: hidden;
   flex: 0 1 280px;
   width: 100%;
   height: auto;
@@ -23,7 +25,6 @@
   background-color: var(--color-card);
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-card);
-  cursor: pointer;
   overflow: hidden;
   transition:
     box-shadow 0.3s ease,
@@ -42,6 +43,28 @@
 .cardWrapper:hover {
   box-shadow: var(--shadow-card-hover);
   transform: translateY(-3px);
+}
+
+.threeDotsWrapper {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.threeDotsWrapper:hover {
+  color: red;
+  background-color: var(--color-surface-hover);
+}
+.threeDotsIcon {
 }
 
 .cardImage {
@@ -82,4 +105,9 @@
   border-radius: var(--radius-xs);
   font-size: var(--fs-small-text);
   line-height: 1;
+}
+.menuWrapper {
+  position: absolute;
+  top: 60px;
+  right: 20px;
 }

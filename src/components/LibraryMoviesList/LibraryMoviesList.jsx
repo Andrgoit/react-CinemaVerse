@@ -1,18 +1,28 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { EmptyList } from "@/components";
 
+import { EmptyList, ButtonBlock } from "@/components";
+
+import { BsThreeDotsVertical } from "react-icons/bs";
 import noPoster from "@/assets/img/noPhoto.svg";
 import imgSizes from "@/data/imgSizes";
 import contentBaseURL from "@/data/baseURLs";
 import styles from "./LibraryMoviesList.module.css";
 
 export default function LibraryMoviesList({ movies = [] }) {
-  console.log("movies", movies);
+  const [openMenuId, setOpenMenuId] = useState(null);
 
   if (!movies) return null;
 
   const imageBaseURL = contentBaseURL.posterImg;
   const posterSize = imgSizes.posterSizes.w342;
+
+  const openMenu = (e, id) => {
+    e.stopPropagation();
+    e.preventDefault();
+
+    setOpenMenuId((currentId) => (currentId === id ? null : id));
+  };
 
   const elements = movies.map((movie) => {
     const { id, poster_path, title, genres } = movie;
@@ -24,8 +34,8 @@ export default function LibraryMoviesList({ movies = [] }) {
     ));
 
     return (
-      <Link to={`/movie/${id}`} className={styles.link} key={id}>
-        <li className={styles.cardWrapper}>
+      <li className={styles.cardWrapper} key={id}>
+        <Link to={`/movie/${id}`} className={styles.link}>
           <div className={styles.cardImageWrapper}>
             <img
               src={
@@ -42,8 +52,20 @@ export default function LibraryMoviesList({ movies = [] }) {
             <h3 className={styles.cardTitle}>{title}</h3>
             <div className={styles.genresWrapper}>{genreElement}</div>
           </div>
-        </li>
-      </Link>
+        </Link>
+        <button
+          type="button"
+          className={styles.threeDotsWrapper}
+          onClick={(e) => openMenu(e, id)}
+        >
+          <BsThreeDotsVertical size={26} className={styles.threeDotsIcon} />
+        </button>
+        {openMenuId === id && (
+          <div className={styles.menuWrapper}>
+            <ButtonBlock movieDitails={{ id, poster_path, title, genres }} />
+          </div>
+        )}
+      </li>
     );
   });
 

@@ -14,8 +14,6 @@ export default function LibraryPage() {
 
   const favoriteListArray = Object.values(favoriteList);
   const watchListArray = Object.values(watchList);
-  console.log("favoriteListArray", favoriteListArray);
-  console.log("watchListArray", watchListArray);
 
   const choseHandler = (item) => {
     item === "w" ? setChosenList("w") : setChosenList("f");
