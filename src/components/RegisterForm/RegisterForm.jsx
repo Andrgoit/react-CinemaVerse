@@ -42,10 +42,10 @@ export default function RegisterForm({ userSignUping, formChanger }) {
 
   const formik = useFormik({
     initialValues: {
-      email: "test@example.com",
-      displayName: "Andrey",
-      password: "1234567890",
-      confirmPassword: "1234567890",
+      email: "",
+      displayName: "",
+      password: "",
+      confirmPassword: "",
     },
     validate,
     onSubmit: (values) => {
@@ -53,10 +53,10 @@ export default function RegisterForm({ userSignUping, formChanger }) {
       userSignUping({ email, password, displayName });
 
       formik.resetForm({
-        email: "test@example.com",
-        displayName: "Andrey",
-        password: "1234567890",
-        confirmPassword: "1234567890",
+        email: "",
+        displayName: "",
+        password: "",
+        confirmPassword: "",
       });
     },
   });

@@ -28,12 +28,12 @@ export default function LoginForm({ userLogination, formChanger }) {
   };
 
   const formik = useFormik({
-    initialValues: { login: "test@example.com", password: "1234567890" },
+    initialValues: { login: "", password: "" },
     validate,
     onSubmit: (values) => {
       userLogination(values);
 
-      formik.resetForm({ login: "test@example.com", password: "1234567890" });
+      formik.resetForm({ login: "", password: "" });
     },
   });
 
