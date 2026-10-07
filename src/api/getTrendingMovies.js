@@ -1,5 +1,3 @@
-// https://api.themoviedb.org/3/trending/movie/{time_window}
-
 import axios from "axios";
 import baseURLs from "@/data/baseURLs";
 const ACCESS_TOKEN = import.meta.env.VITE_TMDB_ACCESS_TOKEN;

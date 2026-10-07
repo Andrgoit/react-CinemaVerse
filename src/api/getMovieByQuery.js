@@ -1,5 +1,3 @@
-// https://api.themoviedb.org/3/search/movie
-
 import axios from "axios";
 import baseURLs from "@/data/baseURLs";
 const BASE_URL = baseURLs.apiURL;
